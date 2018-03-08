@@ -7,6 +7,8 @@ ext {
     servicesVersion = '11.8.0'
     multidexVersion = '1.0.1'
 
+    kotlin_version = '1.2.30'
+
     androidCommonsVersion = '3.0.13'        // https://github.com/raxden/commons
     androidPreferencesVersion = '3.0.3'     // https://github.com/raxden/android-preferences
     androidRecyclerVersion = '3.0.7'        // https://github.com/raxden/android-recycler
@@ -68,6 +70,10 @@ ext {
             annotationProcessor: [
                     "com.google.dagger:dagger-compiler:${daggerVersion}",
                     "com.google.dagger:dagger-android-processor:${daggerVersion}"
+            ],
+            kapt: [
+                    "com.google.dagger:dagger-compiler:${daggerVersion}",
+                    "com.google.dagger:dagger-android-processor:${daggerVersion}"
             ]
     ]
 
@@ -115,6 +121,9 @@ ext {
             ],
             annotationProcessor: [
                     "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+            ],
+            kapt: [
+                    "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
             ]
     ]
 
@@ -134,7 +143,8 @@ ext {
                             "org.parceler:parceler-api:${parcelerVersion}",
                             "com.github.bumptech.glide:glide:${glideVersion}",
                             "uk.co.chrisjenx:calligraphy:${calligraphyVersion}",
-                            "me.grantland:autofittextview:${autoFitTextViewVersion}"
+                            "me.grantland:autofittextview:${autoFitTextViewVersion}",
+                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
                     ],
                     annotationProcessor : [
                             dagger.annotationProcessor,
@@ -154,7 +164,15 @@ ext {
                             "org.robolectric:robolectric:${robolectricVersion}",
                             "org.robolectric:shadows-multidex:${robolectricVersion}"
                     ],
-                    testAnnotationProcessor : []
+                    testAnnotationProcessor : [],
+                    kapt: [
+                            dagger.kapt,
+                            jakewharton.kapt,
+
+                            "org.projectlombok:lombok:${lombokVersion}",
+                            "com.github.bumptech.glide:compiler:${glideVersion}",
+                            "org.parceler:parceler:${parcelerVersion}"
+                    ]
             ],
             domain : [
                     implementation: [
@@ -178,7 +196,8 @@ ext {
                     compileOnly : [
                             "org.projectlombok:lombok:${lombokVersion}"
                     ],
-                    testImplementation : []
+                    testImplementation : [],
+                    kapt : []
             ],
             data : [
                     implementation: [
@@ -206,7 +225,8 @@ ext {
                     compileOnly : [
                             "org.projectlombok:lombok:${lombokVersion}"
                     ],
-                    testImplementation : []
+                    testImplementation : [],
+                    kapt : []
             ],
             components : [
                     implementation: [
@@ -217,7 +237,8 @@ ext {
                     api : [],
                     annotationProcessor : [],
                     compileOnly : [],
-                    testImplementation : []
+                    testImplementation : [],
+                    kapt : []
             ],
             commons : [
                     implementation: [
@@ -227,7 +248,8 @@ ext {
                     api : [],
                     annotationProcessor : [],
                     compileOnly : [],
-                    testImplementation : []
+                    testImplementation : [],
+                    kapt : []
             ],
             resources : [
                     implementation: [

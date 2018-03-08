@@ -77,19 +77,19 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sample_list.SampleListActivity"
+            android:name=".ui.samples.samplelist.SampleListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sample_pager.SamplePagerActivity"
+            android:name=".ui.samples.samplepager.SamplePagerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sample_multiple.SampleMultipleActivity"
+            android:name=".ui.samples.samplemultiple.SampleMultipleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />

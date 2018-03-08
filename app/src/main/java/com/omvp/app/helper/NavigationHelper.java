@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.omvp.app.ui.home.HomeActivity;
 import com.omvp.app.ui.samples.sample.SampleActivity;
-import com.omvp.app.ui.samples.sample_list.SampleListActivity;
+import com.omvp.app.ui.samples.samplelist.SampleListActivity;
 import com.omvp.app.ui.samples.sample_location.SampleLocationActivity;
-import com.omvp.app.ui.samples.sample_multiple.SampleMultipleActivity;
-import com.omvp.app.ui.samples.sample_pager.SamplePagerActivity;
 import com.omvp.app.ui.samples.sample_take_picture.SampleTakePictureActivity;
+import com.omvp.app.ui.samples.samplemultiple.SampleMultipleActivity;
+import com.omvp.app.ui.samples.samplepager.SamplePagerActivity;
 import com.omvp.app.ui.splash.SplashActivity;
 import com.omvp.app.util.OperationBroadcastManager;
 import com.raxdenstudios.commons.manager.NavigationManager;
