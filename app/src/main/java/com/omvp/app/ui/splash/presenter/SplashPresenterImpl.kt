@@ -79,7 +79,7 @@ internal constructor(splashView: SplashView) : BasePresenter<SplashView>(splashV
     }
 
     private fun applicationReadyToLaunch() {
-        mView.applicationReadyToLaunch()
+        mView?.applicationReadyToLaunch()
     }
 
 }

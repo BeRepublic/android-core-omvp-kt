@@ -1,40 +1,39 @@
-package com.omvp.app.base.mvp.presenter;
+package com.omvp.app.base.mvp.presenter
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.os.Bundle
 
 /**
  * A presenter that defines its own lifecycle methods.
  */
-public interface Presenter {
+interface Presenter {
 
     /**
      * Resumes the presentation. This should be called in the view's (Activity or Fragment)
      * onResume() method.
      */
-    void onResume();
+    fun onResume()
 
     /**
      * Pauses the presentation. This should be called in the view's Activity or Fragment)
      * onPause() method.
      */
-    void onPause();
+    fun onPause()
 
     /**
      * Starts the presentation. This should be called in the view's (Activity or Fragment)
      * onCreate() or onViewStatedRestored() method respectively.
      *
      * @param savedState the saved instance state that contains state saved in
-     * {@link #onSaveView(Bundle)}
+     * [.onSaveView]
      */
-    void onViewRestored(@Nullable Bundle savedState);
+    fun onViewRestored(savedState: Bundle?)
 
     /**
      * Starts the presentation. This should be called in the view's (Activity or Fragment)
      * onCreate() or onViewStatedRestored() method respectively.
      *
      */
-    void onViewLoaded();
+    fun onViewLoaded()
 
     /**
      * Save the state of the presentation (if any). This should be called in the view's
@@ -42,12 +41,12 @@ public interface Presenter {
      *
      * @param outState the out state to save instance state
      */
-    void onSaveView(Bundle outState);
+    fun onSaveView(outState: Bundle)
 
     /**
      * Ends the presentation. This should be called in the view's (Activity or Fragment)
      * onDestroy() or onDestroyView() method respectively.
      */
-    void onDropView();
+    fun onDropView()
 
 }

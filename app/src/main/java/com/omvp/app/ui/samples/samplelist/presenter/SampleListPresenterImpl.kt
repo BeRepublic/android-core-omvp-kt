@@ -69,20 +69,14 @@ class SampleListPresenterImpl
     }
 
     private fun drawSampleList(sampleModelList: List<SampleModel>) {
-        if (mView != null) {
-            mView.drawSampleList(sampleModelList)
-        }
+        mView?.drawSampleList(sampleModelList)
     }
 
     private fun showEmptyView() {
-        if (mView != null) {
-            mView.showEmptyView()
-        }
+        mView?.showEmptyView()
     }
 
     private fun sampleItemSelected(sampleDomain: SampleDomain) {
-        if (mView != null) {
-            mView.onSampleItemSelected(sampleDomain)
-        }
+        mView?.onSampleItemSelected(sampleDomain)
     }
 }
