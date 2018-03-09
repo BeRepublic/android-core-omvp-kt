@@ -127,7 +127,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
         mCallback.hideProgress()
     }
 
-    override fun showError(code: Int, title: String, message: String) {
+    override fun showError(code: Int?, title: String?, message: String?) {
         mCallback.showError(code, title, message)
     }
 

@@ -57,7 +57,7 @@ internal constructor(splashView: SplashView) : BasePresenter<SplashView>(splashV
                         showProgress()
                     }
 
-                    override fun onError(code: Int, title: String, description: String) {
+                    override fun onError(code: Int, title: String?, description: String?) {
                         hideProgress()
                         showError(code, title, description)
                     }

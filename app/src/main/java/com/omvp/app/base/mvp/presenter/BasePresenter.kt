@@ -71,11 +71,11 @@ abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Pr
         showError(0, title, description)
     }
 
-    protected fun showError(code: Int, title: Int, description: Int) {
+    protected fun showError(code: Int?, title: Int, description: Int) {
         showError(code, mResources.getString(title), mResources.getString(description))
     }
 
-    protected fun showError(code: Int, title: String, description: String) {
+    protected fun showError(code: Int?, title: String?, description: String?) {
         mView?.showError(code, title, description)
     }
 

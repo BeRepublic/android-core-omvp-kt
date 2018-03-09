@@ -9,7 +9,7 @@ interface BaseView : IView {
 
     fun hideProgress()
 
-    fun showError(code: Int, title: String, message: String)
+    fun showError(code: Int?, title: String?, message: String?)
 
     fun showMessage(code: Int, title: String, message: String)
 
