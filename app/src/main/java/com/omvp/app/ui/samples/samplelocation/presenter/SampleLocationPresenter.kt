@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location.presenter
+package com.omvp.app.ui.samples.samplelocation.presenter
 
 import android.location.Location
 

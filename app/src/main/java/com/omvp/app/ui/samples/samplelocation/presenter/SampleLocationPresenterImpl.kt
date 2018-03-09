@@ -1,11 +1,11 @@
-package com.omvp.app.ui.samples.sample_location.presenter
+package com.omvp.app.ui.samples.samplelocation.presenter
 
 
 import android.location.Location
 import android.support.annotation.NonNull
 
 import com.omvp.app.base.mvp.presenter.BasePresenter
-import com.omvp.app.ui.samples.sample_location.view.SampleLocationView
+import com.omvp.app.ui.samples.samplelocation.view.SampleLocationView
 
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location.view
+package com.omvp.app.ui.samples.samplelocation.view
 
 import android.location.Location
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.support.v7.widget.AppCompatTextView
 import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
-import com.omvp.app.ui.samples.sample_location.presenter.SampleLocationPresenter
+import com.omvp.app.ui.samples.samplelocation.presenter.SampleLocationPresenter
 
 import butterknife.BindView
 

@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location.presenter
+package com.omvp.app.ui.samples.samplelocation.presenter
 
 import com.omvp.app.base.mvp.presenter.BasePresenterModule
 import com.omvp.app.injector.scope.PerFragment

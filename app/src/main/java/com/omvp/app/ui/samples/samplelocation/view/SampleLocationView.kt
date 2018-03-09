@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location.view
+package com.omvp.app.ui.samples.samplelocation.view
 
 import com.omvp.app.base.mvp.view.BaseView
 

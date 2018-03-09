@@ -9,10 +9,10 @@ import com.omvp.app.ui.samples.samplemultiple.SampleMultipleActivity
 import com.omvp.app.ui.samples.samplemultiple.SampleMultipleActivityModule
 import com.omvp.app.ui.samples.samplelist.SampleListActivity
 import com.omvp.app.ui.samples.samplelist.SampleListActivityModule
-import com.omvp.app.ui.samples.sample_location.SampleLocationActivity
-import com.omvp.app.ui.samples.sample_location.SampleLocationActivityModule
-import com.omvp.app.ui.samples.sample_take_picture.SampleTakePictureActivity
-import com.omvp.app.ui.samples.sample_take_picture.SampleTakePictureActivityModule
+import com.omvp.app.ui.samples.samplelocation.SampleLocationActivity
+import com.omvp.app.ui.samples.samplelocation.SampleLocationActivityModule
+import com.omvp.app.ui.samples.sampletakepicture.SampleTakePictureActivity
+import com.omvp.app.ui.samples.sampletakepicture.SampleTakePictureActivityModule
 import com.omvp.app.ui.samples.samplepager.SamplePagerActivity
 import com.omvp.app.ui.samples.samplepager.SamplePagerActivityModule
 import com.omvp.app.ui.splash.SplashActivity

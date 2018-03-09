@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location
+package com.omvp.app.ui.samples.samplelocation
 
 import android.location.Location
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.omvp.app.base.mvp.BaseFragmentActivity
 import com.omvp.app.interceptor.location.LocationInterceptor
 import com.omvp.app.interceptor.location.LocationInterceptorCallback
 import com.omvp.app.interceptor.permission.PermissionActivityInterceptor
-import com.omvp.app.ui.samples.sample_location.view.SampleLocationFragment
+import com.omvp.app.ui.samples.samplelocation.view.SampleLocationFragment
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptorCallback

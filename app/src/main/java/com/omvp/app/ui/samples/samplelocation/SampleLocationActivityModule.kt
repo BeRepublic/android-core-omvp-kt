@@ -1,4 +1,4 @@
-package com.omvp.app.ui.samples.sample_location
+package com.omvp.app.ui.samples.samplelocation
 
 import android.app.Activity
 
@@ -7,8 +7,8 @@ import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.base.mvp.BaseFragmentActivityModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.injector.scope.PerFragment
-import com.omvp.app.ui.samples.sample_location.view.SampleLocationFragment
-import com.omvp.app.ui.samples.sample_location.view.SampleLocationFragmentModule
+import com.omvp.app.ui.samples.samplelocation.view.SampleLocationFragment
+import com.omvp.app.ui.samples.samplelocation.view.SampleLocationFragmentModule
 import com.omvp.app.ui.splash.view.SplashFragment
 
 import dagger.Binds

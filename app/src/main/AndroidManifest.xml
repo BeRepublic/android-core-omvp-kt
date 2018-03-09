@@ -95,13 +95,13 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sample_location.SampleLocationActivity"
+            android:name=".ui.samples.samplelocation.SampleLocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sample_take_picture.SampleTakePictureActivity"
+            android:name=".ui.samples.sampletakepicture.SampleTakePictureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
