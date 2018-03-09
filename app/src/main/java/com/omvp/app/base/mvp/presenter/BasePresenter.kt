@@ -57,7 +57,7 @@ abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Pr
 
     }
 
-    override fun onSaveView(outState: Bundle) {
+    override fun onSaveView(outState: Bundle?) {
 
     }
 

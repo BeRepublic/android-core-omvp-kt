@@ -41,7 +41,7 @@ interface Presenter {
      *
      * @param outState the out state to save instance state
      */
-    fun onSaveView(outState: Bundle)
+    fun onSaveView(outState: Bundle?)
 
     /**
      * Ends the presentation. This should be called in the view's (Activity or Fragment)

@@ -1,62 +1,56 @@
-package com.omvp.app.base.mvp.view;
+package com.omvp.app.base.mvp.view
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.os.Bundle
 
-import com.omvp.app.base.BaseFragment;
-import com.omvp.app.base.mvp.presenter.Presenter;
-import com.omvp.app.util.TrackerManager;
-import com.raxdenstudios.square.interceptor.Interceptor;
-import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptor;
-import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptorCallback;
+import com.omvp.app.base.BaseFragment
+import com.omvp.app.base.mvp.presenter.Presenter
+import com.omvp.app.util.TrackerManager
+import com.raxdenstudios.square.interceptor.Interceptor
+import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptor
+import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptorCallback
 
-import java.util.List;
+import javax.inject.Inject
 
-import javax.inject.Inject;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+import butterknife.ButterKnife
+import butterknife.Unbinder
 
 /**
- * A {@link BaseFragment} that contains and invokes {@link Presenter} lifecycle invocations.
- *         <p>
- *         Lifecycle.MVPFragment   ->      Presenter
+ * A [BaseFragment] that contains and invokes [Presenter] lifecycle invocations.
  *
- *         onSaveInstanceState     ->      onSaveView
- *         onViewRestored          ->      onViewLoaded
- *         onResume                ->      onResume
- *         onPause                 ->      onPause
- *         onDestroyView           ->      onDropView
+ *
+ * Lifecycle.MVPFragment   ->      Presenter
+ *
+ * onSaveInstanceState     ->      onSaveView
+ * onViewRestored          ->      onViewLoaded
+ * onResume                ->      onResume
+ * onPause                 ->      onPause
+ * onDestroyView           ->      onDropView
  */
-public abstract class BaseViewFragment<TPresenter extends Presenter, TCallback extends BaseViewFragmentCallback> extends BaseFragment implements
+abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFragmentCallback> : BaseFragment(),
         AutoInflateViewInterceptorCallback,
         BaseView {
 
     @Inject
-    protected TPresenter mPresenter;
+    lateinit var mPresenter: TPresenter
     @Inject
-    protected TCallback mCallback;
+    lateinit var mCallback: TCallback
     @Inject
-    protected TrackerManager mTrackerManager;
+    lateinit var mTrackerManager: TrackerManager
 
     @Inject
-    AutoInflateViewInterceptor mAutoInflateViewInterceptor;
+    internal lateinit var mAutoInflateViewInterceptor: AutoInflateViewInterceptor
 
-    @Nullable
-    private Unbinder mUnbinder;
+    private var mUnbinder: Unbinder? = null
 
     // =============== LifeCycle ===================================================================
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mPresenter.onSaveView(outState);
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        mPresenter.onSaveView(outState)
     }
 
-    @SuppressWarnings("ConstantConditions")
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
         /*
          * Bind the views here instead of in onViewCreated so that view state changed listeners
          * are not invoked automatically without user interaction.
@@ -88,7 +82,7 @@ public abstract class BaseViewFragment<TPresenter extends Presenter, TCallback e
          * no need to check if getView() returns null here because this lifecycle method only gets
          * called with a non-null View.
          */
-        mUnbinder = ButterKnife.bind(this, getView());
+        mUnbinder = ButterKnife.bind(this, view!!)
         /*
          * The Presenter.onStart method is called in onViewRestored so that the Fragment’s
          * views are bound before the presentation begins. This ensures that no NullPointerException
@@ -101,60 +95,50 @@ public abstract class BaseViewFragment<TPresenter extends Presenter, TCallback e
          * keep things as is since I do not consider it appropriate to have a Presenter-View pair
          * in a no-UI Fragment. Do feel free to disagree and refactor.
          */
-        mPresenter.onViewRestored(savedInstanceState);
-        mPresenter.onViewLoaded();
+        mPresenter.onViewRestored(savedInstanceState)
+        mPresenter.onViewLoaded()
     }
 
-    @Override
-    public void onDestroyView() {
+    override fun onDestroyView() {
         // This lifecycle method still gets called even if onCreateView returns a null view.
-        if (mUnbinder != null) {
-            mUnbinder.unbind();
-        }
-        super.onDestroyView();
-        mPresenter.onDropView();
+        mUnbinder?.unbind()
+        super.onDestroyView()
+        mPresenter.onDropView()
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mPresenter.onResume();
-        mTrackerManager.trackScreen(this);
+    override fun onResume() {
+        super.onResume()
+        mPresenter.onResume()
+        mTrackerManager.trackScreen(this)
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mPresenter.onPause();
+    override fun onPause() {
+        super.onPause()
+        mPresenter.onPause()
     }
 
     // =============== BaseView ====================================================================
 
-    @Override
-    public void showProgress(float progress, String message) {
-        mCallback.showProgress(progress, message);
+    override fun showProgress(progress: Float, message: String) {
+        mCallback.showProgress(progress, message)
     }
 
-    @Override
-    public void hideProgress() {
-        mCallback.hideProgress();
+    override fun hideProgress() {
+        mCallback.hideProgress()
     }
 
-    @Override
-    public void showError(int code, String title, String message) {
-        mCallback.showError(code, title, message);
+    override fun showError(code: Int, title: String, message: String) {
+        mCallback.showError(code, title, message)
     }
 
-    @Override
-    public void showMessage(int code, String title, String message) {
-        mCallback.showMessage(code, title, message);
+    override fun showMessage(code: Int, title: String, message: String) {
+        mCallback.showMessage(code, title, message)
     }
 
     // =============== Support methods =============================================================
 
-    @Override
-    protected void setupInterceptors(List<Interceptor> interceptorList) {
-        interceptorList.add(mAutoInflateViewInterceptor);
+    override fun setupInterceptors(interceptorList: MutableList<Interceptor>) {
+        interceptorList.add(mAutoInflateViewInterceptor)
     }
 
 }
