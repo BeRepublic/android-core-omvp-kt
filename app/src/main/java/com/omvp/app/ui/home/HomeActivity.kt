@@ -16,7 +16,11 @@ import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCa
 import javax.inject.Inject
 
 
-class HomeActivity : BaseFragmentActivity(), ToolbarInterceptorCallback, InjectFragmentInterceptorCallback<HomeFragment>, HomeFragment.FragmentCallback {
+class HomeActivity :
+        BaseFragmentActivity(),
+        ToolbarInterceptorCallback,
+        InjectFragmentInterceptorCallback<HomeFragment>,
+        HomeFragment.FragmentCallback {
 
     @Inject
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
@@ -73,4 +77,13 @@ class HomeActivity : BaseFragmentActivity(), ToolbarInterceptorCallback, InjectF
     override fun onSampleMultipleSelected() {
         mNavigationHelper.launchSampleMap()
     }
+
+    override fun onSampleLocationSelected() {
+        mNavigationHelper.launchSampleLocation()
+    }
+
+    override fun onSampleCameraSelected() {
+        mNavigationHelper.launchSampleTakePicture()
+    }
+
 }

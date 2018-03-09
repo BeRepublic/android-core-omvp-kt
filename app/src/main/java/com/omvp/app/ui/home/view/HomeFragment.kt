@@ -18,6 +18,10 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
         fun onSamplePagerSelected()
 
         fun onSampleMultipleSelected()
+
+        fun onSampleLocationSelected()
+
+        fun onSampleCameraSelected()
     }
 
     @OnClick(R.id.button_view)
@@ -38,6 +42,16 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
     @OnClick(R.id.button_multiple)
     fun onSampleMultipleClicked(view: View) {
         mCallback.onSampleMultipleSelected()
+    }
+
+    @OnClick(R.id.button_location)
+    fun onSampleLocationClicked(view: View) {
+        mCallback.onSampleLocationSelected()
+    }
+
+    @OnClick(R.id.button_take_picture)
+    fun onSampleCameraClicked(view: View) {
+        mCallback.onSampleCameraSelected()
     }
 
     companion object {
