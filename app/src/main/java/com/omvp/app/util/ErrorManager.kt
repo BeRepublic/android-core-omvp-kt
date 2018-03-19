@@ -38,7 +38,7 @@ class ErrorManager(private val resources: Resources) {
     fun parseError(throwable: Throwable) {
         if (throwable is CompositeException) {
             val compositeException = throwable
-            if (throwable.exceptions != null && !throwable.exceptions.isEmpty()) {
+            if (!throwable.exceptions.isEmpty()) {
                 for (childThrowable in throwable.exceptions) {
                     parseError(childThrowable)
                 }

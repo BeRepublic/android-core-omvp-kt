@@ -47,7 +47,7 @@ object MapperModule {
         modelMapper.createTypeMap(LocalDate::class.java, Long::class.java)
         modelMapper.addConverter(object : AbstractConverter<LocalDate, Long>() {
             override fun convert(source: LocalDate?): Long? {
-                return if (source == null) null else LocalDateUtils.toMiliseconds(source) / 1000
+                return if (source == null) null else LocalDateUtils.toMilliseconds(source) / 1000
             }
         })
         modelMapper.createTypeMap(LocalDate::class.java, String::class.java)
