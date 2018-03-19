@@ -232,7 +232,8 @@ ext {
                     implementation: [
                             "com.android.support:design:${supportLibraryVersion}",
                             "me.grantland:autofittextview:${autoFitTextViewVersion}",
-                            "com.jakewharton.timber:timber:${timberVersion}"
+                            "com.jakewharton.timber:timber:${timberVersion}",
+                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
                     ],
                     api : [],
                     annotationProcessor : [],
