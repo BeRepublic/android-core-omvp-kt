@@ -184,7 +184,9 @@ ext {
                             "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
 
                             dagger.implementation,
-                            reactive.implementation
+                            reactive.implementation,
+
+                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
                     ],
                     api : [],
                     annotationProcessor : [
@@ -197,7 +199,12 @@ ext {
                             "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     testImplementation : [],
-                    kapt : []
+                    kapt : [
+                            dagger.annotationProcessor,
+
+                            "org.projectlombok:lombok:${lombokVersion}",
+                            "org.parceler:parceler:${parcelerVersion}"
+                    ]
             ],
             data : [
                     implementation: [
