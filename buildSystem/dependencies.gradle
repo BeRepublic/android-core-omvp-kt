@@ -22,7 +22,7 @@ ext {
     timberVersion = '4.6.0'                 // https://github.com/JakeWharton/timber
     butterknifeVersion = '8.8.1'            // https://github.com/JakeWharton/butterknife
     glideVersion = '4.4.0'                  // https://github.com/bumptech/glide
-    lombokVersion = '1.16.10'               // https://projectlombok.org/setup/android.html
+//    lombokVersion = '1.16.10'               // https://projectlombok.org/setup/android.html
     parcelerVersion = '1.1.9'               // https://github.com/johncarl81/parceler
     crashlyticsVersion = '2.8.0'
     calligraphyVersion = '2.3.0'            // https://github.com/chrisjenx/Calligraphy
@@ -147,15 +147,15 @@ ext {
                             "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
                     ],
                     annotationProcessor : [
-                            dagger.annotationProcessor,
-                            jakewharton.annotationProcessor,
+//                            dagger.annotationProcessor,
+//                            jakewharton.annotationProcessor,
 
-                            "org.projectlombok:lombok:${lombokVersion}",
-                            "com.github.bumptech.glide:compiler:${glideVersion}",
-                            "org.parceler:parceler:${parcelerVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}",
+//                            "com.github.bumptech.glide:compiler:${glideVersion}",
+//                            "org.parceler:parceler:${parcelerVersion}"
                     ],
                     compileOnly : [
-                            "org.projectlombok:lombok:${lombokVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     testImplementation : [
                             "junit:junit:${jUnitVersion}",
@@ -169,7 +169,7 @@ ext {
                             dagger.kapt,
                             jakewharton.kapt,
 
-                            "org.projectlombok:lombok:${lombokVersion}",
+//                            "org.projectlombok:lombok:${lombokVersion}",
                             "com.github.bumptech.glide:compiler:${glideVersion}",
                             "org.parceler:parceler:${parcelerVersion}"
                     ]
@@ -190,19 +190,19 @@ ext {
                     ],
                     api : [],
                     annotationProcessor : [
-                            dagger.annotationProcessor,
+//                            dagger.annotationProcessor,
 
-                            "org.projectlombok:lombok:${lombokVersion}",
-                            "org.parceler:parceler:${parcelerVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}",
+//                            "org.parceler:parceler:${parcelerVersion}"
                     ],
                     compileOnly : [
-                            "org.projectlombok:lombok:${lombokVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     testImplementation : [],
                     kapt : [
                             dagger.annotationProcessor,
 
-                            "org.projectlombok:lombok:${lombokVersion}",
+//                            "org.projectlombok:lombok:${lombokVersion}",
                             "org.parceler:parceler:${parcelerVersion}"
                     ]
             ],
@@ -227,12 +227,12 @@ ext {
                     ],
                     api : [],
                     annotationProcessor : [
-                            dagger.annotationProcessor,
+//                            dagger.annotationProcessor,
 
-                            "org.projectlombok:lombok:${lombokVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     compileOnly : [
-                            "org.projectlombok:lombok:${lombokVersion}"
+//                            "org.projectlombok:lombok:${lombokVersion}"
                     ],
                     testImplementation : [],
                     kapt : [

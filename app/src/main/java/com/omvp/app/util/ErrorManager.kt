@@ -16,8 +16,6 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 import io.reactivex.exceptions.CompositeException
-import lombok.Data
-import retrofit2.Response
 import timber.log.Timber
 
 /**
