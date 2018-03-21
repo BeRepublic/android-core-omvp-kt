@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -40,6 +43,7 @@ dependencies {
     api deps.data.api
     annotationProcessor deps.data.annotationProcessor
     compileOnly deps.data.compileOnly
+    kapt deps.commons.kapt
     testImplementation deps.data.testImplementation
 
 }

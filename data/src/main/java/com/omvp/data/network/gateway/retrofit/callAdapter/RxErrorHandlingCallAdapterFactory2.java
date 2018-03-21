@@ -26,16 +26,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
-public class RxErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
+public class RxErrorHandlingCallAdapterFactory2 extends CallAdapter.Factory {
 
     private final RxJava2CallAdapterFactory original;
 
-    private RxErrorHandlingCallAdapterFactory() {
+    private RxErrorHandlingCallAdapterFactory2() {
         original = RxJava2CallAdapterFactory.create();
     }
 
     public static CallAdapter.Factory create() {
-        return new RxErrorHandlingCallAdapterFactory();
+        return new RxErrorHandlingCallAdapterFactory2();
     }
 
     @Override
@@ -107,14 +107,14 @@ public class RxErrorHandlingCallAdapterFactory extends CallAdapter.Factory {
             if (throwable instanceof HttpException) {
                 HttpException httpException = (HttpException) throwable;
                 Response response = httpException.response();
-                return RetrofitException.httpError(response.raw().request().url().toString(), response, retrofit);
+                return RetrofitException.Companion.httpError(response.raw().request().url().toString(), response, retrofit);
             }
             // A network error happened
             if (throwable instanceof IOException) {
-                return RetrofitException.networkError((IOException) throwable);
+                return RetrofitException.Companion.networkError((IOException) throwable);
             }
             // We don't know what happened. We need to simply convert to an unknown error
-            return RetrofitException.unexpectedError(throwable);
+            return RetrofitException.Companion.unexpectedError(throwable);
         }
 
     }
