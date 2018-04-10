@@ -21,7 +21,6 @@ dependencies {
 
     implementation deps.commons.implementation
     api deps.commons.api
-    annotationProcessor deps.commons.annotationProcessor
     compileOnly deps.commons.compileOnly
     kapt deps.commons.kapt
     testImplementation deps.commons.testImplementation

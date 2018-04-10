@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/Content.Dialog.Notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/CodeFont.Large"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Título del dialo fragment" />
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/CodeFont.Medium.Gray"
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            android:layout_marginTop="@dimen/margin_size_10"
+            tools:text="Descripción del notice dialog fragment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/deny"
+                style="@style/CodeFont.Medium.Black.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:paddingBottom="@dimen/padding_size_12"
+                android:paddingTop="@dimen/padding_size_12"
+                android:visibility="invisible"
+                tools:text="No permitir"
+                tools:visibility="visible" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/accept"
+                style="@style/CodeFont.Medium.Black.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:paddingBottom="@dimen/padding_size_12"
+                android:paddingTop="@dimen/padding_size_12"
+                android:visibility="invisible"
+                tools:text="Permitir"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
+

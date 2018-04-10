@@ -41,7 +41,6 @@ dependencies {
 
     implementation deps.data.implementation
     api deps.data.api
-    annotationProcessor deps.data.annotationProcessor
     compileOnly deps.data.compileOnly
     kapt deps.commons.kapt
     testImplementation deps.data.testImplementation

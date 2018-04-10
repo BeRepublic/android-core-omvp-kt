@@ -1,18 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingPrefix">
+           xmlns:app="http://schemas.android.com/apk/res-auto"
+           tools:ignore="MissingPrefix">
 
     <style name="CodeFont">
-        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColor">#000000</item>
         <item name="fontPath">fonts/AvenirNextLTPro-Regular.otf</item>
         <item name="android:ellipsize">end</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeStepGranularity">2sp</item>
     </style>
 
     <!-- CodeFont.Smallest -->
 
     <style name="CodeFont.Smallest">
         <item name="android:textSize">10sp</item>
-        <item name="minTextSize">8sp</item>
+        <item name="autoSizeMinTextSize">8sp</item>
+        <item name="autoSizeMaxTextSize">10sp</item>
     </style>
 
     <style name="CodeFont.Smallest.White">
@@ -35,7 +39,8 @@
 
     <style name="CodeFont.Smaller">
         <item name="android:textSize">12sp</item>
-        <item name="minTextSize">10sp</item>
+        <item name="autoSizeMinTextSize">10sp</item>
+        <item name="autoSizeMaxTextSize">12sp</item>
     </style>
 
     <style name="CodeFont.Smaller.White">
@@ -58,11 +63,16 @@
 
     <style name="CodeFont.Small">
         <item name="android:textSize">14sp</item>
-        <item name="minTextSize">12sp</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
     </style>
 
     <style name="CodeFont.Small.White">
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CodeFont.Small.Gray">
+        <item name="android:textColor">@android:color/darker_gray</item>
     </style>
 
     <style name="CodeFont.Small.Black">
@@ -81,11 +91,20 @@
 
     <style name="CodeFont.Medium">
         <item name="android:textSize">16sp</item>
-        <item name="minTextSize">14sp</item>
+        <item name="autoSizeMinTextSize">14sp</item>
+        <item name="autoSizeMaxTextSize">16sp</item>
     </style>
 
     <style name="CodeFont.Medium.White">
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CodeFont.Medium.Gray">
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="CodeFont.Medium.Gray.Bold">
+        <item name="fontPath">fonts/AvenirNextLTPro-Bold.otf</item>
     </style>
 
     <style name="CodeFont.Medium.Black">
@@ -104,7 +123,8 @@
 
     <style name="CodeFont.Large">
         <item name="android:textSize">18sp</item>
-        <item name="minTextSize">16sp</item>
+        <item name="autoSizeMinTextSize">16sp</item>
+        <item name="autoSizeMaxTextSize">18sp</item>
     </style>
 
     <style name="CodeFont.Large.White">
@@ -127,7 +147,8 @@
 
     <style name="CodeFont.Largest">
         <item name="android:textSize">20sp</item>
-        <item name="minTextSize">18sp</item>
+        <item name="autoSizeMinTextSize">18sp</item>
+        <item name="autoSizeMaxTextSize">20sp</item>
     </style>
 
     <style name="CodeFont.Largest.White">
@@ -150,7 +171,8 @@
 
     <style name="CodeFont.Big">
         <item name="android:textSize">22sp</item>
-        <item name="minTextSize">20sp</item>
+        <item name="autoSizeMinTextSize">20sp</item>
+        <item name="autoSizeMaxTextSize">22sp</item>
     </style>
 
     <style name="CodeFont.Big.White">
@@ -173,7 +195,8 @@
 
     <style name="CodeFont.Bigger">
         <item name="android:textSize">34sp</item>
-        <item name="minTextSize">30sp</item>
+        <item name="autoSizeMinTextSize">30sp</item>
+        <item name="autoSizeMaxTextSize">34sp</item>
     </style>
 
     <style name="CodeFont.Bigger.White">
@@ -196,7 +219,8 @@
 
     <style name="CodeFont.Biggest">
         <item name="android:textSize">38sp</item>
-        <item name="minTextSize">34sp</item>
+        <item name="autoSizeMinTextSize">34sp</item>
+        <item name="autoSizeMaxTextSize">38sp</item>
     </style>
 
     <style name="CodeFont.Biggest.White">

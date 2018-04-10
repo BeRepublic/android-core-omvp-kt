@@ -71,6 +71,24 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
+            android:name=".dispatcher.BrowserDispatcherActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+
+            <intent-filter>
+                <data android:scheme="${schemaName}"/>
+                <data android:host="open"/>
+                <data android:pathPattern=".*"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
             android:name=".ui.samples.sample.SampleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"

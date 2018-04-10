@@ -9,8 +9,10 @@ ext {
 
     kotlin_version = '1.2.30'
 
-    androidCommonsVersion = '3.0.13'        // https://github.com/raxden/commons
-    androidPreferencesVersion = '3.0.3'     // https://github.com/raxden/android-preferences
+    androidCommonsVersion = '3.0.15'        // https://github.com/raxden/commons
+    androidNavigationVersion = '3.0.0'      // https://github.com/raxden/android-navigation
+    androidCronsVersion = '3.0.11'          // https://github.com/raxden/android-crons
+    androidPreferencesVersion = '3.0.4'     // https://github.com/raxden/android-preferences
     androidRecyclerVersion = '3.0.7'        // https://github.com/raxden/android-recycler
     androidSquareVersion = '3.0.83'         // https://github.com/raxden/square
 
@@ -22,15 +24,17 @@ ext {
     timberVersion = '4.6.0'                 // https://github.com/JakeWharton/timber
     butterknifeVersion = '8.8.1'            // https://github.com/JakeWharton/butterknife
     glideVersion = '4.4.0'                  // https://github.com/bumptech/glide
-//    lombokVersion = '1.16.10'               // https://projectlombok.org/setup/android.html
+    facebookVersion = '4.31.0'              // https://developers.facebook.com/docs/android/
     parcelerVersion = '1.1.9'               // https://github.com/johncarl81/parceler
     crashlyticsVersion = '2.8.0'
     calligraphyVersion = '2.3.0'            // https://github.com/chrisjenx/Calligraphy
     daggerVersion = '2.14.1'                // https://github.com/square/dagger
+    rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
     androidThreeTenVersion = '1.0.5'        // https://github.com/JakeWharton/ThreeTenABP
-    autoFitTextViewVersion = '0.2.+'        // https://github.com/grantland/android-autofittextview
     modelmapperVersion = '1.1.0'            // https://github.com/modelmapper/modelmapper
-    constraintsLayoutVersion = '1.0.2'      // https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html
+    constraintsLayoutVersion = '1.0.2'
+    // https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html
+    urbanAirshipVersion = '9.0.4'           // http://docs.urbanairship.com/platform/android.html
 
     // Testing
     jUnitVersion = '4.12'
@@ -40,26 +44,9 @@ ext {
 
     // dependencies
 
-    support = [
+    calligraphy = [
             implementation: [
-                    "com.android.support:multidex:${multidexVersion}",
-                    "com.android.support:support-v13:${supportLibraryVersion}",
-                    "com.android.support:appcompat-v7:${supportLibraryVersion}",
-                    "com.android.support:design:${supportLibraryVersion}",
-                    "com.android.support:percent:${supportLibraryVersion}",
-                    "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-                    "com.android.support:cardview-v7:${supportLibraryVersion}",
-                    "com.android.support.constraint:constraint-layout:${constraintsLayoutVersion}"
-            ]
-    ]
-
-    raxden = [
-            implementation: [
-                    "com.github.raxden:android-commons:${androidCommonsVersion}@aar",
-                    "com.github.raxden:android-recycler:${androidRecyclerVersion}@aar",
-                    "com.github.raxden:android-preferences:${androidPreferencesVersion}@aar",
-                    "com.github.raxden.square:square:${androidSquareVersion}@aar",
-                    "com.github.raxden.square:square-commons:${androidSquareVersion}@aar"
+                    "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
             ]
     ]
 
@@ -67,13 +54,64 @@ ext {
             implementation: [
                     "com.google.dagger:dagger-android-support:${daggerVersion}"
             ],
-            annotationProcessor: [
+            kapt          : [
                     "com.google.dagger:dagger-compiler:${daggerVersion}",
                     "com.google.dagger:dagger-android-processor:${daggerVersion}"
+            ]
+    ]
+
+    facebook = [
+            implementation: [
+                    "com.facebook.android:facebook-android-sdk:${facebookVersion}"
+            ]
+    ]
+
+    firebase = [
+            implementation: [
+                    "com.google.firebase:firebase-core:${servicesVersion}",
+                    "com.google.firebase:firebase-messaging:${servicesVersion}",
+                    "com.google.firebase:firebase-auth:${servicesVersion}"
+            ]
+    ]
+
+    glide = [
+            implementation: [
+                    "com.github.bumptech.glide:glide:${glideVersion}"
             ],
-            kapt: [
-                    "com.google.dagger:dagger-compiler:${daggerVersion}",
-                    "com.google.dagger:dagger-android-processor:${daggerVersion}"
+            kapt          : [
+                    "com.github.bumptech.glide:compiler:${glideVersion}"
+            ]
+    ]
+
+    jakewharton = [
+            implementation: [
+                    "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
+                    "com.jakewharton.timber:timber:${timberVersion}",
+                    "com.jakewharton:butterknife:${butterknifeVersion}"
+            ],
+            kapt          : [
+                    "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+            ]
+    ]
+
+    kotlin = [
+            implementation: [
+                    "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+            ]
+    ]
+
+    modelmapper = [
+            implementation: [
+                    "org.modelmapper:modelmapper:${modelmapperVersion}"
+            ]
+    ]
+
+    parceler = [
+            implementation: [
+                    "org.parceler:parceler-api:${parcelerVersion}"
+            ],
+            kapt          : [
+                    "org.parceler:parceler:${parcelerVersion}"
             ]
     ]
 
@@ -88,10 +126,22 @@ ext {
             ]
     ]
 
-    firebase = [
+    raxden = [
             implementation: [
-                    "com.google.firebase:firebase-core:${servicesVersion}",
-                    "com.google.firebase:firebase-messaging:${servicesVersion}"
+                    "com.github.raxden:android-commons:${androidCommonsVersion}@aar",
+                    "com.github.raxden:android-navigation:${androidNavigationVersion}@aar",
+                    "com.github.raxden:android-recycler:${androidRecyclerVersion}@aar",
+                    "com.github.raxden:android-preferences:${androidPreferencesVersion}@aar",
+                    "com.github.raxden.android-crons:crons:${androidCronsVersion}@aar",
+                    "com.github.raxden.square:square:${androidSquareVersion}@aar",
+                    "com.github.raxden.square:square-commons:${androidSquareVersion}@aar"
+            ]
+    ]
+
+    reactive = [
+            implementation: [
+                    "io.reactivex.rxjava2:rxandroid:${reactiveAndroidVersion}",
+                    "io.reactivex.rxjava2:rxjava:${reactiveJavaVersion}"
             ]
     ]
 
@@ -106,30 +156,33 @@ ext {
             ]
     ]
 
-    reactive = [
+    rxPermissions = [
             implementation: [
-                    "io.reactivex.rxjava2:rxandroid:${reactiveAndroidVersion}",
-                    "io.reactivex.rxjava2:rxjava:${reactiveJavaVersion}"
+                    "com.tbruyelle.rxpermissions2:rxpermissions:${rxPermissionsVersion}@aar"
             ]
     ]
 
-    jakewharton = [
+    support = [
             implementation: [
-                    "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-                    "com.jakewharton.timber:timber:${timberVersion}",
-                    "com.jakewharton:butterknife:${butterknifeVersion}"
-            ],
-            annotationProcessor: [
-                    "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
-            ],
-            kapt: [
-                    "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
+                    "com.android.support:multidex:${multidexVersion}",
+                    "com.android.support:support-v13:${supportLibraryVersion}",
+                    "com.android.support:appcompat-v7:${supportLibraryVersion}",
+                    "com.android.support:design:${supportLibraryVersion}",
+                    "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+                    "com.android.support:cardview-v7:${supportLibraryVersion}",
+                    "com.android.support.constraint:constraint-layout:${constraintsLayoutVersion}"
+            ]
+    ]
+
+    urbanairship = [
+            implementation: [
+                    "com.urbanairship.android:urbanairship-sdk:${urbanAirshipVersion}"
             ]
     ]
 
     deps = [
-            app : [
-                    implementation: [
+            app       : [
+                    implementation         : [
                             support.implementation,
                             raxden.implementation,
                             playServices.implementation,
@@ -138,141 +191,100 @@ ext {
                             retrofit.implementation,
                             reactive.implementation,
                             jakewharton.implementation,
-
-                            "org.modelmapper:modelmapper:${modelmapperVersion}",
-                            "org.parceler:parceler-api:${parcelerVersion}",
-                            "com.github.bumptech.glide:glide:${glideVersion}",
-                            "uk.co.chrisjenx:calligraphy:${calligraphyVersion}",
-                            "me.grantland:autofittextview:${autoFitTextViewVersion}",
-                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+                            parceler.implementation,
+                            glide.implementation,
+                            rxPermissions.implementation,
+                            modelmapper.implementation,
+                            calligraphy.implementation,
+                            urbanairship.implementation,
+                            facebook.implementation,
+                            kotlin.implementation
                     ],
-                    annotationProcessor : [
-//                            dagger.annotationProcessor,
-//                            jakewharton.annotationProcessor,
-
-//                            "org.projectlombok:lombok:${lombokVersion}",
-//                            "com.github.bumptech.glide:compiler:${glideVersion}",
-//                            "org.parceler:parceler:${parcelerVersion}"
-                    ],
-                    compileOnly : [
-//                            "org.projectlombok:lombok:${lombokVersion}"
-                    ],
-                    testImplementation : [
+                    compileOnly            : [],
+                    testImplementation     : [
                             "junit:junit:${jUnitVersion}",
                             "org.assertj:assertj-core:${assertJVersion}",
                             "org.mockito:mockito-core:${mockitoVersion}",
                             "org.robolectric:robolectric:${robolectricVersion}",
                             "org.robolectric:shadows-multidex:${robolectricVersion}"
                     ],
-                    testAnnotationProcessor : [],
-                    kapt: [
+                    testAnnotationProcessor: [],
+                    kapt                   : [
                             dagger.kapt,
                             jakewharton.kapt,
-
-//                            "org.projectlombok:lombok:${lombokVersion}",
-                            "com.github.bumptech.glide:compiler:${glideVersion}",
-                            "org.parceler:parceler:${parcelerVersion}"
+                            glide.kapt,
+                            parceler.kapt
                     ]
             ],
-            domain : [
-                    implementation: [
-                            "com.github.raxden:android-commons:${androidCommonsVersion}@aar",
-
-                            "org.parceler:parceler-api:${parcelerVersion}",
-
-                            "com.jakewharton.timber:timber:${timberVersion}",
-                            "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-
+            domain    : [
+                    implementation    : [
+                            raxden.implementation,
+                            parceler.implementation,
+                            jakewharton.implementation,
                             dagger.implementation,
                             reactive.implementation,
-
-                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+                            kotlin.implementation
                     ],
-                    api : [],
-                    annotationProcessor : [
-//                            dagger.annotationProcessor,
-
-//                            "org.projectlombok:lombok:${lombokVersion}",
-//                            "org.parceler:parceler:${parcelerVersion}"
-                    ],
-                    compileOnly : [
-//                            "org.projectlombok:lombok:${lombokVersion}"
-                    ],
-                    testImplementation : [],
-                    kapt : [
-                            dagger.annotationProcessor,
-
-//                            "org.projectlombok:lombok:${lombokVersion}",
-                            "org.parceler:parceler:${parcelerVersion}"
+                    api               : [],
+                    compileOnly       : [],
+                    testImplementation: [],
+                    kapt              : [
+                            dagger.kapt,
+                            parceler.kapt
                     ]
             ],
-            data : [
-                    implementation: [
-                            "com.github.raxden:android-commons:${androidCommonsVersion}@aar",
-                            "com.github.raxden:android-preferences:${androidPreferencesVersion}@aar",
-
-                            "com.google.firebase:firebase-messaging:${servicesVersion}",
-
-                            "com.jakewharton.timber:timber:${timberVersion}",
-                            "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-
+            data      : [
+                    implementation    : [
+                            raxden.implementation,
+                            firebase.implementation,
+                            jakewharton.implementation,
                             dagger.implementation,
                             retrofit.implementation,
-
-                            "org.modelmapper:modelmapper:${modelmapperVersion}",
-
+                            modelmapper.implementation,
                             reactive.implementation,
-
-                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+                            urbanairship.implementation,
+                            kotlin.implementation
                     ],
-                    api : [],
-                    annotationProcessor : [
-//                            dagger.annotationProcessor,
-
-//                            "org.projectlombok:lombok:${lombokVersion}"
-                    ],
-                    compileOnly : [
-//                            "org.projectlombok:lombok:${lombokVersion}"
-                    ],
-                    testImplementation : [],
-                    kapt : [
-                            dagger.annotationProcessor
+                    api               : [],
+                    compileOnly       : [],
+                    testImplementation: [],
+                    kapt              : [
+                            dagger.kapt
                     ]
             ],
-            components : [
-                    implementation: [
-                            "com.android.support:design:${supportLibraryVersion}",
-                            "me.grantland:autofittextview:${autoFitTextViewVersion}",
-                            "com.jakewharton.timber:timber:${timberVersion}",
-                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+            components: [
+                    implementation     : [
+                            support.implementation,
+                            jakewharton.implementation,
+                            kotlin.implementation
                     ],
-                    api : [],
-                    annotationProcessor : [],
-                    compileOnly : [],
+                    api                : [],
+                    annotationProcessor: [],
+                    compileOnly        : [],
                     testImplementation : [],
-                    kapt : []
+                    kapt               : []
             ],
-            commons : [
-                    implementation: [
-                            "org.modelmapper:modelmapper:${modelmapperVersion}",
-                            "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-                            "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+            commons   : [
+                    implementation     : [
+                            modelmapper.implementation,
+                            jakewharton.implementation,
+                            kotlin.implementation
                     ],
-                    api : [],
-                    annotationProcessor : [],
-                    compileOnly : [],
+                    api                : [],
+                    annotationProcessor: [],
+                    compileOnly        : [],
                     testImplementation : [],
-                    kapt : []
+                    kapt               : []
             ],
             resources : [
-                    implementation: [
-                            "com.android.support:design:${supportLibraryVersion}",
-                            "me.grantland:autofittextview:${autoFitTextViewVersion}",
-                            "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
+                    implementation     : [
+                            support.implementation,
+                            calligraphy.implementation,
+                            kotlin.implementation
                     ],
-                    api : [],
-                    annotationProcessor : [],
-                    compileOnly : [],
+                    api                : [],
+                    annotationProcessor: [],
+                    compileOnly        : [],
                     testImplementation : []
             ]
     ]

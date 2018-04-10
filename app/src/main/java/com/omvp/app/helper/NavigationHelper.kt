@@ -12,7 +12,7 @@ import com.omvp.app.ui.samples.samplemultiple.SampleMultipleActivity
 import com.omvp.app.ui.samples.samplepager.SamplePagerActivity
 import com.omvp.app.ui.splash.SplashActivity
 import com.omvp.app.util.OperationBroadcastManager
-import com.raxdenstudios.commons.manager.NavigationManager
+import com.raxdenstudios.navigation.NavigationManager
 
 class NavigationHelper(private val mActivity: Activity) {
 

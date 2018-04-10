@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-apply plugin: "org.sonarqube"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
@@ -39,6 +38,9 @@ android {
             }
         }
 
+        // Inject build variables into the Manifest
+        manifestPlaceholders = [schemaName: rootProject.ext.androidSchemaName]
+
         // property used to generate name apk [name-productFlavor-buildType.apk]
         setProperty("archivesBaseName", rootProject.ext.androidAppName)
 
@@ -48,20 +50,10 @@ android {
         ext.betaDistributionGroupAliasesFilePath = rootProject.ext.betaDistributionGroupAliasesFilePath
         ext.betaDistributionNotifications = rootProject.ext.betaDistributionNotifications
 
-        multiDexEnabled true
-    }
+        resValue "string", "facebook_app_id", rootProject.ext.facebookId
+        resValue "string", "facebook_login_protocol_scheme", rootProject.ext.facebookSchemeId
 
-    sonarqube {
-        properties {
-            property "sonar.projectName", rootProject.ext.sonarProjectName
-            property "sonar.projectVersion", rootProject.ext.androidVersionName
-            property "sonar.sources", "src/main/java"
-            property "sonar.host.url", rootProject.ext.sonarHostUrl
-            property "sonar.login", rootProject.ext.sonarLogin
-            property "sonar.organization", rootProject.ext.sonarOrganization
-            property "sonar.language", "java"
-            property "sonar.sourceEncoding", "UTF-8"
-        }
+        multiDexEnabled true
     }
 
     flavorDimensions "tier"
@@ -71,6 +63,7 @@ android {
             res.srcDirs =
                     [
                             'src/main/res/layouts/commons',
+                            'src/main/res/layouts/dialog',
                             'src/main/res/layouts/home',
                             'src/main/res/layouts/sample',
                             'src/main/res/layouts/sample_list',
@@ -173,7 +166,6 @@ dependencies {
     implementation project(':data')
 
     implementation deps.app.implementation
-    annotationProcessor deps.app.annotationProcessor
     compileOnly deps.app.compileOnly
     testImplementation deps.app.testImplementation
     testAnnotationProcessor deps.app.testAnnotationProcessor

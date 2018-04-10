@@ -24,12 +24,12 @@ public class StaticRepository {
     }
 
     private static SampleDomain initSampleDomain(long id) {
-        SampleDomain domain = new SampleDomain();
-        domain.setId(id);
-        domain.setTitle("title");
-        domain.setLink(Uri.parse("https://www.google.com"));
-        domain.setPubdate(LocalDateTime.now());
-        return domain;
+        return new SampleDomain(
+                id,
+                "title",
+                Uri.parse("https://www.google.com"),
+                LocalDateTime.now()
+        );
     }
 
 }

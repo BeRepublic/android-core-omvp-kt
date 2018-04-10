@@ -6,6 +6,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/content_bg</item>
+        <item name="android:padding">16dp</item>
     </style>
 
     <!-- ========================================================================= -->
@@ -15,6 +16,51 @@
     </style>
 
     <style name="Content.Sample">
+
+    </style>
+
+    <style name="Content.Pager">
+
+    </style>
+
+    <style name="Content.Pager.First">
+        <item name="android:background">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="Content.Pager.Second">
+        <item name="android:background">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="Content.Pager.Third">
+        <item name="android:background">@android:color/holo_blue_bright</item>
+    </style>
+
+    <style name="Content.Vibration">
+
+    </style>
+
+    <style name="Content.Input">
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="Content.Dialog">
+        <item name="android:paddingTop">@dimen/padding_size_25</item>
+        <item name="android:paddingLeft">@dimen/padding_size_25</item>
+        <item name="android:paddingRight">@dimen/padding_size_25</item>
+        <item name="android:paddingBottom">@dimen/padding_size_0</item>
+        <!--<item name="android:background">@drawable/dialog_rounded_bg</item>-->
+    </style>
+
+    <style name="Content.Dialog.Notice">
+
+    </style>
+
+    <style name="Content.RequestPhone">
+        <item name="android:layout_marginTop">?attr/actionBarSize</item>
+        <item name="android:paddingTop">@dimen/padding_size_50</item>
+    </style>
+
+    <style name="Content.RequestPhone.Phone">
 
     </style>
 

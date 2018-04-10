@@ -22,7 +22,6 @@ dependencies {
 
     implementation deps.domain.implementation
     api deps.domain.api
-    annotationProcessor deps.domain.annotationProcessor
     compileOnly deps.domain.compileOnly
     kapt deps.commons.kapt
     testImplementation deps.domain.testImplementation

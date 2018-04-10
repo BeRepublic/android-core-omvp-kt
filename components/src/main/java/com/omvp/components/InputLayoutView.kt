@@ -1,7 +1,6 @@
 package com.omvp.components
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -9,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.support.design.widget.TextInputEditText
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.AppCompatTextView
 import android.text.InputFilter
 import android.text.InputType
 import android.text.Spanned
@@ -22,7 +22,6 @@ import android.widget.TextView
 
 import java.util.ArrayList
 
-import me.grantland.widget.AutofitTextView
 import timber.log.Timber
 
 /**
@@ -41,7 +40,7 @@ class InputLayoutView : BaseComponentView {
 
     private lateinit var mTextInputLayout: TextAdvancedInputLayout
     private lateinit var mTextInputEditText: TextInputEditText
-    private lateinit var mHintFixedToLeftText: AutofitTextView
+    private lateinit var mHintFixedToLeftText: AppCompatTextView
 
     private var mText: String = ""
     private var mHint: String = ""
