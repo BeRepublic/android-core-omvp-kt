@@ -12,7 +12,7 @@ class RemoveSampleUseCaseImpl
 internal constructor(repository: SampleRepository) : BaseUseCaseImpl<SampleRepository>(repository),
         RemoveSampleUseCase {
 
-    override fun execute(id: Long): Completable {
+    override fun execute(id: String): Completable {
         return repository.remove(id)
     }
 

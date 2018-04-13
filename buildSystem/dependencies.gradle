@@ -3,7 +3,7 @@
 ext {
 
     // Android dependencies
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '27.1.1'
     servicesVersion = '11.8.0'
     multidexVersion = '1.0.1'
 
@@ -165,6 +165,7 @@ ext {
     support = [
             implementation: [
                     "com.android.support:multidex:${multidexVersion}",
+                    "com.android.support:support-v4:${supportLibraryVersion}",
                     "com.android.support:support-v13:${supportLibraryVersion}",
                     "com.android.support:appcompat-v7:${supportLibraryVersion}",
                     "com.android.support:design:${supportLibraryVersion}",

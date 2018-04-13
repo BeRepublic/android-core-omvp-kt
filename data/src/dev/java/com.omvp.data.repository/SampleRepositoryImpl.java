@@ -26,8 +26,8 @@ public class SampleRepositoryImpl extends BaseRepositoryImpl<SampleEntityDataMap
     }
 
     @Override
-    public Single<SampleDomain> retrieve(long id) {
-        return gateway.retrieve(Long.toString(id))
+    public Single<SampleDomain> retrieve(String id) {
+        return gateway.retrieve(id)
                 .map(new Function<SampleEntity, SampleDomain>() {
                     @Override
                     public SampleDomain apply(SampleEntity sampleEntity) throws Exception {
@@ -53,8 +53,8 @@ public class SampleRepositoryImpl extends BaseRepositoryImpl<SampleEntityDataMap
     }
 
     @Override
-    public Completable remove(long id) {
-        return gateway.remove(Long.toString(id));
+    public Completable remove(String id) {
+        return gateway.remove(id);
     }
 
 }

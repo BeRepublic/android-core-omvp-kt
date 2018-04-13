@@ -10,6 +10,6 @@ import io.reactivex.Single
 
 interface GetSampleUseCase {
 
-    fun execute(id: Long): Single<SampleDomain>
+    fun execute(id: String): Single<SampleDomain>
 
 }

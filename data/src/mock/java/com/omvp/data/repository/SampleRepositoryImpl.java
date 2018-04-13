@@ -17,11 +17,11 @@ public class SampleRepositoryImpl implements SampleRepository {
 
     @Inject
     SampleRepositoryImpl() {
-       StaticRepository.init();
+        StaticRepository.init();
     }
 
     @Override
-    public Single<SampleDomain> retrieve(long id) {
+    public Single<SampleDomain> retrieve(String id) {
         return Single.just(StaticRepository.sampleDomainList.get(id));
     }
 
@@ -38,8 +38,8 @@ public class SampleRepositoryImpl implements SampleRepository {
     }
 
     @Override
-    public Completable remove(long id) {
-        StaticRepository.sampleDomainList.remove(id);
+    public Completable remove(String id) {
+//        StaticRepository.sampleDomainList.remove(id);
         return Completable.complete();
     }
 

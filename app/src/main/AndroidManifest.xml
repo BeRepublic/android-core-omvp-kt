@@ -89,37 +89,37 @@
         </activity>
 
         <activity
-            android:name=".ui.samples.sample.SampleActivity"
+            android:name=".ui.samples.simple.SampleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.samplelist.SampleListActivity"
+            android:name=".ui.samples.list.SampleListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.samplepager.SamplePagerActivity"
+            android:name=".ui.samples.pager.SamplePagerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.samplemultiple.SampleMultipleActivity"
+            android:name=".ui.samples.multiple.SampleMultipleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.samplelocation.SampleLocationActivity"
+            android:name=".ui.samples.location.SampleLocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.sampletakepicture.SampleTakePictureActivity"
+            android:name=".ui.samples.takepicture.SampleTakePictureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />

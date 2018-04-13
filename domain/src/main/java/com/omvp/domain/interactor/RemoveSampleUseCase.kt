@@ -8,6 +8,6 @@ import io.reactivex.Completable
 
 interface RemoveSampleUseCase {
 
-    fun execute(id: Long): Completable
+    fun execute(id: String): Completable
 
 }

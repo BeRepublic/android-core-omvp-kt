@@ -13,7 +13,7 @@ class GetSampleUseCaseImpl
 internal constructor(repository: SampleRepository) : BaseUseCaseImpl<SampleRepository>(repository),
         GetSampleUseCase {
 
-    override fun execute(id: Long): Single<SampleDomain> {
+    override fun execute(id: String): Single<SampleDomain> {
         return repository.retrieve(id)
     }
 

@@ -12,12 +12,12 @@ import io.reactivex.Single
 
 interface SampleRepository : Repository {
 
-    fun retrieve(id: Long): Single<SampleDomain>
+    fun retrieve(id: String): Single<SampleDomain>
 
     fun retrieveList(): Maybe<List<SampleDomain>>
 
     fun persist(sampleDomain: SampleDomain): Completable
 
-    fun remove(id: Long): Completable
+    fun remove(id: String): Completable
 
 }

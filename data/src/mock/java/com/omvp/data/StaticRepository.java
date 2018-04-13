@@ -7,28 +7,34 @@ import com.omvp.domain.SampleDomain;
 import org.threeten.bp.LocalDateTime;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
+
+import timber.log.Timber;
 
 public class StaticRepository {
 
-    public static Map<Long, SampleDomain> sampleDomainList = new HashMap<>();
+    private static final int NUM_ITEMS = 20;
+
+    public static Map<String, SampleDomain> sampleDomainList = new LinkedHashMap<>(NUM_ITEMS);
 
     public static void init() {
         if (sampleDomainList.isEmpty()) {
-            sampleDomainList.put((long) 1, initSampleDomain(1));
-            sampleDomainList.put((long) 2, initSampleDomain(2));
-            sampleDomainList.put((long) 3, initSampleDomain(3));
-            sampleDomainList.put((long) 4, initSampleDomain(4));
-            sampleDomainList.put((long) 5, initSampleDomain(5));
+            for (int i = 1; i <= NUM_ITEMS; i++) {
+                String id = UUID.randomUUID().toString();
+                sampleDomainList.put(id, initSampleDomain(id, i));
+            }
         }
     }
 
-    private static SampleDomain initSampleDomain(long id) {
+    private static SampleDomain initSampleDomain(String id, int position) {
         return new SampleDomain(
                 id,
-                "title",
+                "item " + position,
                 Uri.parse("https://www.google.com"),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                R.mipmap.ic_launcher_round
         );
     }
 
