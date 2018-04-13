@@ -7,7 +7,7 @@ ext {
     servicesVersion = '11.8.0'
     multidexVersion = '1.0.1'
 
-    kotlin_version = '1.2.30'
+    kotlin_version = '1.2.31'
 
     androidCommonsVersion = '3.0.15'        // https://github.com/raxden/commons
     androidNavigationVersion = '3.0.0'      // https://github.com/raxden/android-navigation

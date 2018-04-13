@@ -1,35 +1,48 @@
 package com.omvp.app.injector.module
 
 import com.omvp.app.injector.scope.PerActivity
-import com.omvp.domain.interactor.GetSampleListUseCase
-import com.omvp.domain.interactor.GetSampleUseCase
-import com.omvp.domain.interactor.RemoveSampleUseCase
-import com.omvp.domain.interactor.SaveSampleUseCase
-import com.omvp.domain.interactor.impl.GetSampleListUseCaseImpl
-import com.omvp.domain.interactor.impl.GetSampleUseCaseImpl
-import com.omvp.domain.interactor.impl.RemoveSampleUseCaseImpl
-import com.omvp.domain.interactor.impl.SaveSampleUseCaseImpl
+import com.omvp.domain.interactor.*
+import com.omvp.domain.interactor.impl.*
 
 import dagger.Binds
 import dagger.Module
+import javax.inject.Singleton
 
 @Module
 abstract class UseCaseModule {
 
     @Binds
-    @PerActivity
-    internal abstract fun getSampleUseCase(repository: GetSampleUseCaseImpl): GetSampleUseCase
+    @Singleton
+    internal abstract fun saveLocaleUseCase(usecase: SaveLocaleUseCaseImpl): SaveLocaleUseCase
 
     @Binds
-    @PerActivity
-    internal abstract fun getSampleListUseCase(repository: GetSampleListUseCaseImpl): GetSampleListUseCase
+    @Singleton
+    internal abstract fun getLocaleUseCase(usecase: GetLocaleUseCaseImpl): GetLocaleUseCase
 
     @Binds
-    @PerActivity
-    internal abstract fun removeSampleUseCase(repository: RemoveSampleUseCaseImpl): RemoveSampleUseCase
+    @Singleton
+    internal abstract fun getLocaleListUseCase(usecase: GetLocaleListUseCaseImpl): GetLocaleListUseCase
 
     @Binds
-    @PerActivity
-    internal abstract fun saveSampleUseCase(repository: SaveSampleUseCaseImpl): SaveSampleUseCase
+    @Singleton
+    internal abstract fun registerDeviceUseCase(usecase: RegisterDeviceUseCaseImpl): RegisterDeviceUseCase
+
+    // =============== SAMPLE ======================================================================
+
+    @Binds
+    @Singleton
+    internal abstract fun getSampleUseCase(usecase: GetSampleUseCaseImpl): GetSampleUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun getSampleListUseCase(usecase: GetSampleListUseCaseImpl): GetSampleListUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun removeSampleUseCase(usecase: RemoveSampleUseCaseImpl): RemoveSampleUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun saveSampleUseCase(usecase: SaveSampleUseCaseImpl): SaveSampleUseCase
 
 }

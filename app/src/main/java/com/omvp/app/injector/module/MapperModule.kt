@@ -96,22 +96,56 @@ object MapperModule {
     private fun addBigDecimalConverter(modelMapper: ModelMapper) {
         modelMapper.createTypeMap(String::class.java, BigDecimal::class.java)
         modelMapper.addConverter(object : AbstractConverter<String, BigDecimal>() {
-            override fun convert(source: String): BigDecimal? {
-                var bigDecimal: BigDecimal? = null
-                try {
-                    val value = Integer.parseInt(source)
-                    bigDecimal = BigDecimal.valueOf((value.toFloat() / 100).toDouble())
-                } catch (e: NumberFormatException) {
-                    Timber.e(e.message, e)
-                }
-
-                return bigDecimal
+            override fun convert(source: String): BigDecimal {
+                return BigDecimal(source)
             }
         })
         modelMapper.createTypeMap(BigDecimal::class.java, String::class.java)
         modelMapper.addConverter(object : AbstractConverter<BigDecimal, String>() {
             override fun convert(source: BigDecimal): String {
                 return source.toString()
+            }
+        })
+
+        modelMapper.createTypeMap(Float::class.java, BigDecimal::class.java)
+        modelMapper.addConverter(object : AbstractConverter<Float, BigDecimal>() {
+            override fun convert(source: Float?): BigDecimal {
+                return BigDecimal(source.toString())
+            }
+        })
+
+        modelMapper.createTypeMap(BigDecimal::class.java, Float::class.java)
+        modelMapper.addConverter(object : AbstractConverter<BigDecimal, Float>() {
+            override fun convert(source: BigDecimal): Float? {
+                return source.toFloat()
+            }
+        })
+
+        modelMapper.createTypeMap(Double::class.java, BigDecimal::class.java)
+        modelMapper.addConverter(object : AbstractConverter<Double, BigDecimal>() {
+            override fun convert(source: Double?): BigDecimal {
+                return BigDecimal(source.toString())
+            }
+        })
+
+        modelMapper.createTypeMap(BigDecimal::class.java, Double::class.java)
+        modelMapper.addConverter(object : AbstractConverter<BigDecimal, Double>() {
+            override fun convert(source: BigDecimal): Double? {
+                return source.toDouble()
+            }
+        })
+
+        modelMapper.createTypeMap(Int::class.java, BigDecimal::class.java)
+        modelMapper.addConverter(object : AbstractConverter<Int, BigDecimal>() {
+            override fun convert(source: Int?): BigDecimal {
+                return BigDecimal(source.toString())
+            }
+        })
+
+        modelMapper.createTypeMap(BigDecimal::class.java, Int::class.java)
+        modelMapper.addConverter(object : AbstractConverter<BigDecimal, Int>() {
+            override fun convert(source: BigDecimal): Int? {
+                return source.toInt()
             }
         })
     }

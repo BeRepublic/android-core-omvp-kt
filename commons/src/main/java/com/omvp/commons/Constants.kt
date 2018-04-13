@@ -10,6 +10,7 @@ object Constants {
     const val DEFAULT_FONT = "fonts/AvenirNextLTPro-Regular.otf"
 
     //LOCATION
-    const val LOCATION_INTERVAL = 100
+    const val LOCATION_INTERVAL = 100L
+    const val LOCATION_FASTEST_INTERVAL: Long = LOCATION_INTERVAL / 2
 
 }

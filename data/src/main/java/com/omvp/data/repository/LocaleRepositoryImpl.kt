@@ -31,16 +31,11 @@ internal constructor(
         private val availableLocaleList: Set<Locale>
 ) : LocaleRepository {
 
-    override fun retrieveList(): Maybe<List<Locale>> {
-        return Maybe.create { emitter ->
+    override fun retrieveList(): Single<List<Locale>> {
+        return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    val localeList = retrieveLocaleList()
-                    if (!localeList.isEmpty()) {
-                        emitter.onSuccess(localeList)
-                    } else {
-                        emitter.onComplete()
-                    }
+                    emitter.onSuccess(ArrayList(availableLocaleList))
                 }
             } catch (ex: Exception) {
                 emitter.onError(ex)
@@ -52,7 +47,8 @@ internal constructor(
         return Completable.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    persistLocale(locale)
+                    preferences.put(PREF_LANGUAGE_SELECTED, locale.toString())
+                    preferences.commit()
                     emitter.onComplete()
                 }
             } catch (ex: Exception) {
@@ -65,7 +61,17 @@ internal constructor(
         return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    emitter.onSuccess(retrieveLocale())
+                    val locale: Locale
+                    val language = preferences.get(PREF_LANGUAGE_SELECTED, "")
+                    if (!TextUtils.isEmpty(language)) {
+                        val values = language.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                        locale = Locale(values[0], values[1])
+                    } else {
+                        locale = defaultLocale
+                        preferences.put(PREF_LANGUAGE_SELECTED, locale.toString())
+                        preferences.commit()
+                    }
+                    emitter.onSuccess(locale)
                 }
             } catch (ex: Exception) {
                 emitter.onError(ex)
@@ -73,55 +79,8 @@ internal constructor(
         }
     }
 
-    private fun retrieveLocale(): Locale {
-        var locale: Locale? = null
-        val language = preferences.get(PREF_LANGUAGE_SELECTED, "")
-        if (!TextUtils.isEmpty(language)) {
-            val values = language.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            locale = Locale(values[0], values[1])
-        } else {
-            val defaultDeviceLocale = Locale.getDefault()
-            val availableLocaleList = retrieveLocaleList()
-            for (availableLocale in availableLocaleList) {
-                if (defaultDeviceLocale.language == availableLocale.language) {
-                    locale = defaultDeviceLocale
-                }
-            }
-            if (locale == null) {
-                locale = defaultLocale
-            }
-            preferences.put(PREF_LANGUAGE_SELECTED, locale.toString())
-            preferences.commit()
-        }
-        return locale
-    }
-
-    private fun retrieveLocaleList(): List<Locale> {
-        val localeList = ArrayList<Locale>()
-        val languageList = preferences.get(PREF_AVAILABLE_LANGUAGE_LIST, HashSet())
-        if (languageList.isEmpty()) {
-            for (locale in availableLocaleList) {
-                languageList.add(locale.toString())
-            }
-            preferences.put(PREF_AVAILABLE_LANGUAGE_LIST, languageList)
-            preferences.commit()
-        }
-        for (language in languageList) {
-            val values = language.split("_".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-            localeList.add(Locale(values[0], values[1]))
-        }
-        return localeList
-    }
-
-    private fun persistLocale(locale: Locale) {
-        preferences.put(PREF_LANGUAGE_SELECTED, locale.toString())
-        preferences.commit()
-    }
-
     companion object {
-
         private const val PREF_LANGUAGE_SELECTED = "pref_language_selected"
-        private const val PREF_AVAILABLE_LANGUAGE_LIST = "pref_language_list"
     }
 
 }

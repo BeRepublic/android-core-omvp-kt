@@ -6,15 +6,7 @@ import android.content.Context
 
 import com.google.android.gms.analytics.Tracker
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.omvp.app.injector.module.AnalyticsModule
-import com.omvp.app.injector.module.CacheModule
-import com.omvp.app.injector.module.GoogleModule
-import com.omvp.app.injector.module.GsonModule
-import com.omvp.app.injector.module.LocaleModule
-import com.omvp.app.injector.module.LocationModule
-import com.omvp.app.injector.module.MapperModule
-import com.omvp.app.injector.module.NetworkModule
-import com.omvp.app.injector.module.RepositoryModule
+import com.omvp.app.injector.module.*
 import com.omvp.app.util.TrackerManager
 import com.raxdenstudios.commons.util.Utils
 import com.raxdenstudios.preferences.AdvancedPreferences
@@ -37,7 +29,8 @@ import dagger.Provides
         RepositoryModule::class,
         LocationModule::class,
         GoogleModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        UseCaseModule::class
 ))
 abstract class BaseApplicationModule {
 
@@ -74,13 +67,6 @@ abstract class BaseApplicationModule {
         @Singleton
         internal fun advancedPreferences(application: Application): AdvancedPreferences {
             return AdvancedPreferences(application, Utils.getPackageName(application), Context.MODE_PRIVATE)
-        }
-
-        @JvmStatic
-        @Provides
-        @Singleton
-        internal fun trackerManager(tracker: Tracker, firebaseAnalytics: FirebaseAnalytics): TrackerManager {
-            return TrackerManager(tracker, firebaseAnalytics)
         }
     }
 

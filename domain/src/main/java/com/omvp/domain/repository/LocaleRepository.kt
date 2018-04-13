@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 interface LocaleRepository : Repository {
 
-    fun retrieveList(): Maybe<List<Locale>>
+    fun retrieveList(): Single<List<Locale>>
 
     fun persist(locale: Locale): Completable
 

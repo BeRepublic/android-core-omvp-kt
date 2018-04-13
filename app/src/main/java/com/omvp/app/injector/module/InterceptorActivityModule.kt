@@ -7,12 +7,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.location.LocationRequest
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.interceptor.ToolbarActivityInterceptor
+import com.omvp.app.interceptor.authPhone.AuthPhoneActivityInterceptor
+import com.omvp.app.interceptor.authPhone.AuthPhoneInterceptor
+import com.omvp.app.interceptor.authPhone.AuthPhoneInterceptorCallback
 import com.omvp.app.interceptor.google.GoogleApiClientActivityInterceptor
 import com.omvp.app.interceptor.google.GoogleApiClientInterceptor
 import com.omvp.app.interceptor.google.GoogleApiClientInterceptorCallback
 import com.omvp.app.interceptor.location.LocationActivityInterceptor
 import com.omvp.app.interceptor.location.LocationInterceptor
 import com.omvp.app.interceptor.location.LocationInterceptorCallback
+import com.omvp.app.interceptor.operation.OperationBroadcastActivityInterceptor
+import com.omvp.app.interceptor.operation.OperationBroadcastInterceptor
 import com.omvp.app.interceptor.permission.PermissionActivityInterceptor
 import com.omvp.app.interceptor.permission.PermissionInterceptor
 import com.omvp.app.interceptor.permission.PermissionInterceptorCallback
@@ -114,6 +119,24 @@ object InterceptorActivityModule {
     @PerActivity
     fun provideGalleryInterceptor(activity: Activity): TakePictureInterceptor {
         return TakePictureActivityInterceptor(activity, activity as TakePictureInterceptorCallback)
+    }
+
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun operationBroadcastInterceptor(activity: Activity): OperationBroadcastInterceptor {
+        return OperationBroadcastActivityInterceptor(activity)
+    }
+
+    @JvmStatic
+    @Provides
+    @PerActivity
+    internal fun provideAuthPhoneInterceptor(activity: Activity): AuthPhoneInterceptor? {
+        return if (activity is AuthPhoneInterceptorCallback) {
+            AuthPhoneActivityInterceptor(activity, activity as AuthPhoneInterceptorCallback)
+        } else {
+            null
+        }
     }
 
 }
