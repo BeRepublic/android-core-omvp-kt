@@ -1,59 +1,59 @@
-package com.omvp.domain.repository;
+package com.omvp.domain.repository
 
-import io.reactivex.Completable;
-import io.reactivex.Single;
+import io.reactivex.Completable
+import io.reactivex.Single
 
-public interface DeviceRepository extends Repository {
-
-    /**
-     * Register device in server to receive push notifications.
-     * @return
-     */
-    Completable register();
-
-    /**
-     * Check if application version is last published.
-     * @return
-     */
-    Single<Boolean> checkApplicationVersion();
+interface DeviceRepository : Repository {
 
     /**
      * Retrieve channelId from urbanAirship. This identifier is used to identify device in push
      * notificacions via urbanairship.
      * @return
      */
-    Single<String> getUrbanAirshipChannelId();
+    fun getUrbanAirshipChannelId(): Single<String>?
 
     /**
      * Retrieve firebase token. This identifier is used to identify device in push notificacions
      * via firebase.
      * @return
      */
-    Single<String> getFirebaseToken();
+    fun getFirebaseToken(): Single<String>
 
     /**
      * Retrieve uniqueID asociated to device. This id change every time when application is
      * installed o updated.
      * @return
      */
-    Single<String> getSecureAndroidId();
+    fun getSecureAndroidId(): Single<String>
 
     /**
      * Retrieve application version name
      * @return
      */
-    Single<String> getVersionName();
+    fun getVersionName(): Single<String>
 
     /**
      * Retrieve application version code
      * @return
      */
-    Single<Integer> getVersionCode();
+    fun getVersionCode(): Single<Int>
 
     /**
      * Retrieve device model info.
      * @return
      */
-    Single<String> getDeviceModel();
+    fun getDeviceModel(): Single<String>
+
+    /**
+     * Register device in server to receive push notifications.
+     * @return
+     */
+    fun register(): Completable
+
+    /**
+     * Check if application version is last published.
+     * @return
+     */
+    fun checkApplicationVersion(): Single<Boolean>
 
 }
