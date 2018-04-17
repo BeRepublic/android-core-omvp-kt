@@ -30,7 +30,7 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
     private lateinit var mAdapter: SampleListAdapter
 
     interface FragmentCallback : BaseViewFragmentCallback {
-        fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View)
+        fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View?)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +69,7 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
         mRecyclerView.visibility = View.GONE
     }
 
-    override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View) {
+    override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View?) {
         mCallback.onSampleItemSelected(sampleDomain, sharedView)
     }
 

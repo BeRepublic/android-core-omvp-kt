@@ -18,7 +18,7 @@ class SampleListHorizontalAdapter(context: Context) : RecyclerAdapter<SampleMode
     private var mAdapterCallback: AdapterCallback? = null
 
     interface AdapterCallback {
-        fun sampleItemSelected(position: Int, sharedView: View)
+        fun sampleItemSelected(position: Int, sharedView: View?)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SampleListHorizontalItemViewHolder {

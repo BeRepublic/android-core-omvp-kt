@@ -23,9 +23,9 @@ class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterC
     private val mRecycledViewPool: RecyclerView.RecycledViewPool = RecyclerView.RecycledViewPool()
 
     interface AdapterCallback {
-        fun sampleItemSelected(position: Int, sharedView: View)
+        fun sampleItemSelected(position: Int, sharedView: View?)
 
-        fun sampleHorizontalItemSelected(position: Int, horizontalListPosition: Int, sharedView: View)
+        fun sampleHorizontalItemSelected(position: Int, horizontalListPosition: Int, sharedView: View?)
 
         fun sampleItemDeleteSelected(position: Int)
     }
@@ -107,7 +107,7 @@ class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterC
             mRecyclerView.recycledViewPool = mRecycledViewPool
 
             mAdapter.setAdapterCallback(object : SampleListHorizontalAdapter.AdapterCallback {
-                override fun sampleItemSelected(position: Int, sharedView: View) {
+                override fun sampleItemSelected(position: Int, sharedView: View?) {
                     mAdapterCallback.sampleHorizontalItemSelected(adapterPosition, position, sharedView)
                 }
             })

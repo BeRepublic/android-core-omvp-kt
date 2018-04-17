@@ -50,11 +50,11 @@ constructor(sampleListHorizontalView: SampleListHorizontalView) : BasePresenter<
         loadSampleList()
     }
 
-    override fun sampleItemSelected(position: Int, sharedView: View) {
+    override fun sampleItemSelected(position: Int, sharedView: View?) {
         sampleItemSelected(mSampleDomainList[position] as SampleDomain, sharedView)
     }
 
-    override fun sampleHorizontalItemSelected(position: Int, horizontalListPosition: Int, sharedView: View) {
+    override fun sampleHorizontalItemSelected(position: Int, horizontalListPosition: Int, sharedView: View?) {
         val horizontalList = mSampleDomainList[position] as List<SampleDomain>
         sampleItemSelected(horizontalList[horizontalListPosition], sharedView)
     }
@@ -189,7 +189,7 @@ constructor(sampleListHorizontalView: SampleListHorizontalView) : BasePresenter<
         mView?.showEmptyView()
     }
 
-    private fun sampleItemSelected(sampleDomain: SampleDomain, sharedView: View) {
+    private fun sampleItemSelected(sampleDomain: SampleDomain, sharedView: View?) {
         mView?.onSampleItemSelected(sampleDomain, sharedView)
     }
 }

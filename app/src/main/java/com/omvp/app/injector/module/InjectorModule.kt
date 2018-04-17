@@ -9,23 +9,26 @@ import com.omvp.app.service.AppFirebaseInstanceIDService
 import com.omvp.app.service.AppFirebaseInstanceIDServiceModule
 import com.omvp.app.service.AppFirebaseMessagingService
 import com.omvp.app.service.AppFirebaseMessagingServiceModule
-import com.omvp.app.ui.home.HomeActivity
-import com.omvp.app.ui.home.HomeActivityModule
-import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.ktsamples.ktsample.SampleActivityModule
-import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
-import com.omvp.app.ui.samples.multiple.SampleMultipleActivityModule
+import com.omvp.app.ui.samples.detail.SampleDetailActivity
+import com.omvp.app.ui.samples.detail.SampleDetailActivityModule
+import com.omvp.app.ui.samples.home.HomeActivity
+import com.omvp.app.ui.samples.home.HomeActivityModule
 import com.omvp.app.ui.samples.list.SampleListActivity
 import com.omvp.app.ui.samples.list.SampleListActivityModule
+import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
+import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivityModule
 import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivityModule
-import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
-import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivityModule
+import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
+import com.omvp.app.ui.samples.multiple.SampleMultipleActivityModule
 import com.omvp.app.ui.samples.pager.SamplePagerActivity
 import com.omvp.app.ui.samples.pager.SamplePagerActivityModule
+import com.omvp.app.ui.samples.simple.SampleActivity
+import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
+import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivityModule
 import com.omvp.app.ui.splash.SplashActivity
 import com.omvp.app.ui.splash.SplashActivityModule
-
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -98,6 +101,14 @@ abstract class InjectorModule {
     internal abstract fun sampleListActivity(): SampleListActivity
 
     /**
+     * Provides the injector for the [SampleListHorizontalActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleListHorizontalActivityModule::class))
+    internal abstract fun sampleListHorizontalActivity(): SampleListHorizontalActivity
+
+    /**
      * Provides the injector for the [SamplePagerActivity], which has access to the dependencies
      * provided by this application instance (singleton scoped objects).
      */
@@ -128,4 +139,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleTakePictureActivityModule::class))
     internal abstract fun sampleTakePictureActivity(): SampleTakePictureActivity
+
+    /**
+     * Provides the injector for the [SampleDetailActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleDetailActivityModule::class))
+    internal abstract fun sampleDetailActivity(): SampleDetailActivity
 }

@@ -93,9 +93,7 @@ abstract class BaseActivity : SquareActivity(),
 
     // =============== HasFragmentInjector =========================================================
 
-    override fun fragmentInjector(): AndroidInjector<Fragment> {
-        return mFragmentInjector
-    }
+    override fun fragmentInjector() = mFragmentInjector
 
     // =============== Support methods =============================================================
 
@@ -111,9 +109,7 @@ abstract class BaseActivity : SquareActivity(),
         mPermissionInterceptor.requestPermission(PermissionActivityInterceptor.Permission.LOCATION)
     }
 
-    protected fun hasLocationPermission(): Boolean {
-        return mPermissionInterceptor.hasPermission(PermissionActivityInterceptor.Permission.LOCATION)
-    }
+    protected fun hasLocationPermission() = mPermissionInterceptor.hasPermission(PermissionActivityInterceptor.Permission.LOCATION)
 
     override fun onPermissionGranted(permission: PermissionActivityInterceptor.Permission) {
         Timber.d("onPermissionGranted %s", permission.toString())

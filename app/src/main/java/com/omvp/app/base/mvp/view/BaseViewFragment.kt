@@ -13,6 +13,8 @@ import javax.inject.Inject
 
 import butterknife.ButterKnife
 import butterknife.Unbinder
+import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptor
+import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptorCallback
 
 /**
  * A [BaseFragment] that contains and invokes [Presenter] lifecycle invocations.
@@ -28,6 +30,7 @@ import butterknife.Unbinder
  */
 abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFragmentCallback> : BaseFragment(),
         AutoInflateViewInterceptorCallback,
+        HandleArgumentsInterceptorCallback,
         BaseView {
 
     @Inject
@@ -39,6 +42,8 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
 
     @Inject
     internal lateinit var mAutoInflateViewInterceptor: AutoInflateViewInterceptor
+    @Inject
+    internal lateinit var mHandleArgumentsInterceptor: HandleArgumentsInterceptor
 
     private var mUnbinder: Unbinder? = null
 
@@ -47,6 +52,10 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         mPresenter.onSaveView(outState)
+    }
+
+    override fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?) {
+        mPresenter.onHandleArguments(savedInstanceState, arguments)
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -139,6 +148,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
 
     override fun setupInterceptors(interceptorList: MutableList<Interceptor>) {
         interceptorList.add(mAutoInflateViewInterceptor)
+        interceptorList.add(mHandleArgumentsInterceptor)
     }
 
 }

@@ -37,6 +37,10 @@ abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Pr
 
     // =============== LifeCycle ===================================================================
 
+    override fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?) {
+
+    }
+
     override fun onViewRestored(savedState: Bundle?) {
 
     }

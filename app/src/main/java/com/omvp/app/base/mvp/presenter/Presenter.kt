@@ -49,4 +49,10 @@ interface Presenter {
      */
     fun onDropView()
 
+    /**
+     * TODO comment this methods
+     * @param savedInstanceState
+     * @param arguments
+     */
+    fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?)
 }

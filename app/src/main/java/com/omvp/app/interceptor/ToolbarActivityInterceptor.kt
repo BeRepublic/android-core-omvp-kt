@@ -15,9 +15,9 @@ import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCa
 
 class ToolbarActivityInterceptor : ActivityInterceptor<ToolbarInterceptorCallback>, ToolbarInterceptor {
 
-    constructor(activity: Activity) : super(activity) {}
+    constructor(activity: Activity) : super(activity)
 
-    constructor(activity: Activity, callback: ToolbarInterceptorCallback) : super(activity, callback) {}
+    constructor(activity: Activity, callback: ToolbarInterceptorCallback) : super(activity, callback)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,9 @@
 package com.omvp.app.ui.samples.list
 
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import android.view.View
 
 import com.omvp.app.R
@@ -16,9 +18,8 @@ import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCa
 
 import javax.inject.Inject
 
-class SampleListActivity :
-        BaseFragmentActivity(),
-        SampleListFragment.FragmentCallback, ToolbarInterceptorCallback, InjectFragmentInterceptorCallback<SampleListFragment> {
+class SampleListActivity : BaseFragmentActivity(), SampleListFragment.FragmentCallback,
+        ToolbarInterceptorCallback, InjectFragmentInterceptorCallback<SampleListFragment> {
 
     @Inject
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
@@ -36,6 +37,11 @@ class SampleListActivity :
 
     override fun onToolbarViewCreated(toolbar: Toolbar) {
         mToolbar = toolbar
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        mFragment.onOptionsItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 
     // =============== InjectFragmentInterceptorCallback ===========================================
@@ -60,8 +66,12 @@ class SampleListActivity :
         interceptorList.add(mInjectFragmentInterceptor)
     }
 
-    override fun onSampleItemSelected(sampleDomain: SampleDomain) {
-        mNavigationHelper.launchSample(sampleDomain.id)
+    override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mNavigationHelper.launchDetailWithSharedViewTransition(sampleDomain.id, sharedView)
+        } else {
+            mNavigationHelper.launchDetail(sampleDomain.id)
+        }
     }
 
 }

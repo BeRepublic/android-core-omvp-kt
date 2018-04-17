@@ -1,4 +1,4 @@
-package com.omvp.app.ui.home
+package com.omvp.app.ui.samples.home
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -6,7 +6,7 @@ import android.view.View
 
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
-import com.omvp.app.ui.home.view.HomeFragment
+import com.omvp.app.ui.samples.home.view.HomeFragment
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptorCallback
@@ -16,11 +16,8 @@ import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCa
 import javax.inject.Inject
 
 
-class HomeActivity :
-        BaseFragmentActivity(),
-        ToolbarInterceptorCallback,
-        InjectFragmentInterceptorCallback<HomeFragment>,
-        HomeFragment.FragmentCallback {
+class HomeActivity : BaseFragmentActivity(), ToolbarInterceptorCallback,
+        InjectFragmentInterceptorCallback<HomeFragment>, HomeFragment.FragmentCallback {
 
     @Inject
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
@@ -82,8 +79,40 @@ class HomeActivity :
         mNavigationHelper.launchSampleLocation()
     }
 
-    override fun onSampleCameraSelected() {
+    override fun onSampleTakePictureSelected() {
         mNavigationHelper.launchSampleTakePicture()
+    }
+
+    override fun onSampleLocaleSelected() {
+        mNavigationHelper.launchSampleLocale()
+    }
+
+    override fun onSampleHorizontalListClicked() {
+        mNavigationHelper.launchSampleHorizontalList()
+    }
+
+    override fun onVibrationSelected() {
+        mNavigationHelper.launchVibrationSample()
+    }
+
+    override fun onInputViewSelected() {
+        mNavigationHelper.launchInputViewSample()
+    }
+
+    override fun onSocialViewSelected() {
+        mNavigationHelper.launchSocialViewSample()
+    }
+
+    override fun onNoticeDialogViewSelected() {
+        mNavigationHelper.launchNoticeDialogViewSample()
+    }
+
+    override fun onBottomNavigationViewSelected() {
+        mNavigationHelper.launchBottomBarSample()
+    }
+
+    override fun onAuthPhoneViewSelected() {
+        mNavigationHelper.launchAuthPhoneView()
     }
 
 }

@@ -19,34 +19,9 @@ class SamplePresenterImpl                               // name of the class
         BasePresenter<SampleView>(sampleView),          // extend
         SamplePresenter {                               // implementations
 
-    @Inject
-    internal lateinit var mGetSampleUseCase: GetSampleUseCase
-    @Inject
-    internal lateinit var mGetSampleListUseCase: GetSampleListUseCase
-    @Inject
-    internal lateinit var mGetSampleListUseCase2: GetSampleListUseCase
-    @Inject
-    internal lateinit var mSampleModelDataMapper: SampleModelDataMapper
-
     override fun onViewLoaded() {
         super.onViewLoaded()
-
-        mGetSampleListUseCase.execute()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribeWith(object : DisposableMaybeObserver<List<SampleDomain>>() {
-                    override fun onSuccess(sampleDomains: List<SampleDomain>) {
-
-                    }
-
-                    override fun onError(e: Throwable) {
-
-                    }
-
-                    override fun onComplete() {
-
-                    }
-                })
+        
     }
 
 }

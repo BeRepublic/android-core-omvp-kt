@@ -33,7 +33,7 @@ class SampleListHorizontalActivity : BaseFragmentActivity(),
 
     // =============== ToolbarInterceptorCallback ==================================================
 
-    override fun onCreateToolbarView(savedInstanceState: Bundle): Toolbar {
+    override fun onCreateToolbarView(savedInstanceState: Bundle?): Toolbar {
         return findViewById(R.id.toolbar)
     }
 
@@ -48,7 +48,7 @@ class SampleListHorizontalActivity : BaseFragmentActivity(),
 
     // =============== InjectFragmentInterceptorCallback ===========================================
 
-    override fun onLoadFragmentContainer(savedInstanceState: Bundle): View {
+    override fun onLoadFragmentContainer(savedInstanceState: Bundle?): View {
         return findViewById(R.id.content)
     }
 
@@ -68,8 +68,8 @@ class SampleListHorizontalActivity : BaseFragmentActivity(),
         interceptorList.add(mInjectFragmentInterceptor)
     }
 
-    override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+    override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View?) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && sharedView != null) {
             mNavigationHelper.launchDetailWithSharedViewTransition(sampleDomain.id, sharedView)
         } else {
             mNavigationHelper.launchDetail(sampleDomain.id)

@@ -48,8 +48,8 @@ class SampleItemView : BaseComponentView {
         mSampleTextView.text = text
     }
 
-    fun setSampleImage(@DrawableRes imageResId: Int?) {
-        mSampleImageView.setImageResource(imageResId!!)
+    fun setSampleImage(@DrawableRes imageResId: Int) {
+        mSampleImageView.setImageResource(imageResId)
     }
 
     fun setDeleteClickListener(clickListener: View.OnClickListener) {

@@ -32,18 +32,10 @@ class NoticeDialogFragment : BaseViewFragment<NoticeDialogPresenter, NoticeDialo
     }
 
     private fun setupViews() {
-        if (Utils.hasValue(titleText)) {
-            mNoticeDialogComponentView.setTitleText(titleText)
-        }
-        if (Utils.hasValue(descriptionText)) {
-            mNoticeDialogComponentView.setDescriptionText(descriptionText)
-        }
-        if (Utils.hasValue(acceptText)) {
-            mNoticeDialogComponentView.setAcceptTextButton(acceptText, onAcceptClickListener)
-        }
-        if (Utils.hasValue(denyText)) {
-            mNoticeDialogComponentView.setDenyTextButton(denyText, onDenyClickListener)
-        }
+        mNoticeDialogComponentView.takeIf { !titleText.isNullOrEmpty() }.also { it?.setTitleText(titleText!!) }
+        mNoticeDialogComponentView.takeIf { !descriptionText.isNullOrEmpty() }.also { it?.setDescriptionText(descriptionText!!) }
+        mNoticeDialogComponentView.takeIf { !acceptText.isNullOrEmpty() }.also { it?.setAcceptTextButton(acceptText!!, onAcceptClickListener!!) }
+        mNoticeDialogComponentView.takeIf { !denyText.isNullOrEmpty() }.also { it?.setDenyTextButton(denyText!!, onDenyClickListener!!) }
     }
 
     fun setTitle(titleText: String) {

@@ -1,8 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
 
+        <!-- colorControlNormal is used for example in hamburger -->
+        <item name="colorControlNormal">@color/color_control_normal</item>
+        <item name="colorControlActivated">@color/color_control_activated</item>
+        <item name="colorControlHighlight">@color/color_control_highlight</item>
     </style>
 
     <style name="BaseTheme.Transparent">
@@ -25,6 +32,10 @@
 
     <!-- ========================================================================= -->
 
-    <style name="AppTheme.Splash" parent="AppTheme.Transparent"></style>
+    <style name="AppTheme.Splash" parent="AppTheme.Transparent" />
+
+    <style name="AppTheme.Home" parent="AppTheme" />
+
+    <style name="AppTheme.Sample" parent="AppTheme" />
 
 </resources>

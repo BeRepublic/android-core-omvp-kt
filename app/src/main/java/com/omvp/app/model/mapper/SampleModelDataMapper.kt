@@ -16,16 +16,10 @@ class SampleModelDataMapper
 @Inject
 internal constructor(context: Context, modelMapper: ModelMapper) : DataMapper<SampleDomain, SampleModel>(context, modelMapper) {
 
-    override fun transform(source: SampleDomain): SampleModel {
-        return modelMapper.map(source, SampleModel::class.java)
-    }
+    override fun transform(source: SampleDomain): SampleModel = modelMapper.map(source, SampleModel::class.java)
 
-    override fun inverseTransform(source: SampleModel): SampleDomain {
-        return modelMapper.map(source, SampleDomain::class.java)
-    }
+    override fun inverseTransform(source: SampleModel): SampleDomain = modelMapper.map(source, SampleDomain::class.java)
 
-    override fun equals(source: SampleDomain, destination: SampleModel): Boolean {
-        return false
-    }
+    override fun equals(source: SampleDomain, destination: SampleModel) = false
 
 }

@@ -1,10 +1,10 @@
-package com.omvp.app.ui.home.view
+package com.omvp.app.ui.samples.home.view
 
 import android.app.Fragment
 
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.injector.scope.PerFragment
-import com.omvp.app.ui.home.presenter.HomePresenterModule
+import com.omvp.app.ui.samples.home.presenter.HomePresenterModule
 
 import dagger.Binds
 import dagger.Module

@@ -65,9 +65,9 @@
         </activity>
 
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.samples.home.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Home"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
@@ -91,44 +91,51 @@
         <activity
             android:name=".ui.samples.simple.SampleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.samples.list.SampleListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.samples.listhorizontal.SampleListHorizontalActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan"/>
 
         <activity
             android:name=".ui.samples.pager.SamplePagerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.samples.multiple.SampleMultipleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.samples.location.SampleLocationActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.samples.takepicture.SampleTakePictureActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.samples.detail.SampleDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Sample"
+            android:windowSoftInputMode="adjustPan" />
+
 
     </application>
 

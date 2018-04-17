@@ -11,7 +11,7 @@ interface SampleListHorizontalView : BaseView {
 
     fun showEmptyView()
 
-    fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View)
+    fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View?)
 
     fun drawRemoveAnimation(position: Int)
 

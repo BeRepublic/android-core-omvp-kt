@@ -6,10 +6,12 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.view.View
+import com.omvp.app.ui.samples.detail.SampleDetailActivity
+import com.omvp.app.ui.samples.home.HomeActivity
 
-import com.omvp.app.ui.home.HomeActivity
 import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.list.SampleListActivity
+import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
@@ -62,7 +64,7 @@ class NavigationHelper(private val mActivity: Activity) {
         extras.putString(String::class.java.simpleName, sampleItemId)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleActivity::class.java)
+                .navigateTo(SampleDetailActivity::class.java)
                 .launch()
     }
 
@@ -76,7 +78,7 @@ class NavigationHelper(private val mActivity: Activity) {
 
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleActivity::class.java, activityOptions.toBundle())
+                .navigateTo(SampleDetailActivity::class.java, activityOptions.toBundle())
                 .launch()
     }
 
@@ -84,6 +86,13 @@ class NavigationHelper(private val mActivity: Activity) {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
                 .navigateTo(SampleListActivity::class.java)
+                .launch()
+    }
+
+    fun launchSampleHorizontalList() {
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateTo(SampleListHorizontalActivity::class.java)
                 .launch()
     }
 
@@ -116,5 +125,52 @@ class NavigationHelper(private val mActivity: Activity) {
                 .launch()
     }
 
+    fun launchSampleLocale() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(SampleLocaleActivity::class.java)
+//                .launch()
+    }
 
+    fun launchVibrationSample() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(VibrationActivity::class.java)
+//                .launch()
+    }
+
+    fun launchInputViewSample() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(SampleInputActivity::class.java)
+//                .launch()
+    }
+
+    fun launchSocialViewSample() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(SampleSocialActivity::class.java)
+//                .launch()
+    }
+
+    fun launchNoticeDialogViewSample() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(SampleNoticeActivity::class.java)
+//                .launch()
+    }
+
+    fun launchBottomBarSample() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(BottomNavigationActivity::class.java)
+//                .launch()
+    }
+
+    fun launchAuthPhoneView() {
+//        NavigationManager.Builder(mActivity)
+//                .putData(getExtras())
+//                .navigateTo(SampleRequestPhoneActivity::class.java)
+//                .launch()
+    }
 }
