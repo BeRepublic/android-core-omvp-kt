@@ -10,6 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <com.omvp.components.PagerIndicator
+        android:id="@+id/pager_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="24dp"/>
+
     <include layout="@layout/sample_pager_toolbar_view"/>
 
     <include layout="@layout/progress_view"/>

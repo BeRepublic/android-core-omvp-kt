@@ -3,12 +3,14 @@ package com.omvp.app.ui.samples.pager
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
+import butterknife.BindView
 
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
 import com.omvp.app.ui.samples.pager.view.SamplePagerFirstFragment
 import com.omvp.app.ui.samples.pager.view.SamplePagerFragment
 import com.omvp.app.ui.samples.pager.view.SamplePagerSecondFragment
+import com.omvp.components.PagerIndicator
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentStatePagerInterceptor
 import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentStatePagerInterceptorCallback
@@ -27,6 +29,9 @@ class SamplePagerActivity : BaseFragmentActivity(),
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
     @Inject
     internal lateinit var mFragmentStatePagerInterceptor: FragmentStatePagerInterceptor<*>
+
+    @BindView(R.id.pager_indicator)
+    internal lateinit var mPagerIndicator: PagerIndicator
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mViewPager: ViewPager
@@ -51,15 +56,14 @@ class SamplePagerActivity : BaseFragmentActivity(),
 
     override fun onViewPagerCreated(viewPager: ViewPager) {
         mViewPager = viewPager
+        mPagerIndicator.setViewPager(viewPager)
     }
 
     override fun onCreateFragment(position: Int): SamplePagerFragment<*, *>? {
         return when (position) {
             0 -> SamplePagerFirstFragment.newInstance(intent.extras)
             1 -> SamplePagerSecondFragment.newInstance(intent.extras)
-            else -> {
-                null
-            }
+            else -> null
         }
     }
 

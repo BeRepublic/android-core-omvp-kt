@@ -4,6 +4,7 @@ import android.app.Fragment
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import butterknife.ButterKnife
 
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -89,6 +90,7 @@ abstract class BaseActivity : SquareActivity(),
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         mContentView = view
+        initializeButterKnife()
     }
 
     // =============== HasFragmentInjector =========================================================
@@ -141,4 +143,7 @@ abstract class BaseActivity : SquareActivity(),
         Timber.d("onGoogleApiClientConnectionFailed %s", connectionResult.toString())
     }
 
+    private fun initializeButterKnife() {
+        ButterKnife.bind(this)
+    }
 }
