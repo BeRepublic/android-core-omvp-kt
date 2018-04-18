@@ -29,6 +29,8 @@ import com.omvp.app.ui.samples.pager.SamplePagerActivityModule
 import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivityModule
+import com.omvp.app.ui.samples.vibration.VibrationActivity
+import com.omvp.app.ui.samples.vibration.VibrationActivityModule
 import com.omvp.app.ui.splash.SplashActivity
 import com.omvp.app.ui.splash.SplashActivityModule
 import dagger.Module
@@ -157,4 +159,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleLocaleActivityModule::class))
     internal abstract fun sampleLocaleActivity(): SampleLocaleActivity
+
+    /**
+     * Provides the injector for the [VibrationActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(VibrationActivityModule::class))
+    internal abstract fun vibrationActivity(): VibrationActivity
 }
