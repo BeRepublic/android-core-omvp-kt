@@ -1,0 +1,40 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+
+    <!-- Content styles -->
+
+    <style name="BaseButton" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:paddingLeft">@dimen/padding_size_14</item>
+        <item name="android:paddingRight">@dimen/padding_size_14</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!-- ========================================================================= -->
+
+    <style name="Button" parent="BaseButton">
+
+    </style>
+
+    <style name="Button.White" parent="BaseButton">
+        <item name="android:background">@drawable/button_white</item>
+        <item name="android:textColor">#00BBB4</item>
+    </style>
+
+    <style name="Button.White.Border" parent="BaseButton">
+        <item name="android:background">@drawable/button_border_gray</item>
+    </style>
+
+    <style name="Button.Green" parent="BaseButton">
+        <item name="android:background">#00BBB4</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Button.Red" parent="BaseButton">
+        <item name="android:background">#FC4C4C</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+</resources>

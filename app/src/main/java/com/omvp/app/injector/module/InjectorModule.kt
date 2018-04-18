@@ -10,6 +10,8 @@ import com.omvp.app.service.AppFirebaseInstanceIDServiceModule
 import com.omvp.app.service.AppFirebaseMessagingService
 import com.omvp.app.service.AppFirebaseMessagingServiceModule
 import com.omvp.app.ui.ktsamples.ktsample.SampleActivityModule
+import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
+import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivityModule
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.detail.SampleDetailActivityModule
 import com.omvp.app.ui.samples.home.HomeActivity
@@ -26,10 +28,12 @@ import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivityModule
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivityModule
-import com.omvp.app.ui.samples.notice_dialog.SampleNoticeActivity
-import com.omvp.app.ui.samples.notice_dialog.SampleNoticeActivityModule
+import com.omvp.app.ui.samples.noticedialog.SampleNoticeActivity
+import com.omvp.app.ui.samples.noticedialog.SampleNoticeActivityModule
 import com.omvp.app.ui.samples.pager.SamplePagerActivity
 import com.omvp.app.ui.samples.pager.SamplePagerActivityModule
+import com.omvp.app.ui.samples.requestphone.SampleRequestPhoneActivity
+import com.omvp.app.ui.samples.requestphone.SampleRequestPhoneActivityModule
 import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.social.SampleSocialActivity
 import com.omvp.app.ui.samples.social.SampleSocialActivityModule
@@ -197,4 +201,20 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleNoticeActivityModule::class))
     internal abstract fun sampleNoticeActivity(): SampleNoticeActivity
+
+    /**
+     * Provides the injector for the [BottomNavigationActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(BottomNavigationActivityModule::class))
+    internal abstract fun bottomNavigationActivity(): BottomNavigationActivity
+
+    /**
+     * Provides the injector for the [SampleRequestPhoneActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleRequestPhoneActivityModule::class))
+    internal abstract fun sampleRequestPhoneActivity(): SampleRequestPhoneActivity
 }

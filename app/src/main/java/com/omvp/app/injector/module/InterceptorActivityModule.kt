@@ -117,12 +117,8 @@ object InterceptorActivityModule {
     @JvmStatic
     @Provides
     @PerActivity
-    internal fun provideAuthPhoneInterceptor(activity: Activity): AuthPhoneInterceptor? {
-        return if (activity is AuthPhoneInterceptorCallback) {
-            AuthPhoneActivityInterceptor(activity, activity as AuthPhoneInterceptorCallback)
-        } else {
-            null
-        }
+    internal fun provideAuthPhoneInterceptor(activity: Activity): AuthPhoneInterceptor {
+        return AuthPhoneActivityInterceptor(activity, activity as AuthPhoneInterceptorCallback)
     }
 
 }

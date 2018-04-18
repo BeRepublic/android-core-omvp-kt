@@ -181,10 +181,23 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.samples.notice_dialog.SampleNoticeActivity"
+            android:name=".ui.samples.noticedialog.SampleNoticeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.samples.bottomnavigation.BottomNavigationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Sample"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ui.samples.requestphone.SampleRequestPhoneActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Sample"
+            android:windowSoftInputMode="adjustPan" />
+
 
     </application>
 

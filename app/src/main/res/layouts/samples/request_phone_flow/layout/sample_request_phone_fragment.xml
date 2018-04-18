@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/root"
+        style="@style/Content.RequestPhone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:id="@+id/buttons_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/send"
+                style="@style/Button.Green"
+                android:layout_centerHorizontal="true"
+                android:text="GET" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_sign_out_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size_10">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sign_out"
+                style="@style/Button.Red"
+                android:layout_centerHorizontal="true"
+                android:text="SIGN OUT" />
+
+        </RelativeLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/buttons_container"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/margin_size_12"
+                android:layout_marginRight="@dimen/margin_size_12">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/title_label"
+                    style="@style/CodeFont.Large.Black.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_size_20"
+                    android:text="@string/enter_your_phone" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/title_label"
+                    android:layout_marginBottom="@dimen/margin_size_40"
+                    android:text="@string/enter_your_phone_explanation" />
+
+                <LinearLayout
+                    android:id="@+id/telephone_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="16dp"
+                        android:text="+" />
+
+                    <com.omvp.components.InputLayoutView
+                        android:id="@+id/input_prefix"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prefix"
+                        android:inputType="number"
+                        android:maxLength="2" />
+
+                    <com.omvp.components.InputLayoutView
+                        android:id="@+id/input_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/phone"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/code_received_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/telephone_layout"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/title_enter_code_label"
+                    style="@style/CodeFont.Large.Black.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/code_sent" />
+
+                <com.omvp.components.InputLayoutView
+                    android:id="@+id/input_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/title_enter_code_label"
+                    android:layout_marginTop="10dp"
+                    android:inputType="number" />
+            </RelativeLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
