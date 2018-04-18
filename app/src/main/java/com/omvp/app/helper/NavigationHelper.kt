@@ -18,6 +18,7 @@ import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
 import com.omvp.app.ui.samples.pager.SamplePagerActivity
+import com.omvp.app.ui.samples.social.SampleSocialActivity
 import com.omvp.app.ui.samples.vibration.VibrationActivity
 import com.omvp.app.ui.splash.SplashActivity
 import com.omvp.app.util.OperationBroadcastManager
@@ -149,10 +150,10 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchSocialViewSample() {
-//        NavigationManager.Builder(mActivity)
-//                .putData(getExtras())
-//                .navigateTo(SampleSocialActivity::class.java)
-//                .launch()
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateTo(SampleSocialActivity::class.java)
+                .launch()
     }
 
     fun launchNoticeDialogViewSample() {

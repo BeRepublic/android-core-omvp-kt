@@ -28,6 +28,7 @@ object ImageHelper {
         NONE, CENTER_CROP, FIT_CENTER, CIRCLE_CROP
     }
 
+    @JvmStatic
     fun loadImageUser(context: Context, imageUser: Uri, imageView: ImageView, progressView: View?) {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)
@@ -39,6 +40,7 @@ object ImageHelper {
         requestBuilder.into(imageView)
     }
 
+    @JvmStatic
     fun loadImageUser(context: Context, imageUser: String, imageView: ImageView, progressView: View?) {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)
@@ -50,6 +52,7 @@ object ImageHelper {
         requestBuilder.into(imageView)
     }
 
+    @JvmStatic
     fun loadImageUser(context: Context, imageUser: Bitmap, imageView: ImageView, progressView: View?) {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)

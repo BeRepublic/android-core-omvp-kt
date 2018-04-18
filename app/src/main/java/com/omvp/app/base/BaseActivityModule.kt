@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
 import com.google.android.gms.analytics.Tracker
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.omvp.app.BuildConfig
 import com.omvp.app.helper.AnimationHelper
@@ -18,6 +19,7 @@ import com.omvp.app.injector.module.UseCaseModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.util.DisposableManager
 import com.omvp.app.util.OperationBroadcastManager
+import com.omvp.app.util.SocialAuthManager
 import com.omvp.app.util.TrackerManager
 import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.Binds
@@ -111,5 +113,12 @@ abstract class BaseActivityModule {
         internal fun operationBroadcastManager(activity: Activity): OperationBroadcastManager =
                 OperationBroadcastManager(activity)
 
+
+        @JvmStatic
+        @Provides
+        @PerActivity
+        internal fun activitySocialAuthManager(activity: Activity, googleSignInClient: GoogleSignInClient): SocialAuthManager {
+            return SocialAuthManager(activity, googleSignInClient)
+        }
     }
 }

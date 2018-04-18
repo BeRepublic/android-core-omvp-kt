@@ -1,6 +1,7 @@
 package com.omvp.app
 
 import com.crashlytics.android.Crashlytics
+import com.facebook.appevents.AppEventsLogger
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.omvp.app.base.BaseApplication
 import com.omvp.app.util.CrashReportingTree
@@ -22,6 +23,7 @@ class AppApplication : BaseApplication() {
         initTimber()
         initCalligraphy()
         initTreeTen()
+        initFacebook()
     }
 
     private fun initFabric() {
@@ -49,4 +51,7 @@ class AppApplication : BaseApplication() {
         AndroidThreeTen.init(this)
     }
 
+    private fun initFacebook() {
+        AppEventsLogger.activateApp(this)
+    }
 }
