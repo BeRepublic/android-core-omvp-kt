@@ -15,10 +15,8 @@ import com.omvp.app.helper.NavigationHelper
 import com.omvp.app.helper.SnackBarHelper
 
 import com.omvp.app.injector.module.InterceptorActivityModule
-import com.omvp.app.injector.module.UseCaseModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.util.DisposableManager
-import com.omvp.app.util.OperationBroadcastManager
 import com.omvp.app.util.SocialAuthManager
 import com.omvp.app.util.TrackerManager
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -106,13 +104,6 @@ abstract class BaseActivityModule {
         internal fun animationHelper(activity: Activity): AnimationHelper {
             return AnimationHelper(activity)
         }
-
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun operationBroadcastManager(activity: Activity): OperationBroadcastManager =
-                OperationBroadcastManager(activity)
-
 
         @JvmStatic
         @Provides

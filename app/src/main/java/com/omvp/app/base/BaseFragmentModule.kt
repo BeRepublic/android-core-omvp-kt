@@ -2,15 +2,13 @@ package com.omvp.app.base
 
 import android.app.Fragment
 import android.app.FragmentManager
-
+import com.omvp.app.helper.DialogHelper
 import com.omvp.app.injector.module.InterceptorFragmentModule
 import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.util.DisposableManager
-
-import javax.inject.Named
-
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 
 /**
  * Provides base fragment dependencies. This must be included in all fragment modules, which must
@@ -38,4 +36,11 @@ object BaseFragmentModule {
         return DisposableManager()
     }
 
+    @JvmStatic
+    @Provides
+    @Named(CHILD_FRAGMENT_MANAGER)
+    @PerFragment
+    internal fun dialogHelper(fragment: Fragment, @Named(CHILD_FRAGMENT_MANAGER) fragmentManager: FragmentManager): DialogHelper {
+        return DialogHelper(fragment, fragmentManager)
+    }
 }

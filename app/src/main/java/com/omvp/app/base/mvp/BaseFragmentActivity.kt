@@ -5,18 +5,17 @@ import android.app.FragmentManager
 import android.support.annotation.IdRes
 import android.support.v7.widget.AppCompatTextView
 import android.view.View
-import butterknife.BindView
 import com.omvp.app.R
-
 import com.omvp.app.base.BaseActivity
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
-
+import com.omvp.app.dialog.notice.view.NoticeDialogFragment
 import javax.inject.Inject
 
 /**
  * Abstract Activity for all Activities to extend.
  */
 abstract class BaseFragmentActivity : BaseActivity(),
+        NoticeDialogFragment.FragmentCallback,
         BaseViewFragmentCallback {
 
     /**

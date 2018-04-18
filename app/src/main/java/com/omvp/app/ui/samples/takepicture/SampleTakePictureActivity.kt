@@ -4,10 +4,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
-
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
-import com.omvp.app.interceptor.permission.PermissionActivityInterceptor
 import com.omvp.app.interceptor.takePicture.TakePictureInterceptor
 import com.omvp.app.interceptor.takePicture.TakePictureListener
 import com.omvp.app.ui.samples.takepicture.view.SampleTakePictureFragment
@@ -16,7 +14,6 @@ import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmen
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
-
 import javax.inject.Inject
 
 class SampleTakePictureActivity : BaseFragmentActivity(),

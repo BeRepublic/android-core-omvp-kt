@@ -1,15 +1,12 @@
 package com.omvp.app.ui.samples.location.view
 
-import android.location.Location
 import android.os.Bundle
 import android.support.v7.widget.AppCompatTextView
-
+import butterknife.BindView
 import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.location.presenter.SampleLocationPresenter
-
-import butterknife.BindView
 
 class SampleLocationFragment : BaseViewFragment<SampleLocationPresenter,
         SampleLocationFragment.FragmentCallback>(),
@@ -31,10 +28,6 @@ class SampleLocationFragment : BaseViewFragment<SampleLocationPresenter,
 
     private fun setupViews() {
 
-    }
-
-    fun locationChanged(location: Location?) {
-        mPresenter.locationChanged(location)
     }
 
     override fun drawLocation(latitude: String, longitude: String) {

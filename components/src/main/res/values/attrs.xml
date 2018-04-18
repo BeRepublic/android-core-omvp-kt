@@ -73,4 +73,10 @@
 
     </declare-styleable>
 
+    <declare-styleable name="BottomBarItemView">
+        <attr name="counter_color" format="reference"/>
+        <attr name="counter_background" format="reference"/>
+        <attr name="icon" format="reference"/>
+    </declare-styleable>
+
 </resources>
