@@ -42,34 +42,35 @@ class InputLayoutView : BaseComponentView {
     private lateinit var mTextInputEditText: TextInputEditText
     private lateinit var mHintFixedToLeftText: AppCompatTextView
 
-    private var mText: String = ""
-    private var mHint: String = ""
-    private var mHintAnimationEnabled: Boolean = false
+    private var mText: String? = null
+    private var mHint: String? = null
+    private var mHintAnimationEnabled: Boolean? = false
     private var mHintType: HintType? = null
-    private var mHintWidth: Int = 0
-    private var mPasswordToggleEnabled: Boolean = false
+    private var mHintWidth: Int? = null
+    private var mPasswordToggleEnabled: Boolean? = false
 
-    private var mInputType: Int = 0
-    private var mInputGravity: Int = 0
-    private var mImeOptions: Int = 0
-    private var mEnabled: Boolean = false
-    private var mFocusable: Boolean = false
+    private var mInputType: Int? = null
+    private var mInputGravity: Int? = null
+    private var mErrorGravity: Int? = null
+    private var mImeOptions: Int? = null
+    private var mEnabled: Boolean? = false
+    private var mFocusable: Boolean? = false
 
-    private var mNextFocusForward: Int = 0
-    private var mNextFocusUp: Int = 0
-    private var mNextFocusDown: Int = 0
-    private var mNextFocusRight: Int = 0
-    private var mNextFocusLeft: Int = 0
+    private var mNextFocusForward: Int? = null
+    private var mNextFocusUp: Int? = null
+    private var mNextFocusDown: Int? = null
+    private var mNextFocusRight: Int? = null
+    private var mNextFocusLeft: Int? = null
 
-    private var mEditable: Boolean = false
+    private var mEditable: Boolean? = false
 
-    private var mCounterEnabled: Boolean = false
-    private var mCounterMaxLength: Int = 0
+    private var mCounterEnabled: Boolean? = false
+    private var mCounterMaxLength: Int? = null
 
-    private var mMaxLines: Int = 0
+    private var mMaxLines: Int? = null
 
     private var mMask: CharSequence? = null
-    private var mNotMaskedSymbol: Char = ' '
+    private var mNotMaskedSymbol: Char? = ' '
     private val mMaskedInputFilter: MaskedInputFilter? = null
 
     private var mSuccessDrawable: Drawable? = null
@@ -82,11 +83,7 @@ class InputLayoutView : BaseComponentView {
 
     var text: String
         get() = mTextInputEditText.text.toString()
-        set(text) {
-            if (!TextUtils.isEmpty(text)) {
-                mTextInputEditText.setText(text)
-            }
-        }
+        set(text) = mTextInputEditText.setText(text)
 
     val editTextId: Int
         get() = mTextInputEditText.id
@@ -101,32 +98,12 @@ class InputLayoutView : BaseComponentView {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
-    override fun loadData() {
-        setHint(mHint)
-        text = mText
-        setInputType(mInputType)
-        setInputGravity(mInputGravity)
-        setImeOptions(mImeOptions)
-        setNextFocusForward(mNextFocusForward)
-        setNextFocusUp(mNextFocusUp)
-        setNextFocusDown(mNextFocusDown)
-        setNextFocusRight(mNextFocusRight)
-        setNextFocusLeft(mNextFocusLeft)
-        setCounterEnabled(mCounterEnabled)
-        setEditTextEnabled(mEnabled)
-        setEditTextFocusable(mFocusable)
-        setPasswordToggleEnabled(mPasswordToggleEnabled)
-        setMaxLines(mMaxLines)
-
-        setupFilters()
-    }
-
     override fun loadAttributes(context: Context, attrs: AttributeSet?) {
         val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.InputLayoutView, 0, 0)
-        mText = typedArray.getString(R.styleable.InputLayoutView_android_text)
-        mHint = typedArray.getString(R.styleable.InputLayoutView_android_hint)
+        mText = typedArray.getString(R.styleable.InputLayoutView_android_text) ?: ""
+        mHint = typedArray.getString(R.styleable.InputLayoutView_android_hint) ?: ""
         mInputType = typedArray.getInteger(R.styleable.InputLayoutView_android_inputType, InputType.TYPE_CLASS_TEXT)
-        mInputGravity = typedArray.getInteger(R.styleable.InputLayoutView_android_gravity, Gravity.TOP or Gravity.LEFT)
+        mInputGravity = typedArray.getInteger(R.styleable.InputLayoutView_android_gravity, Gravity.TOP or Gravity.START)
         mSuccessDrawable = ContextCompat.getDrawable(getContext(), R.drawable.input_layout_success)
         mErrorDrawable = ContextCompat.getDrawable(getContext(), R.drawable.input_layout_error)
         if (mSuccessDrawable != null) {
@@ -149,21 +126,18 @@ class InputLayoutView : BaseComponentView {
         mCounterMaxLength = typedArray.getInteger(R.styleable.InputLayoutView_counterMaxLength, -1)
         mHintAnimationEnabled = typedArray.getBoolean(R.styleable.InputLayoutView_hintAnimationEnabled, true)
         mHintType = HintType.values()[typedArray.getInteger(R.styleable.InputLayoutView_hintType, HintType.NONE.ordinal)]
-        mHintWidth = typedArray.getDimensionPixelSize(R.styleable.InputLayoutView_hintWidth, -1)
+        mHintWidth = typedArray.getDimensionPixelSize(R.styleable.InputLayoutView_hintWidth, 0)
         mEnabled = typedArray.getBoolean(R.styleable.InputLayoutView_android_enabled, true)
         mFocusable = typedArray.getBoolean(R.styleable.InputLayoutView_android_focusable, true)
         mPasswordToggleEnabled = typedArray.getBoolean(R.styleable.InputLayoutView_passwordToggleEnabled, false)
         mEditable = typedArray.getBoolean(R.styleable.InputLayoutView_editable, true)
 
-        mMask = typedArray.getString(R.styleable.InputLayoutView_mask)
-        val notMaskedSymbol = typedArray.getString(R.styleable.InputLayoutView_notMaskedSymbol)
-        mNotMaskedSymbol = if (TextUtils.isEmpty(notMaskedSymbol)) {
-            '#'
-        } else {
-            notMaskedSymbol!![0]
-        }
+        mMask = typedArray.getString(R.styleable.InputLayoutView_mask) ?: ""
+        val notMaskedSymbol = typedArray.getString(R.styleable.InputLayoutView_notMaskedSymbol) ?: ""
+        mNotMaskedSymbol = if (notMaskedSymbol.isEmpty()) '#' else notMaskedSymbol[0]
 
         mMaxLines = typedArray.getInteger(R.styleable.InputLayoutView_android_maxLines, 1)
+        mErrorGravity = typedArray.getInteger(R.styleable.InputLayoutView_errorGravity, Gravity.END)
 
         typedArray.recycle()
     }
@@ -179,12 +153,33 @@ class InputLayoutView : BaseComponentView {
         mHintFixedToLeftText = findViewById(R.id.hint_fixed_to_left)
     }
 
+    override fun loadData() {
+        setHint(mHint!!)
+        text = mText!!
+        setInputType(mInputType!!)
+        setInputGravity(mInputGravity!!)
+        setErrorGravity(mErrorGravity!!)
+        setImeOptions(mImeOptions!!)
+        setNextFocusForward(mNextFocusForward!!)
+        setNextFocusUp(mNextFocusUp!!)
+        setNextFocusDown(mNextFocusDown!!)
+        setNextFocusRight(mNextFocusRight!!)
+        setNextFocusLeft(mNextFocusLeft!!)
+        setCounterEnabled(mCounterEnabled!!)
+        setEditTextEnabled(mEnabled!!)
+        setEditTextFocusable(mFocusable!!)
+        setPasswordToggleEnabled(mPasswordToggleEnabled!!)
+        setMaxLines(mMaxLines!!)
+
+        setupFilters()
+    }
+
     fun setHint(hint: String) {
         if (!hint.isEmpty()) {
             when (mHintType) {
                 InputLayoutView.HintType.NONE -> {
                     mTextInputLayout.hint = hint
-                    mTextInputLayout.isHintAnimationEnabled = mHintAnimationEnabled
+                    mTextInputLayout.isHintAnimationEnabled = mHintAnimationEnabled!!
                 }
                 InputLayoutView.HintType.FIXED -> {
                     mTextInputLayout.hint = ""
@@ -193,9 +188,9 @@ class InputLayoutView : BaseComponentView {
                 InputLayoutView.HintType.FIXED_TO_LEFT -> {
                     mTextInputLayout.hint = ""
                     mTextInputEditText.hint = ""
-                    mTextInputEditText.setPadding(mHintWidth, 0, 0, 0)
+                    mTextInputEditText.setPadding(mHintWidth!!, 0, 0, 0)
                     mHintFixedToLeftText.text = hint
-                    mHintFixedToLeftText.width = mHintWidth
+                    mHintFixedToLeftText.width = mHintWidth!!
                 }
             }
         }
@@ -233,6 +228,10 @@ class InputLayoutView : BaseComponentView {
             mInputGravity = inputGravity
             invalidate()
         }
+    }
+
+    fun setErrorGravity(errorGravity: Int) {
+        mTextInputLayout.mErrorGravity = errorGravity
     }
 
     fun setErrorEnabled(enabled: Boolean) {
@@ -357,14 +356,14 @@ class InputLayoutView : BaseComponentView {
 
     private fun setupFilters() {
         val filterList = ArrayList<InputFilter>()
-        if (!mEditable) {
+        if (!mEditable!!) {
             filterList.add(DisableEditInputFilter())
-        } else if (!TextUtils.isEmpty(mMask)) {
+        } else if (!mMask.isNullOrEmpty()) {
             filterList.add(MaskedInputFilter())
             filterList.add(InputFilter.LengthFilter(mMask!!.length))
         } else if (mCounterMaxLength != -1) {
-            filterList.add(InputFilter.LengthFilter(mCounterMaxLength))
-            mTextInputLayout.counterMaxLength = mCounterMaxLength
+            filterList.add(InputFilter.LengthFilter(mCounterMaxLength!!))
+            mTextInputLayout.counterMaxLength = mCounterMaxLength!!
         }
         mTextInputEditText.filters = filterList.toTypedArray()
     }

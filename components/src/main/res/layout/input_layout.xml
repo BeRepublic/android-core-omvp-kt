@@ -5,10 +5,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.seat.mobile.components.TextAdvancedInputLayout
+    <com.omvp.components.TextAdvancedInputLayout
         android:id="@+id/input_layout"
         style="@style/Input.TextInputLayout"
-        android:layout_marginBottom="-14dp">
+        android:layout_marginBottom="-10dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/input_text"
@@ -17,9 +17,9 @@
             android:layout_height="wrap_content"
             android:minHeight="40dp" />
 
-    </com.seat.mobile.components.TextAdvancedInputLayout>
+    </com.omvp.components.TextAdvancedInputLayout>
 
-    <me.grantland.widget.AutofitTextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/hint_fixed_to_left"
         style="@style/CodeFont.Small.Black"
         android:layout_width="wrap_content"

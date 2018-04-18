@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi
 import android.view.View
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.home.HomeActivity
+import com.omvp.app.ui.samples.inputs.SampleInputActivity
 
 import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.list.SampleListActivity
@@ -25,8 +26,7 @@ import com.raxdenstudios.navigation.NavigationManager
 class NavigationHelper(private val mActivity: Activity) {
 
     private val extras: Bundle by lazy {
-        if (mActivity.intent != null && mActivity.intent.extras != null)
-            mActivity.intent.extras else Bundle()
+        mActivity.intent?.extras ?: Bundle()
     }
 
     fun launchSplash() {
@@ -142,10 +142,10 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchInputViewSample() {
-//        NavigationManager.Builder(mActivity)
-//                .putData(getExtras())
-//                .navigateTo(SampleInputActivity::class.java)
-//                .launch()
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateTo(SampleInputActivity::class.java)
+                .launch()
     }
 
     fun launchSocialViewSample() {

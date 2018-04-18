@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="NewApi">
+
+    <!-- Content styles -->
+
+    <style name="BaseScrollView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:background">@color/content_bg</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <!-- ========================================================================= -->
+
+    <style name="ScrollView" parent="BaseScrollView">
+
+    </style>
+
+
+    <style name="ScrollView.Input">
+        <item name="android:background">@null</item>
+    </style>
+
+</resources>

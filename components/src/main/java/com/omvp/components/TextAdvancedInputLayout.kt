@@ -17,6 +17,8 @@ import timber.log.Timber
 
 class TextAdvancedInputLayout : TextInputLayout {
 
+    var mErrorGravity = Gravity.END
+
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
@@ -32,9 +34,9 @@ class TextAdvancedInputLayout : TextInputLayout {
             val errorViewField = TextInputLayout::class.java.getDeclaredField("mErrorView")
             errorViewField.isAccessible = true
             val errorView = errorViewField.get(this) as TextView
-            errorView.gravity = Gravity.RIGHT
+            errorView.gravity = mErrorGravity
             val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            params.gravity = Gravity.END
+            params.gravity = mErrorGravity
             errorView.layoutParams = params
 
         } catch (e: Exception) {

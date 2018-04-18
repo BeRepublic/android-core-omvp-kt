@@ -31,6 +31,11 @@
         <attr name="mask" format="string" />
         <attr name="notMaskedSymbol" format="string" />
         <attr name="editable" format="boolean" />
+        <attr name="errorGravity">
+            <flag name="center" value="0x11"/>
+            <flag name="start" value="0x00800003"/>
+            <flag name="end" value="0x00800005"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="PagerIndicator">

@@ -14,6 +14,8 @@ import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.detail.SampleDetailActivityModule
 import com.omvp.app.ui.samples.home.HomeActivity
 import com.omvp.app.ui.samples.home.HomeActivityModule
+import com.omvp.app.ui.samples.inputs.SampleInputActivity
+import com.omvp.app.ui.samples.inputs.SampleInputActivityModule
 import com.omvp.app.ui.samples.list.SampleListActivity
 import com.omvp.app.ui.samples.list.SampleListActivityModule
 import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
@@ -167,4 +169,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(VibrationActivityModule::class))
     internal abstract fun vibrationActivity(): VibrationActivity
+
+    /**
+     * Provides the injector for the [SampleInputActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleInputActivityModule::class))
+    internal abstract fun sampleInputActivity(): SampleInputActivity
 }
