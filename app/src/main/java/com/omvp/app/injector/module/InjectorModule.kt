@@ -18,6 +18,8 @@ import com.omvp.app.ui.samples.list.SampleListActivity
 import com.omvp.app.ui.samples.list.SampleListActivityModule
 import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
 import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivityModule
+import com.omvp.app.ui.samples.locale.SampleLocaleActivity
+import com.omvp.app.ui.samples.locale.SampleLocaleActivityModule
 import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivityModule
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
@@ -147,4 +149,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleDetailActivityModule::class))
     internal abstract fun sampleDetailActivity(): SampleDetailActivity
+
+    /**
+     * Provides the injector for the [SampleDetailActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleLocaleActivityModule::class))
+    internal abstract fun sampleLocaleActivity(): SampleLocaleActivity
 }

@@ -4,10 +4,10 @@ import android.net.Uri
 
 import com.raxdenstudios.square.interceptor.InterceptorCallback
 
-interface TakePictureInterceptorCallback : InterceptorCallback {
+interface TakePictureListener : InterceptorCallback {
 
     fun onWorkingPictureProgress(workingProgress: Boolean)
 
-    fun onPictureRetrieved(bitmap: Uri)
+    fun onPictureRetrieved(picture: Uri)
 
 }

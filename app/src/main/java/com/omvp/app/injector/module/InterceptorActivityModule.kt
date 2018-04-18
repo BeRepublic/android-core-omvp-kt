@@ -23,7 +23,7 @@ import com.omvp.app.interceptor.permission.PermissionInterceptor
 import com.omvp.app.interceptor.permission.PermissionInterceptorCallback
 import com.omvp.app.interceptor.takePicture.TakePictureActivityInterceptor
 import com.omvp.app.interceptor.takePicture.TakePictureInterceptor
-import com.omvp.app.interceptor.takePicture.TakePictureInterceptorCallback
+import com.omvp.app.interceptor.takePicture.TakePictureListener
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutActivityInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutInterceptorCallback
@@ -118,7 +118,7 @@ object InterceptorActivityModule {
     @Provides
     @PerActivity
     fun provideGalleryInterceptor(activity: Activity): TakePictureInterceptor {
-        return TakePictureActivityInterceptor(activity, activity as TakePictureInterceptorCallback)
+        return TakePictureActivityInterceptor(activity)
     }
 
     @JvmStatic

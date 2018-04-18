@@ -136,6 +136,11 @@
             android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".ui.samples.locale.SampleLocaleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Sample"
+            android:windowSoftInputMode="adjustPan" />
 
     </application>
 

@@ -4,6 +4,6 @@ import com.raxdenstudios.square.interceptor.Interceptor
 
 interface TakePictureInterceptor : Interceptor {
 
-    fun takePicture(chooserTitle: String)
+    fun takePicture(chooserTitle: String, listener: TakePictureListener)
 
 }

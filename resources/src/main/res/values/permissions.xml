@@ -1,0 +1,21 @@
+<resources>
+    <string name="camera_permission_title">¿Porqué necesitamos que autorices el acceso a la cámara?</string>
+    <string name="camera_permission_description">Para poder cambiar tu foto a través de la cámara necesitamos poder acceder a ella.</string>
+    <string name="camera_permission_positive_button">¡Entendido!</string>
+
+    <string name="location_permission_title">¿Porqué necesitamos que autorices la geolocalización?</string>
+    <string name="location_permission_description">Para poder mostrarte los servicios cercanos a tu posición necesitamos saber donde estas.</string>
+    <string name="location_permission_positive_button">¡Entendido!</string>
+    <string name="location_permission_negative_button">Salir</string>
+
+    <string name="location_permission_force_title">Fix in Settings</string>
+    <string name="location_permission_force_description">You have forcefully denied some of the required permissions for this action. Please open settings, go to permissions and allow them.</string>
+    <string name="location_permission_force_positive_button">Settings</string>
+    <string name="location_permission_force_negative_button">Cancel</string>
+
+    <string name="location_permission_settings_title">Fix in Settings</string>
+    <string name="location_permission_settings_description">Location settings are inadequate, and cannot be fixed here.</string>
+    <string name="location_permission_settings_positive_button">Settings</string>
+    <string name="location_permission_settings_negative_button">Cancel</string>
+
+</resources>

@@ -22,9 +22,7 @@ class SampleTakePictureFragment : BaseViewFragment<SampleTakePicturePresenter,
     @BindView(R.id.take_picture_image)
     internal lateinit var mTakePictureImg: AppCompatImageView
 
-    interface FragmentCallback : BaseViewFragmentCallback {
-        fun onGalleryImageRequested()
-    }
+    interface FragmentCallback : BaseViewFragmentCallback
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
@@ -38,11 +36,11 @@ class SampleTakePictureFragment : BaseViewFragment<SampleTakePicturePresenter,
 
     @OnClick(R.id.take_picture_image)
     fun onTakePictureImagePressed(view: View) {
-        mCallback.onGalleryImageRequested()
+        mPresenter.takePictureImage()
     }
 
-    fun pictureRetrieved(uri: Uri) {
-        ImageHelper.loadImageUser(activity, uri, mTakePictureImg, null)
+    override fun pictureRetrieved(picture: Uri) {
+        ImageHelper.loadImageUser(activity, picture, mTakePictureImg, null)
     }
 
     companion object {

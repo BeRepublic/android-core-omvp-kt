@@ -1,21 +1,24 @@
 package com.omvp.app.interceptor.takePicture
 
+import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
-
+import com.omvp.app.R
 import com.omvp.app.base.reactivex.BaseDisposableSingleObserver
 import com.omvp.app.util.ImagePickerUtil
-import com.raxdenstudios.square.interceptor.ActivityInterceptor
-
+import com.raxdenstudios.square.interceptor.ActivitySimpleInterceptor
+import com.tbruyelle.rxpermissions2.Permission
+import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Single
-import io.reactivex.SingleEmitter
-import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.observers.DisposableObserver
+import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 
 /**
@@ -34,18 +37,19 @@ import io.reactivex.schedulers.Schedulers
  *
  */
 
-class TakePictureActivityInterceptor(activity: Activity, callback: TakePictureInterceptorCallback) :
-        ActivityInterceptor<TakePictureInterceptorCallback>(activity, callback),
+class TakePictureActivityInterceptor(activity: Activity) : ActivitySimpleInterceptor(activity),
         TakePictureInterceptor {
 
-    private val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var mRxPermissions: RxPermissions = RxPermissions(activity)
+    private var mCompositeDisposable: CompositeDisposable = CompositeDisposable()
+    private var mListener: TakePictureListener? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE) {
             retrieveImageFromResult(requestCode, resultCode, data)
         } else {
-            workingPictureProgress(false)
+            mListener?.onWorkingPictureProgress(false)
         }
     }
 
@@ -57,41 +61,70 @@ class TakePictureActivityInterceptor(activity: Activity, callback: TakePictureIn
         }
     }
 
-    override fun takePicture(chooserTitle: String) {
-        val d = processTakePictureIntent(chooserTitle)
+    override fun takePicture(chooserTitle: String, listener: TakePictureListener) {
+        mCompositeDisposable.add(mRxPermissions.requestEach(Manifest.permission.CAMERA)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : BaseDisposableSingleObserver<Intent>(mActivity) {
-                    override fun onError(code: Int, title: String?, description: String?) {
-                        workingPictureProgress(false)
-                    }
-
+                .subscribeWith(object : DisposableObserver<Permission>() {
                     override fun onStart() {
-                        workingPictureProgress(true)
+                        mListener = listener
+                        mListener?.onWorkingPictureProgress(true)
                     }
 
-                    override fun onSuccess(@NonNull intent: Intent) {
-                        launchActivityForResult(intent)
+                    override fun onNext(permission: Permission) {
+                        handlePermissionResult(permission, chooserTitle)
                     }
-                })
-        mCompositeDisposable.add(d)
+
+                    override fun onError(e: Throwable) {
+                        mListener?.onWorkingPictureProgress(false)
+                        Timber.e(e)
+                    }
+
+                    override fun onComplete() {}
+
+                }))
+    }
+
+    private fun handlePermissionResult(permission: Permission, chooserTitle: String) {
+        if (permission.granted) {
+            mCompositeDisposable.add(processTakePictureIntent(chooserTitle)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(object : DisposableSingleObserver<Intent>() {
+                        override fun onSuccess(intent: Intent) {
+                            mListener?.onWorkingPictureProgress(false)
+                            launchActivityForResult(intent)
+                        }
+
+                        override fun onError(e: Throwable) {
+                            mListener?.onWorkingPictureProgress(false)
+                            Timber.e(e)
+                        }
+                    }))
+        } else if (permission.shouldShowRequestPermissionRationale) {
+            AlertDialog.Builder(mActivity)
+                    .setTitle(R.string.camera_permission_title)
+                    .setMessage(R.string.camera_permission_description)
+                    .setPositiveButton(R.string.camera_permission_positive_button, null)
+                    .create()
+                    .show()
+        }
     }
 
     private fun retrieveImageFromResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val d = processImageFromResult(requestCode, resultCode, data)
+        mCompositeDisposable.add(processImageFromResult(requestCode, resultCode, data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : BaseDisposableSingleObserver<Uri>(mActivity) {
                     override fun onError(code: Int, title: String?, description: String?) {
-                        workingPictureProgress(false)
+                        mListener?.onWorkingPictureProgress(false)
                     }
 
                     override fun onSuccess(@NonNull uri: Uri) {
-                        workingPictureProgress(false)
-                        pictureRetrieved(uri)
+                        mListener?.onWorkingPictureProgress(false)
+                        mListener?.onPictureRetrieved(uri)
                     }
-                })
-        mCompositeDisposable.add(d)
+                }))
     }
 
     private fun launchActivityForResult(intent: Intent) {
@@ -100,23 +133,11 @@ class TakePictureActivityInterceptor(activity: Activity, callback: TakePictureIn
         }
     }
 
-    private fun pictureRetrieved(uri: Uri) {
-        if (mCallback != null) {
-            mCallback.onPictureRetrieved(uri)
-        }
-    }
-
-    private fun workingPictureProgress(workingProgress: Boolean) {
-        if (mCallback != null) {
-            mCallback.onWorkingPictureProgress(workingProgress)
-        }
-    }
-
     private fun processImageFromResult(requestCode: Int, resultCode: Int, data: Intent?): Single<Uri> {
         return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    val uri = data?.let { ImagePickerUtil.getUriFromResult(mContext, resultCode, it) }
+                    val uri = ImagePickerUtil.getUriFromResult(mContext, resultCode, data)
                     if (uri != null) {
                         emitter.onSuccess(uri)
                     }
@@ -146,6 +167,4 @@ class TakePictureActivityInterceptor(activity: Activity, callback: TakePictureIn
 
         private const val REQUEST_IMAGE_CAPTURE = 10023
     }
-
-
 }

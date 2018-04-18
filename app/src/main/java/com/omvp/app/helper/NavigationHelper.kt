@@ -12,6 +12,7 @@ import com.omvp.app.ui.samples.home.HomeActivity
 import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.list.SampleListActivity
 import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
+import com.omvp.app.ui.samples.locale.SampleLocaleActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
@@ -126,10 +127,10 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchSampleLocale() {
-//        NavigationManager.Builder(mActivity)
-//                .putData(getExtras())
-//                .navigateTo(SampleLocaleActivity::class.java)
-//                .launch()
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateTo(SampleLocaleActivity::class.java)
+                .launch()
     }
 
     fun launchVibrationSample() {

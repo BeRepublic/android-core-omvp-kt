@@ -110,7 +110,7 @@ object ImagePickerUtil {
         return selectedImage?.path
     }
 
-    fun getUriFromResult(context: Context, resultCode: Int, intent: Intent): Uri? {
+    fun getUriFromResult(context: Context, resultCode: Int, intent: Intent?): Uri? {
         Timber.d("getUriFromResult, resultCode: %d", resultCode)
         if (resultCode == Activity.RESULT_OK) {
             val selectedImage: Uri?
@@ -120,7 +120,7 @@ object ImagePickerUtil {
                 Uri.fromFile(imageFile)
             } else {
                 /** ALBUM  */
-                intent.data
+                intent?.data
             }
             Timber.d("selectedImage: %s", selectedImage?.toString() ?: "empty image")
             return selectedImage
