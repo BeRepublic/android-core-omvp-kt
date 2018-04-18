@@ -26,6 +26,8 @@ import com.omvp.app.ui.samples.location.SampleLocationActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivityModule
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivityModule
+import com.omvp.app.ui.samples.notice_dialog.SampleNoticeActivity
+import com.omvp.app.ui.samples.notice_dialog.SampleNoticeActivityModule
 import com.omvp.app.ui.samples.pager.SamplePagerActivity
 import com.omvp.app.ui.samples.pager.SamplePagerActivityModule
 import com.omvp.app.ui.samples.simple.SampleActivity
@@ -187,4 +189,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleSocialActivityModule::class))
     internal abstract fun sampleSocialActivity(): SampleSocialActivity
+
+    /**
+     * Provides the injector for the [SampleNoticeActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(SampleNoticeActivityModule::class))
+    internal abstract fun sampleNoticeActivity(): SampleNoticeActivity
 }

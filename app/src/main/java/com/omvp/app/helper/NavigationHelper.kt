@@ -6,22 +6,22 @@ import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.view.View
+import com.omvp.app.interceptor.operation.OperationBroadcastActivityInterceptor
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.home.HomeActivity
 import com.omvp.app.ui.samples.inputs.SampleInputActivity
-
-import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.list.SampleListActivity
 import com.omvp.app.ui.samples.listhorizontal.SampleListHorizontalActivity
 import com.omvp.app.ui.samples.locale.SampleLocaleActivity
 import com.omvp.app.ui.samples.location.SampleLocationActivity
-import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.multiple.SampleMultipleActivity
+import com.omvp.app.ui.samples.notice_dialog.SampleNoticeActivity
 import com.omvp.app.ui.samples.pager.SamplePagerActivity
+import com.omvp.app.ui.samples.simple.SampleActivity
 import com.omvp.app.ui.samples.social.SampleSocialActivity
+import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity
 import com.omvp.app.ui.samples.vibration.VibrationActivity
 import com.omvp.app.ui.splash.SplashActivity
-import com.omvp.app.util.OperationBroadcastManager
 import com.raxdenstudios.navigation.NavigationManager
 
 class NavigationHelper(private val mActivity: Activity) {
@@ -31,7 +31,7 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchSplash() {
-        OperationBroadcastManager.finishAllActivities(mActivity)
+        OperationBroadcastActivityInterceptor.finishAllActivities(mActivity)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
                 .navigateTo(SplashActivity::class.java)
@@ -39,7 +39,7 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchHomeAndFinishPreviousViews() {
-        OperationBroadcastManager.finishAllActivities(mActivity)
+        OperationBroadcastActivityInterceptor.finishAllActivities(mActivity)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
                 .navigateTo(HomeActivity::class.java)
@@ -157,10 +157,10 @@ class NavigationHelper(private val mActivity: Activity) {
     }
 
     fun launchNoticeDialogViewSample() {
-//        NavigationManager.Builder(mActivity)
-//                .putData(getExtras())
-//                .navigateTo(SampleNoticeActivity::class.java)
-//                .launch()
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateTo(SampleNoticeActivity::class.java)
+                .launch()
     }
 
     fun launchBottomBarSample() {

@@ -180,6 +180,12 @@
             android:theme="@style/AppTheme.Sample"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".ui.samples.notice_dialog.SampleNoticeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Sample"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

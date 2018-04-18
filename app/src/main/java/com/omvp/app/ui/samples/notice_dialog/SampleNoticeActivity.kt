@@ -1,36 +1,29 @@
-package com.omvp.app.ui.samples.takepicture
+package com.omvp.app.ui.samples.notice_dialog
 
-import android.net.Uri
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.View
+
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
-import com.omvp.app.interceptor.takePicture.TakePictureInterceptor
-import com.omvp.app.interceptor.takePicture.TakePictureListener
-import com.omvp.app.ui.samples.takepicture.view.SampleTakePictureFragment
+import com.omvp.app.ui.samples.notice_dialog.view.SampleNoticeFragment
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
+
 import javax.inject.Inject
 
-class SampleTakePictureActivity : BaseFragmentActivity(),
-        SampleTakePictureFragment.FragmentCallback,
-        ToolbarInterceptorCallback,
-        TakePictureListener,
-        InjectFragmentInterceptorCallback<SampleTakePictureFragment> {
+class SampleNoticeActivity : BaseFragmentActivity(), SampleNoticeFragment.FragmentCallback, ToolbarInterceptorCallback, InjectFragmentInterceptorCallback<SampleNoticeFragment> {
 
     @Inject
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
     @Inject
     internal lateinit var mInjectFragmentInterceptor: InjectFragmentInterceptor
-    @Inject
-    internal lateinit var mTakePictureInterceptor: TakePictureInterceptor
 
     private lateinit var mToolbar: Toolbar
-    private lateinit var mFragment: SampleTakePictureFragment
+    private lateinit var mFragment: SampleNoticeFragment
 
     // =============== ToolbarInterceptorCallback ==================================================
 
@@ -48,11 +41,11 @@ class SampleTakePictureActivity : BaseFragmentActivity(),
         return findViewById(R.id.content)
     }
 
-    override fun onCreateFragment(): SampleTakePictureFragment {
-        return SampleTakePictureFragment.newInstance(mExtras)
+    override fun onCreateFragment(): SampleNoticeFragment {
+        return SampleNoticeFragment.newInstance(mExtras)
     }
 
-    override fun onFragmentLoaded(fragment: SampleTakePictureFragment) {
+    override fun onFragmentLoaded(fragment: SampleNoticeFragment) {
         mFragment = fragment
     }
 
@@ -62,19 +55,5 @@ class SampleTakePictureActivity : BaseFragmentActivity(),
         super.setupInterceptors(interceptorList)
         interceptorList.add(mToolbarInterceptor)
         interceptorList.add(mInjectFragmentInterceptor)
-        interceptorList.add(mTakePictureInterceptor)
-    }
-
-    // ========= TakePictureInterceptorCallback ====================================================
-    override fun onWorkingPictureProgress(workingProgress: Boolean) {
-        if (workingProgress) {
-            showProgress(0f, "")
-        } else {
-            hideProgress()
-        }
-    }
-
-    override fun onPictureRetrieved(uri: Uri) {
-        mFragment.pictureRetrieved(uri)
     }
 }

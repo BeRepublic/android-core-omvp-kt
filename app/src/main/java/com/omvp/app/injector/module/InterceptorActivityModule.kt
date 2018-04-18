@@ -2,7 +2,6 @@ package com.omvp.app.injector.module
 
 import android.app.Activity
 import android.app.Fragment
-
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.location.LocationRequest
 import com.omvp.app.injector.scope.PerActivity
@@ -15,15 +14,10 @@ import com.omvp.app.interceptor.google.GoogleApiClientInterceptor
 import com.omvp.app.interceptor.google.GoogleApiClientInterceptorCallback
 import com.omvp.app.interceptor.location.LocationActivityInterceptor
 import com.omvp.app.interceptor.location.LocationInterceptor
-import com.omvp.app.interceptor.location.LocationInterceptorCallback
 import com.omvp.app.interceptor.operation.OperationBroadcastActivityInterceptor
 import com.omvp.app.interceptor.operation.OperationBroadcastInterceptor
-import com.omvp.app.interceptor.permission.PermissionActivityInterceptor
-import com.omvp.app.interceptor.permission.PermissionInterceptor
-import com.omvp.app.interceptor.permission.PermissionInterceptorCallback
 import com.omvp.app.interceptor.takePicture.TakePictureActivityInterceptor
 import com.omvp.app.interceptor.takePicture.TakePictureInterceptor
-import com.omvp.app.interceptor.takePicture.TakePictureListener
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutActivityInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutInterceptorCallback
@@ -41,7 +35,6 @@ import com.raxdenstudios.square.interceptor.commons.network.NetworkInterceptor
 import com.raxdenstudios.square.interceptor.commons.network.NetworkInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
-
 import dagger.Module
 import dagger.Provides
 
@@ -97,14 +90,7 @@ object InterceptorActivityModule {
     @Provides
     @PerActivity
     fun provideLocationInterceptor(activity: Activity, locationRequest: LocationRequest): LocationInterceptor {
-        return LocationActivityInterceptor(activity, locationRequest, activity as LocationInterceptorCallback)
-    }
-
-    @JvmStatic
-    @Provides
-    @PerActivity
-    fun providePermissionInterceptor(activity: Activity): PermissionInterceptor {
-        return PermissionActivityInterceptor(activity, activity as PermissionInterceptorCallback)
+        return LocationActivityInterceptor(activity, locationRequest)
     }
 
     @JvmStatic
