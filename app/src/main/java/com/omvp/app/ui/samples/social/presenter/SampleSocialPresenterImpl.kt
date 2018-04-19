@@ -11,17 +11,17 @@ internal constructor(sampleSocialView: SampleSocialView) : BasePresenter<SampleS
         SampleSocialPresenter, SocialAuthManager.SocialAuthCallback {
 
     @Inject
-    internal lateinit var  mSocialAuthManager : SocialAuthManager
+    internal lateinit var mSocialAuthManager: SocialAuthManager
 
-    internal var mSocialAuth : SocialAuthManager.SocialAuth? = null
+    internal var mSocialAuth: SocialAuthManager.SocialAuth? = null
 
-    internal var mSocialAuthData : SocialAuthManager.SocialAuthData? = null
+    internal var mSocialAuthData: SocialAuthManager.SocialAuthData? = null
 
-    override fun onViewLoaded () {
+    override fun onViewLoaded() {
         super.onViewLoaded()
     }
 
-    override fun onSignInSuccess (socialAuth: SocialAuthManager.SocialAuth, socialAuthData: SocialAuthManager.SocialAuthData) {
+    override fun onSignInSuccess(socialAuth: SocialAuthManager.SocialAuth, socialAuthData: SocialAuthManager.SocialAuthData) {
         mSocialAuth = socialAuth
         mSocialAuthData = socialAuthData
         when (mSocialAuth) {
@@ -32,7 +32,7 @@ internal constructor(sampleSocialView: SampleSocialView) : BasePresenter<SampleS
         showHideSocialButtons(false)
     }
 
-    override fun onSignInFailed (socialAuth: SocialAuthManager.SocialAuth, message: String) {
+    override fun onSignInFailed(socialAuth: SocialAuthManager.SocialAuth, message: String) {
 
     }
 
@@ -46,12 +46,7 @@ internal constructor(sampleSocialView: SampleSocialView) : BasePresenter<SampleS
 
     override fun logout() {
         mSocialAuthManager.logout()
-        val data = SocialAuthManager.SocialAuthData()
-        data.email = ""
-        data.name = ""
-        data.photo = ""
-        data.token = ""
-        drawData(data)
+        drawData(SocialAuthManager.SocialAuthData("", "", "", ""))
         showHideSocialButtons(true)
     }
 
@@ -64,17 +59,13 @@ internal constructor(sampleSocialView: SampleSocialView) : BasePresenter<SampleS
     }
 
     private fun drawData(data: SocialAuthManager.SocialAuthData) {
-        if (mView != null) {
-            mView!!.drawImage(data.photo)
-            mView!!.drawName(data.name)
-            mView!!.drawEmail(data.email)
-        }
+        mView?.drawImage(data.photo)
+        mView?.drawName(data.name)
+        mView?.drawEmail(data.email)
     }
 
     private fun showHideSocialButtons(show: Boolean) {
-        if (mView != null) {
-            mView!!.showHideSocialButtons(show)
-        }
+        mView?.showHideSocialButtons(show)
     }
 
 }
