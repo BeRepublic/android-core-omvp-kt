@@ -10,7 +10,7 @@ ext {
     kotlin_version = '1.2.71'
 
     androidCommonsVersion = '3.0.34'        // https://github.com/raxden/commons
-    androidNavigationVersion = '3.0.0'      // https://github.com/raxden/android-navigation
+    androidNavigationVersion = '4.0.7'      // https://github.com/raxden/android-navigation
     androidCronsVersion = '3.0.11'          // https://github.com/raxden/android-crons
     androidPreferencesVersion = '3.0.4'     // https://github.com/raxden/android-preferences
     androidRecyclerVersion = '3.0.7'        // https://github.com/raxden/android-recycler

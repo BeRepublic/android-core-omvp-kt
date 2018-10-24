@@ -36,7 +36,7 @@ class NavigationHelper(private val mActivity: Activity) {
         OperationBroadcastActivityInterceptor.finishAllActivities(mActivity)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SplashActivity::class.java)
+                .navigateToKClass(SplashActivity::class)
                 .launch()
     }
 
@@ -44,14 +44,14 @@ class NavigationHelper(private val mActivity: Activity) {
         OperationBroadcastActivityInterceptor.finishAllActivities(mActivity)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(HomeActivity::class.java)
+                .navigateToKClass(HomeActivity::class)
                 .launch()
     }
 
     fun launchSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleActivity::class.java)
+                .navigateToKClass(SampleActivity::class)
                 .launch()
     }
 
@@ -60,7 +60,7 @@ class NavigationHelper(private val mActivity: Activity) {
         extras.putString(String::class.java.simpleName, sampleItemId)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleActivity::class.java)
+                .navigateToKClass(SampleActivity::class)
                 .launch()
     }
 
@@ -69,7 +69,7 @@ class NavigationHelper(private val mActivity: Activity) {
         extras.putString(String::class.java.simpleName, sampleItemId)
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleDetailActivity::class.java)
+                .navigateToKClass(SampleDetailActivity::class)
                 .launch()
     }
 
@@ -83,42 +83,42 @@ class NavigationHelper(private val mActivity: Activity) {
 
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleDetailActivity::class.java, activityOptions.toBundle())
+                .navigateToKClass(SampleDetailActivity::class, activityOptions.toBundle())
                 .launch()
     }
 
     fun launchSampleList() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleListActivity::class.java)
+                .navigateToKClass(SampleListActivity::class)
                 .launch()
     }
 
     fun launchSampleHorizontalList() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleListHorizontalActivity::class.java)
+                .navigateToKClass(SampleListHorizontalActivity::class)
                 .launch()
     }
 
     fun launchSamplePager() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SamplePagerActivity::class.java)
+                .navigateToKClass(SamplePagerActivity::class)
                 .launch()
     }
 
     fun launchSampleMap() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleMultipleActivity::class.java)
+                .navigateToKClass(SampleMultipleActivity::class)
                 .launch()
     }
 
     fun launchSampleLocation() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleLocationActivity::class.java)
+                .navigateToKClass(SampleLocationActivity::class)
                 .launch()
     }
 
@@ -126,56 +126,56 @@ class NavigationHelper(private val mActivity: Activity) {
     fun launchSampleTakePicture() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleTakePictureActivity::class.java)
+                .navigateToKClass(SampleTakePictureActivity::class)
                 .launch()
     }
 
     fun launchSampleLocale() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleLocaleActivity::class.java)
+                .navigateToKClass(SampleLocaleActivity::class)
                 .launch()
     }
 
     fun launchVibrationSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(VibrationActivity::class.java)
+                .navigateToKClass(VibrationActivity::class)
                 .launch()
     }
 
     fun launchInputViewSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleInputActivity::class.java)
+                .navigateToKClass(SampleInputActivity::class)
                 .launch()
     }
 
     fun launchSocialViewSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleSocialActivity::class.java)
+                .navigateToKClass(SampleSocialActivity::class)
                 .launch()
     }
 
     fun launchNoticeDialogViewSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleNoticeActivity::class.java)
+                .navigateToKClass(SampleNoticeActivity::class)
                 .launch()
     }
 
     fun launchBottomBarSample() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(BottomNavigationActivity::class.java)
+                .navigateToKClass(BottomNavigationActivity::class)
                 .launch()
     }
 
     fun launchAuthPhoneView() {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
-                .navigateTo(SampleRequestPhoneActivity::class.java)
+                .navigateToKClass(SampleRequestPhoneActivity::class)
                 .launch()
     }
 }
