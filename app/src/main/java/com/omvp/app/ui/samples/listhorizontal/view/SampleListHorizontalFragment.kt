@@ -77,7 +77,7 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
     }
 
     private fun setupViews() {
-        mAdapter = SampleListAdapter(activity,
+        mAdapter = SampleListAdapter(context!!,
                 mPresenter as SampleListAdapter.AdapterCallback)
 
         val manager = LinearLayoutManager(

@@ -1,10 +1,10 @@
 package com.omvp.app.base
 
 import android.app.Activity
-import android.app.FragmentManager
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
+import android.support.v4.app.FragmentManager
 import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.analytics.FirebaseAnalytics

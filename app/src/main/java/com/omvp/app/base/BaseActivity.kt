@@ -1,8 +1,8 @@
 package com.omvp.app.base
 
-import android.app.Fragment
 import android.content.res.Resources
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.View
 import com.omvp.app.helper.AnimationHelper
 import com.omvp.app.helper.DialogHelper
@@ -16,7 +16,7 @@ import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflat
 import com.raxdenstudios.square.interceptor.commons.autoinflatelayout.AutoInflateLayoutInterceptorCallback
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasFragmentInjector
+import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
 /**
@@ -24,7 +24,7 @@ import javax.inject.Inject
  */
 abstract class BaseActivity : SquareActivity(),
         AutoInflateLayoutInterceptorCallback,
-        HasFragmentInjector {
+        HasSupportFragmentInjector {
 
     @Inject
     lateinit var mResources: Resources
@@ -71,7 +71,7 @@ abstract class BaseActivity : SquareActivity(),
 
     // =============== HasFragmentInjector =========================================================
 
-    override fun fragmentInjector() = mFragmentInjector
+    override fun supportFragmentInjector() = mFragmentInjector
 
     // =============== Support methods =============================================================
 

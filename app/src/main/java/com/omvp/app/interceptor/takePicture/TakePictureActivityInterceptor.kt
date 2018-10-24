@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
+import android.support.v4.app.FragmentActivity
 import com.omvp.app.R
 import com.omvp.app.base.reactivex.BaseDisposableSingleObserver
 import com.omvp.app.util.ImagePickerUtil
@@ -37,7 +38,7 @@ import timber.log.Timber
  *
  */
 
-class TakePictureActivityInterceptor(activity: Activity) : ActivitySimpleInterceptor(activity),
+class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpleInterceptor(activity),
         TakePictureInterceptor {
 
     private var mRxPermissions: RxPermissions = RxPermissions(activity)

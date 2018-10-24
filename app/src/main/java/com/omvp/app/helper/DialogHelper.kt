@@ -1,11 +1,11 @@
 package com.omvp.app.helper
 
 import android.app.Activity
-import android.app.DialogFragment
-import android.app.Fragment
-import android.app.FragmentManager
 import android.content.res.Resources
 import android.os.Bundle
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.view.View
 import com.omvp.app.dialog.notice.view.NoticeDialogFragment
 

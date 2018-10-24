@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.provider.Settings
+import android.support.v4.app.FragmentActivity
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -27,7 +28,7 @@ import timber.log.Timber
 import java.util.*
 
 class LocationActivityInterceptor(
-        activity: Activity,
+        activity: FragmentActivity,
         locationRequest: LocationRequest
 ) : ActivitySimpleInterceptor(activity), LocationInterceptor {
 

@@ -1,7 +1,8 @@
 package com.omvp.app.base.mvp
 
 import android.app.Activity
-import android.app.FragmentManager
+import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
 import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.dialog.notice.view.NoticeDialogFragment
 import com.omvp.app.dialog.notice.view.NoticeDialogFragmentModule
@@ -53,7 +54,7 @@ abstract class BaseFragmentActivityModule {
         @Provides
         @PerActivity
         internal fun activityFragmentManager(activity: Activity): FragmentManager {
-            return activity.fragmentManager
+            return (activity as FragmentActivity).supportFragmentManager
         }
     }
 }

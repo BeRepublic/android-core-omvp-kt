@@ -3,12 +3,10 @@ package com.omvp.app.injector.component
 import com.omvp.app.base.BaseApplication
 import com.omvp.app.base.BaseApplicationModule
 import com.omvp.app.injector.module.InjectorModule
-
-import javax.inject.Singleton
-
 import dagger.Component
-import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
+import dagger.android.support.AndroidSupportInjectionModule
+import javax.inject.Singleton
 
 /**
  * Injects application dependencies.
@@ -55,7 +53,12 @@ import dagger.android.AndroidInjector
  *
  */
 @Singleton
-@Component(modules = arrayOf(AndroidInjectionModule::class, BaseApplicationModule::class, InjectorModule::class))
+@Component(modules = arrayOf(
+        AndroidSupportInjectionModule::class,
+//        AndroidInjectionModule::class,
+        BaseApplicationModule::class,
+        InjectorModule::class)
+)
 interface ApplicationComponent : AndroidInjector<BaseApplication> {
 
     @Component.Builder

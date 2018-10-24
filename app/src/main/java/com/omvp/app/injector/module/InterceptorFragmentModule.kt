@@ -1,8 +1,7 @@
 package com.omvp.app.injector.module
 
-import android.app.DialogFragment
-import android.app.Fragment
-
+import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import com.omvp.app.injector.scope.PerFragment
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewDialogFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewFragmentInterceptor

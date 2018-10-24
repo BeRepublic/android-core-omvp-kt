@@ -1,7 +1,8 @@
 package com.omvp.app.injector.module
 
 import android.app.Activity
-import android.app.Fragment
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.location.LocationRequest
 import com.omvp.app.injector.scope.PerActivity
@@ -48,77 +49,77 @@ object InterceptorActivityModule {
     @Provides
     @PerActivity
     fun autoInflateLayoutInterceptor(activity: Activity): AutoInflateLayoutInterceptor {
-        return AutoInflateLayoutActivityInterceptor(activity, activity as AutoInflateLayoutInterceptorCallback)
+        return AutoInflateLayoutActivityInterceptor(activity as FragmentActivity, activity as AutoInflateLayoutInterceptorCallback)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun injectFragmentInterceptor(activity: Activity): InjectFragmentInterceptor {
-        return InjectFragmentActivityInterceptor(activity, activity as InjectFragmentInterceptorCallback<*>)
+        return InjectFragmentActivityInterceptor(activity as FragmentActivity, activity as InjectFragmentInterceptorCallback<*>)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun networkInterceptor(activity: Activity): NetworkInterceptor {
-        return NetworkActivityInterceptor(activity, activity as NetworkInterceptorCallback)
+        return NetworkActivityInterceptor(activity as FragmentActivity, activity as NetworkInterceptorCallback)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun toolbarInterceptor(activity: Activity): ToolbarInterceptor {
-        return ToolbarActivityInterceptor(activity, activity as ToolbarInterceptorCallback)
+        return ToolbarActivityInterceptor(activity as FragmentActivity, activity as ToolbarInterceptorCallback)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun fragmentStatePagerInterceptor(activity: Activity): FragmentStatePagerInterceptor<*> {
-        return FragmentStatePagerActivityInterceptor<Fragment>(activity, activity as FragmentStatePagerInterceptorCallback<*>)
+        return FragmentStatePagerActivityInterceptor<Fragment>(activity as FragmentActivity, activity as FragmentStatePagerInterceptorCallback<*>)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun injectFragmentListInterceptor(activity: Activity): InjectFragmentListInterceptor {
-        return InjectFragmentListActivityInterceptor(activity, activity as InjectFragmentListInterceptorCallback<*>)
+        return InjectFragmentListActivityInterceptor(activity as FragmentActivity, activity as InjectFragmentListInterceptorCallback<*>)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun provideLocationInterceptor(activity: Activity, locationRequest: LocationRequest): LocationInterceptor {
-        return LocationActivityInterceptor(activity, locationRequest)
+        return LocationActivityInterceptor(activity as FragmentActivity, locationRequest)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun provideGoogleApiClientInterceptor(activity: Activity, googleSignInOptions: GoogleSignInOptions): GoogleApiClientInterceptor {
-        return GoogleApiClientActivityInterceptor(activity, googleSignInOptions, activity as GoogleApiClientInterceptorCallback)
+        return GoogleApiClientActivityInterceptor(activity as FragmentActivity, googleSignInOptions, activity as GoogleApiClientInterceptorCallback)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     fun provideGalleryInterceptor(activity: Activity): TakePictureInterceptor {
-        return TakePictureActivityInterceptor(activity)
+        return TakePictureActivityInterceptor(activity as FragmentActivity)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     internal fun operationBroadcastInterceptor(activity: Activity): OperationBroadcastInterceptor {
-        return OperationBroadcastActivityInterceptor(activity)
+        return OperationBroadcastActivityInterceptor(activity as FragmentActivity)
     }
 
     @JvmStatic
     @Provides
     @PerActivity
     internal fun provideAuthPhoneInterceptor(activity: Activity): AuthPhoneInterceptor {
-        return AuthPhoneActivityInterceptor(activity, activity as AuthPhoneInterceptorCallback)
+        return AuthPhoneActivityInterceptor(activity as FragmentActivity, activity as AuthPhoneInterceptorCallback)
     }
 
 }

@@ -1,7 +1,6 @@
 package com.omvp.app.ui.splash
 
 import android.app.Activity
-
 import com.omvp.app.base.BaseActivity
 import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.base.mvp.BaseFragmentActivityModule
@@ -9,7 +8,6 @@ import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.splash.view.SplashFragment
 import com.omvp.app.ui.splash.view.SplashFragmentModule
-
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

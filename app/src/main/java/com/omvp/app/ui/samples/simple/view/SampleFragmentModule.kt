@@ -1,10 +1,11 @@
-package com.omvp.app.ui.ktsamples.ktsample.view
+package com.omvp.app.ui.samples.simple.view
 
-import android.app.Fragment
-
+import android.support.v4.app.Fragment
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.ktsamples.ktsample.presenter.SamplePresenterModule
+import com.omvp.app.ui.ktsamples.ktsample.view.SampleFragment
+import com.omvp.app.ui.ktsamples.ktsample.view.SampleView
 
 import dagger.Binds
 import dagger.Module

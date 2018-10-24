@@ -1,7 +1,7 @@
 package com.omvp.app.interceptor
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import com.raxdenstudios.square.interceptor.ActivityInterceptor
@@ -11,9 +11,9 @@ import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCa
 
 class ToolbarActivityInterceptor : ActivityInterceptor<ToolbarInterceptorCallback>, ToolbarInterceptor {
 
-    constructor(activity: Activity) : super(activity)
+    constructor(activity: FragmentActivity) : super(activity)
 
-    constructor(activity: Activity, callback: ToolbarInterceptorCallback) : super(activity, callback)
+    constructor(activity: FragmentActivity, callback: ToolbarInterceptorCallback) : super(activity, callback)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

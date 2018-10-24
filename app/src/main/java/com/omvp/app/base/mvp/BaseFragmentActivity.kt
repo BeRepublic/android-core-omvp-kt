@@ -1,8 +1,8 @@
 package com.omvp.app.base.mvp
 
-import android.app.Fragment
-import android.app.FragmentManager
 import android.support.annotation.IdRes
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.AppCompatTextView
 import android.view.View
 import com.omvp.app.R

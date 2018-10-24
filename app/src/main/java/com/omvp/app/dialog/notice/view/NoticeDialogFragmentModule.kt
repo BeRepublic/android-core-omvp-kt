@@ -1,6 +1,6 @@
 package com.omvp.app.dialog.notice.view
 
-import android.app.Fragment
+import android.support.v4.app.Fragment
 
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.dialog.notice.presenter.NoticeDialogPresenterModule

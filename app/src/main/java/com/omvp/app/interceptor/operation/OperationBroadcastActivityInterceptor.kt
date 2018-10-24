@@ -6,19 +6,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-
+import android.support.v4.app.FragmentActivity
 import com.omvp.app.BuildConfig
 import com.raxdenstudios.commons.util.StringUtils
 import com.raxdenstudios.square.interceptor.ActivitySimpleInterceptor
-
-import java.util.ArrayList
-import java.util.Arrays
+import java.util.*
 
 /**
  * Created by Angel on 10/08/2017.
  */
 
-class OperationBroadcastActivityInterceptor(activity: Activity) : ActivitySimpleInterceptor(activity), OperationBroadcastInterceptor {
+class OperationBroadcastActivityInterceptor(activity: FragmentActivity) : ActivitySimpleInterceptor(activity), OperationBroadcastInterceptor {
 
     private val mOperationReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {

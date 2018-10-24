@@ -42,7 +42,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
 
     // =============== LifeCycle ===================================================================
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         mPresenter.onSaveView(outState)
     }
@@ -110,7 +110,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
     override fun onResume() {
         super.onResume()
         mPresenter.onResume()
-        mTrackerManager.trackScreen(this)
+//        mTrackerManager.trackScreen(this)
     }
 
     override fun onPause() {

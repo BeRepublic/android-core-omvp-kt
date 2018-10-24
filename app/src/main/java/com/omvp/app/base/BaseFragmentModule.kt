@@ -1,7 +1,7 @@
 package com.omvp.app.base
 
-import android.app.Fragment
-import android.app.FragmentManager
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.injector.module.InterceptorFragmentModule
 import com.omvp.app.injector.scope.PerFragment

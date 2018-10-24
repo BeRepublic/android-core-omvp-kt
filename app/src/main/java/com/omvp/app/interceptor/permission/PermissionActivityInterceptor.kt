@@ -1,19 +1,18 @@
 package com.omvp.app.interceptor.permission
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
+import android.support.v4.app.FragmentActivity
 import android.widget.Toast
-
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.util.PermissionUtil
 import com.raxdenstudios.square.interceptor.ActivityInterceptor
 
 
-class PermissionActivityInterceptor(activity: Activity, callback: PermissionInterceptorCallback) : ActivityInterceptor<PermissionInterceptorCallback>(activity, callback),
+class PermissionActivityInterceptor(activity: FragmentActivity, callback: PermissionInterceptorCallback) : ActivityInterceptor<PermissionInterceptorCallback>(activity, callback),
         PermissionInterceptor {
 
-    private val mDialogHelper: DialogHelper = DialogHelper(mActivity, activity.fragmentManager)
+    private val mDialogHelper: DialogHelper = DialogHelper(mActivity, activity.supportFragmentManager)
     private var mPermission: Permission? = null
 
     enum class Permission {

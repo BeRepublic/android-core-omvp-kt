@@ -21,7 +21,7 @@ class SampleListFragment : BaseViewFragment<SampleListPresenter, SampleListFragm
 //    internal lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
 
     private val mAdapter: SampleListAdapter by lazy {
-        SampleListAdapter(activity, mPresenter as SampleListAdapter.AdapterCallback)
+        SampleListAdapter(context!!, mPresenter as SampleListAdapter.AdapterCallback)
     }
 
     interface FragmentCallback : BaseViewFragmentCallback {

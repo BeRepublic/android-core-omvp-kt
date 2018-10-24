@@ -1,8 +1,7 @@
 package com.omvp.app.interceptor.google
 
-import android.app.Activity
 import android.os.Bundle
-
+import android.support.v4.app.FragmentActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.ConnectionResult
@@ -11,7 +10,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.places.Places
 import com.raxdenstudios.square.interceptor.ActivityInterceptor
 
-class GoogleApiClientActivityInterceptor(activity: Activity, private val mGoogleSignInOptions: GoogleSignInOptions, callback: GoogleApiClientInterceptorCallback) :
+class GoogleApiClientActivityInterceptor(activity: FragmentActivity, private val mGoogleSignInOptions: GoogleSignInOptions, callback: GoogleApiClientInterceptorCallback) :
         ActivityInterceptor<GoogleApiClientInterceptorCallback>(activity, callback),
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,

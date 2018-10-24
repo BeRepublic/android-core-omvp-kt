@@ -1,27 +1,16 @@
 package com.omvp.app.interceptor.authPhone
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.text.TextUtils
-
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import com.raxdenstudios.square.interceptor.ActivityInterceptor
-
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
-import io.reactivex.annotations.NonNull
-import timber.log.Timber
-
-class AuthPhoneActivityInterceptor(activity: Activity, callback: AuthPhoneInterceptorCallback) :
+class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPhoneInterceptorCallback) :
         ActivityInterceptor<AuthPhoneInterceptorCallback>(activity, callback),
         AuthPhoneInterceptor {
 

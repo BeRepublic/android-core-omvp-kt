@@ -1,25 +1,21 @@
 package com.omvp.app.base
 
 import android.app.Activity
-import android.app.DialogFragment
-import android.app.Fragment
-import android.app.FragmentManager
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
 import android.support.annotation.IdRes
-
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import com.omvp.app.util.DisposableManager
 import com.raxdenstudios.commons.util.SDKUtils
 import com.raxdenstudios.square.SquareDialogFragment
-
-import javax.inject.Inject
-import javax.inject.Named
-
-import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasFragmentInjector
+import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.HasSupportFragmentInjector
+import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * Abstract (Dialog)Fragment for all (Dialog)Fragments and child (Dialog)Fragments to extend.
@@ -48,7 +44,7 @@ import dagger.android.HasFragmentInjector
  * **VIEW BINDING**
  * This fragment handles view bind and unbinding.
  */
-abstract class BaseFragment : SquareDialogFragment(), HasFragmentInjector {
+abstract class BaseFragment : SquareDialogFragment(), HasSupportFragmentInjector {
 
     /**
      * A reference to the activity Context is injected and used instead of the getter method. This
@@ -88,7 +84,7 @@ abstract class BaseFragment : SquareDialogFragment(), HasFragmentInjector {
         if (!SDKUtils.hasMarshmallow()) {
             // Perform injection here before M, L (API 22) and below because onAttach(Context)
             // is not yet available at L.
-            AndroidInjection.inject(this)
+            AndroidSupportInjection.inject(this)
         }
         super.onAttach(activity)
     }
@@ -96,7 +92,7 @@ abstract class BaseFragment : SquareDialogFragment(), HasFragmentInjector {
     override fun onAttach(context: Context) {
         if (SDKUtils.hasMarshmallow()) {
             // Perform injection here for M (API 23) due to deprecation of onAttach(Activity).
-            AndroidInjection.inject(this)
+            AndroidSupportInjection.inject(this)
         }
         super.onAttach(context)
     }
@@ -113,7 +109,7 @@ abstract class BaseFragment : SquareDialogFragment(), HasFragmentInjector {
 
     // =============== HasFragmentInjector =========================================================
 
-    override fun fragmentInjector(): AndroidInjector<Fragment> {
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return mChildFragmentInjector
     }
 

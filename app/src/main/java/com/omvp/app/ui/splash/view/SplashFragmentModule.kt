@@ -1,7 +1,6 @@
 package com.omvp.app.ui.splash.view
 
-import android.app.Fragment
-
+import android.support.v4.app.Fragment
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.splash.presenter.SplashPresenterModule
