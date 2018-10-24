@@ -5,28 +5,17 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
-
-import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.inputs.presenter.SampleInputsPresenterImpl
-import com.omvp.components.InputLayoutView
-
-import butterknife.BindView
-import butterknife.OnClick
 
 class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleInputFragment.FragmentCallback>(), SampleInputView {
 
-    @BindView(R.id.input_name)
-    internal lateinit var mNameInputLayout: InputLayoutView
-    @BindView(R.id.input_password)
-    internal lateinit var mPasswordInputLayout: InputLayoutView
-    @BindView(R.id.input_fixed)
-    internal lateinit var mFixedInputLayout: InputLayoutView
-    @BindView(R.id.input_fixed_left)
-    internal lateinit var mFixedLeftInputLayout: InputLayoutView
-    @BindView(R.id.input_fixed_center)
-    internal lateinit var mFixedCenterInputLayout: InputLayoutView
+//    internal lateinit var mNameInputLayout: InputLayoutView
+//    internal lateinit var mPasswordInputLayout: InputLayoutView
+//    internal lateinit var mFixedInputLayout: InputLayoutView
+//    internal lateinit var mFixedLeftInputLayout: InputLayoutView
+//    internal lateinit var mFixedCenterInputLayout: InputLayoutView
 
     private val onNameTextChanged = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -106,23 +95,22 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         setupViews()
     }
 
-    @OnClick(R.id.validation_button)
     fun onValidationClicked(view: View) {
-        mPresenter.validateInputs(
+        /*mPresenter.validateInputs(
                 mNameInputLayout.text,
                 mPasswordInputLayout.text,
                 mFixedInputLayout.text,
                 mFixedLeftInputLayout.text,
                 mFixedCenterInputLayout.text
-        )
+        )*/
     }
 
     override fun showNameInputError(error: String) {
-        mNameInputLayout.setError(error)
+//        mNameInputLayout.setError(error)
     }
 
     override fun showNameInputSuccess() {
-        mNameInputLayout.setSuccess()
+//        mNameInputLayout.setSuccess()
     }
 
     override fun showValidationToast() {
@@ -130,63 +118,63 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
     }
 
     override fun showFixedInputError(error: String) {
-        mFixedInputLayout.setError(error)
+//        mFixedInputLayout.setError(error)
     }
 
     override fun showFixedInputSuccess() {
-        mFixedInputLayout.setSuccess()
+//        mFixedInputLayout.setSuccess()
     }
 
     override fun hideFixedInputError() {
-        mFixedInputLayout.clearError()
+//        mFixedInputLayout.clearError()
     }
 
     override fun showFixedLeftInputError(error: String) {
-        mFixedLeftInputLayout.setError(error)
+//        mFixedLeftInputLayout.setError(error)
     }
 
     override fun showFixedLeftInputSuccess() {
-        mFixedLeftInputLayout.setSuccess()
+//        mFixedLeftInputLayout.setSuccess()
     }
 
     override fun hideFixedLeftInputError() {
-        mFixedLeftInputLayout.clearError()
+//        mFixedLeftInputLayout.clearError()
     }
 
     override fun showFixedCenterInputError(error: String) {
-        mFixedCenterInputLayout.setError(error)
+//        mFixedCenterInputLayout.setError(error)
     }
 
     override fun showFixedCenterInputSuccess() {
-        mFixedCenterInputLayout.setSuccess()
+//        mFixedCenterInputLayout.setSuccess()
     }
 
     override fun hideFixedCenterInputError() {
-        mFixedCenterInputLayout.clearError()
+//        mFixedCenterInputLayout.clearError()
     }
 
     override fun hideNameInputError() {
-        mNameInputLayout.clearError()
+//        mNameInputLayout.clearError()
     }
 
     override fun showPasswordInputError(error: String) {
-        mPasswordInputLayout.setError(error)
+//        mPasswordInputLayout.setError(error)
     }
 
     override fun showPasswordInputSuccess() {
-        mPasswordInputLayout.setSuccess()
+//        mPasswordInputLayout.setSuccess()
     }
 
     override fun hidePasswordInputError() {
-        mPasswordInputLayout.clearError()
+//        mPasswordInputLayout.clearError()
     }
 
     private fun setupViews() {
-        mNameInputLayout.addTextChangedListener(onNameTextChanged)
-        mPasswordInputLayout.addTextChangedListener(onPasswordTextChanged)
-        mFixedInputLayout.addTextChangedListener(onFixedTextChanged)
-        mFixedLeftInputLayout.addTextChangedListener(onFixedLeftTextChanged)
-        mFixedCenterInputLayout.addTextChangedListener(onFixedCenterTextChanged)
+//        mNameInputLayout.addTextChangedListener(onNameTextChanged)
+//        mPasswordInputLayout.addTextChangedListener(onPasswordTextChanged)
+//        mFixedInputLayout.addTextChangedListener(onFixedTextChanged)
+//        mFixedLeftInputLayout.addTextChangedListener(onFixedLeftTextChanged)
+//        mFixedCenterInputLayout.addTextChangedListener(onFixedCenterTextChanged)
     }
 
     companion object {

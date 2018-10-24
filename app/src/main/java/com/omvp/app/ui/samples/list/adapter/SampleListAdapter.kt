@@ -2,18 +2,15 @@ package com.omvp.app.ui.samples.list.adapter
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcelable
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-
 import com.omvp.app.model.SampleModel
 import com.omvp.components.SampleItemView
 import com.raxdenstudios.recycler.RecyclerAdapter
-import org.parceler.Parcels
 
 class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterCallback) :
         RecyclerAdapter<SampleModel, SampleListAdapter.SampleListViewHolder>(context, -1) {
@@ -35,7 +32,7 @@ class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterC
     override fun onBindViewItemHolder(holder: SampleListViewHolder, data: SampleModel, position: Int) {
         holder.bindView(data)
 
-        holder.mItemView.getDragView().setOnTouchListener { v, event ->
+        holder.mItemView.getDragView().setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 mItemTouchHelper?.startDrag(holder)
             }
@@ -53,7 +50,7 @@ class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterC
         } else {
             val bundle = payloads[0] as Bundle
             if (bundle.containsKey("sample")) {
-                val sampleModel = Parcels.unwrap<SampleModel>(bundle.getParcelable<Parcelable>("sample"))
+                val sampleModel = bundle.getParcelable<SampleModel>("sample")
                 holder.bindView(sampleModel)
             }
         }

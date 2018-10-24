@@ -3,14 +3,12 @@ package com.omvp.app.ui.samples.bottomnavigation
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
-import butterknife.BindView
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
 import com.omvp.app.ui.samples.bottomnavigation.view.BottomNavigationFirstFragment
 import com.omvp.app.ui.samples.bottomnavigation.view.BottomNavigationFragment
 import com.omvp.app.ui.samples.bottomnavigation.view.BottomNavigationSecondFragment
 import com.omvp.app.ui.samples.bottomnavigation.view.BottomNavigationThirdFragment
-import com.omvp.components.BottomBarView
 import com.omvp.components.PagerIndicator
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentStatePagerInterceptor
@@ -34,8 +32,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
 
     internal var mPagerIndicator: PagerIndicator? = null
 
-    @BindView(R.id.bottom_view)
-    internal lateinit var mBottomBarView: BottomBarView
+//    internal lateinit var mBottomBarView: BottomBarView
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mViewPager: ViewPager
@@ -71,7 +68,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
             mPagerIndicator!!.setViewPager(viewPager)
         }
 
-        mBottomBarView.setViewPager(mViewPager, mIconResArray)
+//        mBottomBarView.setViewPager(mViewPager, mIconResArray)
     }
 
     override fun onCreateFragment(position: Int): BottomNavigationFragment<*, *>? {
@@ -108,7 +105,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
     }
 
     override fun onIncrementSelected(position: Int) {
-        mBottomBarView.incrementCounterAt(position)
+//        mBottomBarView.incrementCounterAt(position)
     }
 
     companion object {

@@ -3,14 +3,12 @@ package com.omvp.app.injector.module
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-
+import com.google.gson.Gson
 import com.raxdenstudios.commons.util.Utils
 import com.raxdenstudios.preferences.AdvancedPreferences
-
-import javax.inject.Singleton
-
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Provides application-wide dependencies.
@@ -29,7 +27,7 @@ object PreferencesModule {
     @Provides
     @Singleton
     internal fun advancedPreferences(sharedPreferences: SharedPreferences): AdvancedPreferences {
-        return AdvancedPreferences(sharedPreferences)
+        return AdvancedPreferences(sharedPreferences, Gson())
     }
 
 }

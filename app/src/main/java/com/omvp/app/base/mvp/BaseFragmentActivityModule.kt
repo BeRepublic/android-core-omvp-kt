@@ -39,7 +39,7 @@ abstract class BaseFragmentActivityModule {
         @Provides
         @PerActivity
         internal fun fragmentCallback(activity: BaseFragmentActivity): NoticeDialogFragment.FragmentCallback {
-            return activity as NoticeDialogFragment.FragmentCallback
+            return activity
         }
 
         @JvmStatic

@@ -33,7 +33,7 @@ object ImageHelper {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)
                 .transition(DrawableTransitionOptions.withCrossFade())
-        loadTransformations(context, requestBuilder, 0, 0, 0, ScaleType.CENTER_CROP, 0, null, 0)
+        loadTransformations(requestBuilder, 0, 0, 0, ScaleType.CENTER_CROP, 0, null)
         if (progressView != null) {
             loadProgressView(requestBuilder, progressView)
         }
@@ -45,7 +45,7 @@ object ImageHelper {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)
                 .transition(DrawableTransitionOptions.withCrossFade())
-        loadTransformations(context, requestBuilder, 0, 0, 0, ScaleType.CIRCLE_CROP, 0, null, 0)
+        loadTransformations(requestBuilder, 0, 0, 0, ScaleType.CIRCLE_CROP, 0, null)
         if (progressView != null) {
             loadProgressView(requestBuilder, progressView)
         }
@@ -57,7 +57,7 @@ object ImageHelper {
         val requestBuilder = Glide.with(context)
                 .load(imageUser)
                 .transition(DrawableTransitionOptions.withCrossFade())
-        loadTransformations(context, requestBuilder, 0, 0, 0, ScaleType.CIRCLE_CROP, 0, null, 0)
+        loadTransformations(requestBuilder, 0, 0, 0, ScaleType.CIRCLE_CROP, 0, null)
         if (progressView != null) {
             loadProgressView(requestBuilder, progressView)
         }
@@ -65,9 +65,9 @@ object ImageHelper {
     }
 
     @SuppressLint("CheckResult")
-    private fun loadTransformations(context: Context, requestBuilder: RequestBuilder<Drawable>,
+    private fun loadTransformations(requestBuilder: RequestBuilder<Drawable>,
                                     width: Int, height: Int, holderId: Int, scaleType: ScaleType,
-                                    cornerRadius: Int, cornerType: RoundedCornersTransformation.CornerType?, blurRadius: Int) {
+                                    cornerRadius: Int, cornerType: RoundedCornersTransformation.CornerType?) {
         var multiTransformation: MultiTransformation<Bitmap>? = null
         when (scaleType) {
             ImageHelper.ScaleType.CENTER_CROP -> multiTransformation = if (cornerRadius > 0) {

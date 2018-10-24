@@ -1,27 +1,16 @@
 package com.omvp.app.ui.samples.locale.view
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v7.widget.AppCompatButton
-import android.support.v7.widget.AppCompatTextView
-import android.view.View
 import android.widget.ArrayAdapter
-
-import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.locale.presenter.SampleLocalePresenterImpl
 
-import butterknife.BindView
-import butterknife.OnClick
-
 class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleLocaleFragment.FragmentCallback>(), SampleLocaleView {
 
-    @BindView(R.id.locale_value)
-    internal lateinit var mLocaleValue: AppCompatTextView
-    @BindView(R.id.locale_selector)
-    internal lateinit var mLocaleSelector: AppCompatButton
+//    internal lateinit var mLocaleValue: AppCompatTextView
+//    internal lateinit var mLocaleSelector: AppCompatButton
 
     interface FragmentCallback : BaseViewFragmentCallback
 
@@ -36,7 +25,7 @@ class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleL
     }
 
     override fun drawLocale(locale: String) {
-        mLocaleValue.text = locale
+//        mLocaleValue.text = locale
     }
 
     override fun drawLocaleSelector(localeList: List<String>, selection: Int) {
@@ -53,8 +42,7 @@ class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleL
                 .show()
     }
 
-    @OnClick(R.id.locale_selector)
-    fun onLocaleChangeButtonSelected(view: View) {
+    fun onLocaleChangeButtonSelected() {
         mPresenter.changeLocale()
     }
 

@@ -68,9 +68,6 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
 
     override fun authPhoneUserRetrieved(firebaseUser: FirebaseUser) {
         hideProgress()
-        if (firebaseUser != null) {
-
-        }
     }
 
     override fun authPhoneCodeRetrieved(code: String) {

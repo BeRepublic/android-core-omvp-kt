@@ -2,15 +2,12 @@ package com.omvp.app.service
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.omvp.app.base.BaseServiceModule.DISPOSABLE_SERVICE_MANAGER
 import com.omvp.app.util.DisposableManager
-
-import javax.inject.Inject
-import javax.inject.Named
-
 import dagger.android.AndroidInjection
 import timber.log.Timber
-
-import com.omvp.app.base.BaseServiceModule.DISPOSABLE_SERVICE_MANAGER
+import javax.inject.Inject
+import javax.inject.Named
 
 class AppFirebaseMessagingService : FirebaseMessagingService() {
 

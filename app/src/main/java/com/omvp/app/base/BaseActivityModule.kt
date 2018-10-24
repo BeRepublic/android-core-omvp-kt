@@ -54,7 +54,7 @@ abstract class BaseActivityModule {
         @Provides
         @PerActivity
         internal fun activityExtras(activity: Activity): Bundle {
-            return if (activity.intent != null && activity.intent.extras != null) activity.intent.extras else Bundle()
+            return activity.intent?.extras ?: Bundle()
         }
 
         @JvmStatic
@@ -73,7 +73,7 @@ abstract class BaseActivityModule {
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun trackerManager(activity: Activity, tracker: Tracker, firebaseAnalytics: FirebaseAnalytics): TrackerManager {
+        internal fun trackerManager(tracker: Tracker, firebaseAnalytics: FirebaseAnalytics): TrackerManager {
             return TrackerManager(tracker, firebaseAnalytics)
         }
 

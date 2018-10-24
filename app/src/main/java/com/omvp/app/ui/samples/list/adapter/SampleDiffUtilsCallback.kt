@@ -5,8 +5,6 @@ import android.os.Bundle
 import com.omvp.app.base.ui.BaseDiffUtilsCallback
 import com.omvp.app.model.SampleModel
 
-import org.parceler.Parcels
-
 /**
  * Extend with BaseDiffUtilsCallback and override these 2 methods
  *
@@ -28,7 +26,7 @@ class SampleDiffUtilsCallback(newList: List<SampleModel>, oldList: List<SampleMo
 
         val diff = Bundle()
         if (newSampleModel != oldSampleModel) {
-            diff.putParcelable("sample", Parcels.wrap(newSampleModel))
+            diff.putParcelable("sample", newSampleModel)
         }
         return if (diff.size() == 0) {
             null

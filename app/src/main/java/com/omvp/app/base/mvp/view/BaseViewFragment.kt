@@ -1,20 +1,15 @@
 package com.omvp.app.base.mvp.view
 
 import android.os.Bundle
-
 import com.omvp.app.base.BaseFragment
 import com.omvp.app.base.mvp.presenter.Presenter
 import com.omvp.app.util.TrackerManager
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptorCallback
-
-import javax.inject.Inject
-
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptor
 import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptorCallback
+import javax.inject.Inject
 
 /**
  * A [BaseFragment] that contains and invokes [Presenter] lifecycle invocations.
@@ -44,8 +39,6 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
     internal lateinit var mAutoInflateViewInterceptor: AutoInflateViewInterceptor
     @Inject
     internal lateinit var mHandleArgumentsInterceptor: HandleArgumentsInterceptor
-
-    private var mUnbinder: Unbinder? = null
 
     // =============== LifeCycle ===================================================================
 
@@ -91,7 +84,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
          * no need to check if getView() returns null here because this lifecycle method only gets
          * called with a non-null View.
          */
-        mUnbinder = ButterKnife.bind(this, view!!)
+
         /*
          * The Presenter.onStart method is called in onViewRestored so that the Fragment’s
          * views are bound before the presentation begins. This ensures that no NullPointerException
@@ -110,7 +103,6 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
 
     override fun onDestroyView() {
         // This lifecycle method still gets called even if onCreateView returns a null view.
-        mUnbinder?.unbind()
         super.onDestroyView()
         mPresenter.onDropView()
     }

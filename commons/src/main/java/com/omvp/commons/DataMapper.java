@@ -2,19 +2,15 @@ package com.omvp.commons;
 
 import android.content.Context;
 
-import org.modelmapper.ModelMapper;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DataMapper<E, T> {
 
     private Context context;
-    private ModelMapper modelMapper;
 
-    public DataMapper(Context context, ModelMapper modelMapper) {
+    public DataMapper(Context context) {
         this.context = context;
-        this.modelMapper = modelMapper;
     }
 
     /**
@@ -73,10 +69,6 @@ public abstract class DataMapper<E, T> {
 
     public Context getContext() {
         return context;
-    }
-
-    public ModelMapper getModelMapper() {
-        return modelMapper;
     }
 
 }

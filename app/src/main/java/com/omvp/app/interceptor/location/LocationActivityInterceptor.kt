@@ -241,11 +241,11 @@ class LocationActivityInterceptor(
                         LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> showDialog(AlertDialog.Builder(mActivity)
                                 .setTitle(R.string.location_permission_settings_title)
                                 .setMessage(R.string.location_permission_settings_description)
-                                .setPositiveButton(R.string.location_permission_settings_positive_button) { dialog, which ->
+                                .setPositiveButton(R.string.location_permission_settings_positive_button) { _, _ ->
                                     mRequestingLocationUpdates = false
                                     launchSettings()
                                 }
-                                .setNegativeButton(R.string.location_permission_settings_negative_button) { dialog, which -> finishActivity() }
+                                .setNegativeButton(R.string.location_permission_settings_negative_button) { _, _ -> finishActivity() }
                                 .setCancelable(false)
                                 .create())
                     }
@@ -296,8 +296,8 @@ class LocationActivityInterceptor(
                             showDialog(AlertDialog.Builder(mActivity)
                                     .setTitle(R.string.location_permission_title)
                                     .setMessage(R.string.location_permission_description)
-                                    .setPositiveButton(R.string.location_permission_positive_button) { dialog, which -> requestLocationPermissions() }
-                                    .setNegativeButton(R.string.location_permission_negative_button) { dialog, which -> finishActivity() }
+                                    .setPositiveButton(R.string.location_permission_positive_button) { _, _ -> requestLocationPermissions() }
+                                    .setNegativeButton(R.string.location_permission_negative_button) { _, _ -> finishActivity() }
                                     .setCancelable(false)
                                     .create())
                         } else {
@@ -330,16 +330,16 @@ class LocationActivityInterceptor(
                             showDialog(AlertDialog.Builder(mActivity)
                                     .setTitle(R.string.location_permission_title)
                                     .setMessage(R.string.location_permission_description)
-                                    .setPositiveButton(R.string.location_permission_positive_button) { dialog, which -> requestLocationPermissions() }
-                                    .setNegativeButton(R.string.location_permission_negative_button) { dialog, which -> finishActivity() }
+                                    .setPositiveButton(R.string.location_permission_positive_button) { _, _ -> requestLocationPermissions() }
+                                    .setNegativeButton(R.string.location_permission_negative_button) { _, _ -> finishActivity() }
                                     .setCancelable(false)
                                     .create())
                         } else {
                             showDialog(AlertDialog.Builder(mActivity)
                                     .setTitle(R.string.location_permission_force_title)
                                     .setMessage(R.string.location_permission_force_description)
-                                    .setPositiveButton(R.string.location_permission_force_positive_button) { dialog, which -> launchSettings() }
-                                    .setNegativeButton(R.string.location_permission_force_negative_button) { dialog, which -> finishActivity() }
+                                    .setPositiveButton(R.string.location_permission_force_positive_button) { _, _ -> launchSettings() }
+                                    .setNegativeButton(R.string.location_permission_force_negative_button) { _, _ -> finishActivity() }
                                     .setCancelable(false)
                                     .create())
                         }

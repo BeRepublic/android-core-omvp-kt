@@ -3,36 +3,32 @@
 ext {
 
     // Android dependencies
-    supportLibraryVersion = '27.1.1'
-    servicesVersion = '11.8.0'
-    multidexVersion = '1.0.1'
+    supportLibraryVersion = '28.0.0'
+    servicesVersion = '12.0.0'
+    multidexVersion = '1.0.3'
 
     kotlin_version = '1.2.71'
 
-    androidCommonsVersion = '3.0.34'        // https://github.com/raxden/commons
-    androidNavigationVersion = '4.0.7'      // https://github.com/raxden/android-navigation
-    androidCronsVersion = '3.0.11'          // https://github.com/raxden/android-crons
-    androidPreferencesVersion = '3.0.4'     // https://github.com/raxden/android-preferences
-    androidRecyclerVersion = '3.0.7'        // https://github.com/raxden/android-recycler
-    androidSquareVersion = '3.0.83'         // https://github.com/raxden/square
+    androidCommonsVersion = '3.0.+'        // https://github.com/raxden/commons
+    androidNavigationVersion = '4.0.+'      // https://github.com/raxden/android-navigation
+    androidCronsVersion = '4.0.+'           // https://github.com/raxden/android-crons
+    androidPreferencesVersion = '3.0.+'     // https://github.com/raxden/android-preferences
+    androidRecyclerVersion = '3.0.10'       // https://github.com/raxden/android-recycler
+    androidSquareVersion = '3.0.95'         // https://github.com/raxden/square
 
     // Libraries
-    reactiveAndroidVersion = '2.0.1'        // https://github.com/ReactiveX/RxAndroid
-    reactiveJavaVersion = '2.1.7'           // https://github.com/ReactiveX/RxAndroid
-    retrofitVersion = '2.3.0'               // https://github.com/square/retrofit
-    okHttpVersion = '3.9.1'                 // https://github.com/square/okhttp
-    timberVersion = '4.6.0'                 // https://github.com/JakeWharton/timber
-    butterknifeVersion = '8.8.1'            // https://github.com/JakeWharton/butterknife
-    glideVersion = '4.4.0'                  // https://github.com/bumptech/glide
-    facebookVersion = '4.31.0'              // https://developers.facebook.com/docs/android/
-    parcelerVersion = '1.1.9'               // https://github.com/johncarl81/parceler
+    reactiveAndroidVersion = '2.1.0'        // https://github.com/ReactiveX/RxAndroid
+    reactiveJavaVersion = '2.2.3'           // https://github.com/ReactiveX/RxJava
+    retrofitVersion = '2.4.0'               // https://github.com/square/retrofit
+    okHttpVersion = '3.11.0'                // https://github.com/square/okhttp
+    timberVersion = '4.7.1'                 // https://github.com/JakeWharton/timber
+    glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
+    facebookVersion = '4.36.1'              // https://developers.facebook.com/docs/android/
     crashlyticsVersion = '2.8.0'
-    calligraphyVersion = '2.3.0'            // https://github.com/chrisjenx/Calligraphy
     daggerVersion = '2.14.1'                // https://github.com/square/dagger
     rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
-    androidThreeTenVersion = '1.0.5'        // https://github.com/JakeWharton/ThreeTenABP
-    modelmapperVersion = '1.1.0'            // https://github.com/modelmapper/modelmapper
-    constraintsLayoutVersion = '1.0.2'
+    androidThreeTenVersion = '1.1.1'        // https://github.com/JakeWharton/ThreeTenABP
+    constraintsLayoutVersion = '1.1.3'
     // https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html
     urbanAirshipVersion = '9.0.4'           // http://docs.urbanairship.com/platform/android.html
 
@@ -43,12 +39,6 @@ ext {
     mockitoVersion = '1.10.19'
 
     // dependencies
-
-    calligraphy = [
-            implementation: [
-                    "uk.co.chrisjenx:calligraphy:${calligraphyVersion}"
-            ]
-    ]
 
     dagger = [
             implementation: [
@@ -86,32 +76,14 @@ ext {
     jakewharton = [
             implementation: [
                     "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-                    "com.jakewharton.timber:timber:${timberVersion}",
-                    "com.jakewharton:butterknife:${butterknifeVersion}"
+                    "com.jakewharton.timber:timber:${timberVersion}"
             ],
-            kapt          : [
-                    "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
-            ]
+            kapt          : []
     ]
 
     kotlin = [
             implementation: [
-                    "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
-            ]
-    ]
-
-    modelmapper = [
-            implementation: [
-                    "org.modelmapper:modelmapper:${modelmapperVersion}"
-            ]
-    ]
-
-    parceler = [
-            implementation: [
-                    "org.parceler:parceler-api:${parcelerVersion}"
-            ],
-            kapt          : [
-                    "org.parceler:parceler:${parcelerVersion}"
+                    "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_version}"
             ]
     ]
 
@@ -192,11 +164,8 @@ ext {
                             retrofit.implementation,
                             reactive.implementation,
                             jakewharton.implementation,
-                            parceler.implementation,
                             glide.implementation,
                             rxPermissions.implementation,
-                            modelmapper.implementation,
-                            calligraphy.implementation,
                             urbanairship.implementation,
                             facebook.implementation,
                             kotlin.implementation
@@ -213,14 +182,12 @@ ext {
                     kapt                   : [
                             dagger.kapt,
                             jakewharton.kapt,
-                            glide.kapt,
-                            parceler.kapt
+                            glide.kapt
                     ]
             ],
             domain    : [
                     implementation    : [
                             raxden.implementation,
-                            parceler.implementation,
                             jakewharton.implementation,
                             dagger.implementation,
                             reactive.implementation,
@@ -230,8 +197,7 @@ ext {
                     compileOnly       : [],
                     testImplementation: [],
                     kapt              : [
-                            dagger.kapt,
-                            parceler.kapt
+                            dagger.kapt
                     ]
             ],
             data      : [
@@ -241,7 +207,6 @@ ext {
                             jakewharton.implementation,
                             dagger.implementation,
                             retrofit.implementation,
-                            modelmapper.implementation,
                             reactive.implementation,
                             urbanairship.implementation,
                             kotlin.implementation
@@ -267,7 +232,6 @@ ext {
             ],
             commons   : [
                     implementation     : [
-                            modelmapper.implementation,
                             jakewharton.implementation,
                             kotlin.implementation
                     ],
@@ -280,7 +244,6 @@ ext {
             resources : [
                     implementation     : [
                             support.implementation,
-                            calligraphy.implementation,
                             kotlin.implementation
                     ],
                     api                : [],

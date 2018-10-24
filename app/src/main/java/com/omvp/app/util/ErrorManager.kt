@@ -2,21 +2,17 @@ package com.omvp.app.util
 
 import android.content.res.Resources
 import android.text.TextUtils
-
 import com.omvp.app.R
 import com.omvp.commons.AppException
 import com.omvp.data.network.gateway.retrofit.exception.RetrofitException
-
+import io.reactivex.exceptions.CompositeException
 import org.json.JSONException
 import org.json.JSONObject
-
+import timber.log.Timber
 import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-
-import io.reactivex.exceptions.CompositeException
-import timber.log.Timber
 
 /**
  * Created by Angel on 23/11/2017.
@@ -35,7 +31,6 @@ class ErrorManager(private val resources: Resources) {
 
     fun parseError(throwable: Throwable) {
         if (throwable is CompositeException) {
-            val compositeException = throwable
             if (!throwable.exceptions.isEmpty()) {
                 for (childThrowable in throwable.exceptions) {
                     parseError(childThrowable)

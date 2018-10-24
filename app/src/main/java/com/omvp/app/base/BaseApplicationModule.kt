@@ -3,19 +3,13 @@ package com.omvp.app.base
 import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
-
-import com.google.android.gms.analytics.Tracker
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.omvp.app.injector.module.*
-import com.omvp.app.util.TrackerManager
 import com.raxdenstudios.commons.util.Utils
 import com.raxdenstudios.preferences.AdvancedPreferences
-
-import javax.inject.Singleton
-
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Provides application-wide dependencies.
@@ -23,7 +17,6 @@ import dagger.Provides
 @Module(includes = arrayOf(
         LocaleModule::class,
         GsonModule::class,
-        MapperModule::class,
         AnalyticsModule::class,
         CacheModule::class,
         RepositoryModule::class,

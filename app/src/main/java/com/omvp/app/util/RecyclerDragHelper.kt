@@ -48,7 +48,7 @@ class RecyclerDragHelper(private val contract: ActionCompletionContract) : ItemT
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
-    override fun clearView(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder) {
+    override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
         viewHolder.itemView.setBackgroundColor(Color.TRANSPARENT)
     }

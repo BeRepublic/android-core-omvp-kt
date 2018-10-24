@@ -104,7 +104,7 @@ class SampleListAdapter(context: Context, private val mAdapterCallback: AdapterC
             mRecyclerView.setHasFixedSize(true)
 
             // Setting shared recyclerview pool
-            mRecyclerView.recycledViewPool = mRecycledViewPool
+            mRecyclerView.setRecycledViewPool(mRecycledViewPool)
 
             mAdapter.setAdapterCallback(object : SampleListHorizontalAdapter.AdapterCallback {
                 override fun sampleItemSelected(position: Int, sharedView: View?) {

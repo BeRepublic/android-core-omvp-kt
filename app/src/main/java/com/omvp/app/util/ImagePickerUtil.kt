@@ -18,29 +18,21 @@ package com.omvp.app.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.content.pm.ResolveInfo
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Environment
 import android.os.Parcelable
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
-
 import com.raxdenstudios.commons.util.BitmapUtils
 import com.raxdenstudios.commons.util.Utils
-
+import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.util.ArrayList
-import java.util.Date
-
-import timber.log.Timber
-
-import android.preference.PreferenceManager.getDefaultSharedPreferences
+import java.util.*
 
 /**
  *
@@ -49,7 +41,7 @@ object ImagePickerUtil {
 
     private const val TEMP_IMAGE_NAME = "tempImage"
 
-    private fun getPickGalleryImageIntent(context: Context): Intent {
+    private fun getPickGalleryImageIntent(): Intent {
         return Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
     }
 
@@ -60,7 +52,7 @@ object ImagePickerUtil {
             try {
                 photoFile = createImageFile(context)
             } catch (ex: IOException) {
-                Timber.e(ex, ex.message)
+                Timber.e(ex)
             }
 
             if (photoFile != null) {
@@ -78,7 +70,7 @@ object ImagePickerUtil {
 
         var intentList: MutableList<Intent> = ArrayList()
 
-        val pickIntent = getPickGalleryImageIntent(context)
+        val pickIntent = getPickGalleryImageIntent()
         intentList = addIntentsToList(context, intentList, pickIntent)
 
         val takePhotoIntent = getPickCameraImageIntent(context)

@@ -5,8 +5,6 @@ import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.view.View
 
-import butterknife.ButterKnife
-
 class NoticeDialogComponentView : BaseComponentView {
 
     internal lateinit var mTitleTextView: AppCompatTextView

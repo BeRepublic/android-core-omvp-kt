@@ -36,11 +36,11 @@ class SocialAuthManager(private val mActivity: Activity, private val mGoogleSign
 
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (mSocialAuth) {
-            SocialAuthManager.SocialAuth.GOOGLE -> onGoogleActivityResult(requestCode, resultCode, data)
+            SocialAuthManager.SocialAuth.GOOGLE -> onGoogleActivityResult(requestCode, data)
             SocialAuthManager.SocialAuth.FACEBOOK -> onFacebookActivityResult(requestCode, resultCode, data)
             else -> {
                 onFacebookActivityResult(requestCode, resultCode, data)
-                onGoogleActivityResult(requestCode, resultCode, data)
+                onGoogleActivityResult(requestCode, data)
             }
         }
     }
@@ -105,7 +105,7 @@ class SocialAuthManager(private val mActivity: Activity, private val mGoogleSign
         }
     }
 
-    private fun onGoogleActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    private fun onGoogleActivityResult(requestCode: Int, data: Intent) {
         if (requestCode == REQUEST_CODE_GOOGLE_LOGIN) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             if (result.isSuccess && result.signInAccount != null) {
@@ -177,7 +177,7 @@ class SocialAuthManager(private val mActivity: Activity, private val mGoogleSign
                                     }
                                 }
                             } catch (e: JSONException) {
-                                Timber.e(e, e.message)
+                                Timber.e(e)
                             }
 
                         }

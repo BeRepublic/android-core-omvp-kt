@@ -59,7 +59,7 @@ class SampleSocialActivity : BaseFragmentActivity(),  SampleSocialFragment.Fragm
 
     override fun setupInterceptors(interceptorList: MutableList<Interceptor>) {
         super.setupInterceptors(interceptorList)
-        interceptorList.add(mToolbarInterceptor!!)
-        interceptorList.add(mInjectFragmentInterceptor!!)
+        interceptorList.add(mToolbarInterceptor)
+        interceptorList.add(mInjectFragmentInterceptor)
     }
 }

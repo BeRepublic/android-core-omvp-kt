@@ -1,7 +1,5 @@
 package com.omvp.commons
 
-import java.util.regex.Pattern
-
 /**
  * Created by Angel on 18/07/2017.
  */
@@ -9,7 +7,6 @@ import java.util.regex.Pattern
 object Constants {
 
     const val SPLASH_DELAY = 1500
-    const val DEFAULT_FONT = "fonts/AvenirNextLTPro-Regular.otf"
 
     //LOCATION
     const val LOCATION_INTERVAL = 100L

@@ -18,17 +18,16 @@ class ToolbarActivityInterceptor : ActivityInterceptor<ToolbarInterceptorCallbac
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val toolbar : Toolbar = mCallback.onCreateToolbarView(savedInstanceState)
-        if (toolbar != null) {
-            if (mActivity is AppCompatActivity) {
-                val compatActivity = mActivity as AppCompatActivity
-                compatActivity.setSupportActionBar(toolbar)
-                val actionBar = compatActivity.supportActionBar
-                actionBar?.setDisplayShowTitleEnabled(false)
-            }
-            toolbar.setOnMenuItemClickListener { item -> mActivity.onOptionsItemSelected(item) }
-            toolbar.setNavigationOnClickListener { mActivity.onBackPressed() }
-            mCallback.onToolbarViewCreated(toolbar)
+        val toolbar: Toolbar = mCallback.onCreateToolbarView(savedInstanceState)
+        if (mActivity is AppCompatActivity) {
+            val compatActivity = mActivity as AppCompatActivity
+            compatActivity.setSupportActionBar(toolbar)
+            val actionBar = compatActivity.supportActionBar
+            actionBar?.setDisplayShowTitleEnabled(false)
         }
+        toolbar.setOnMenuItemClickListener { item -> mActivity.onOptionsItemSelected(item) }
+        toolbar.setNavigationOnClickListener { mActivity.onBackPressed() }
+        mCallback.onToolbarViewCreated(toolbar)
+
     }
 }

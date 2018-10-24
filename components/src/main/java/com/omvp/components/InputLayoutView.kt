@@ -9,20 +9,15 @@ import android.graphics.drawable.Drawable
 import android.support.design.widget.TextInputEditText
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatTextView
-import android.text.InputFilter
-import android.text.InputType
-import android.text.Spanned
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.text.*
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.widget.RelativeLayout
 import android.widget.TextView
-
-import java.util.ArrayList
-
 import timber.log.Timber
+import java.util.*
 
 /**
  * Input layout custom view
@@ -416,7 +411,7 @@ class InputLayoutView : BaseComponentView {
                 val previousMaskChar = mMask!![previousCharPosition]
                 if (previousMaskChar != mNotMaskedSymbol) {
                     mTextInputEditText.setText(dest.subSequence(0, previousCharPosition))
-                    mTextInputEditText.setSelection(mTextInputEditText.text.length)
+                    mTextInputEditText.setSelection(mTextInputEditText.text?.length ?: 0)
                 }
             }
 

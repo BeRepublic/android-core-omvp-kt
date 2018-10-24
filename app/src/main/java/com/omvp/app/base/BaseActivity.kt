@@ -4,7 +4,6 @@ import android.app.Fragment
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
-import butterknife.ButterKnife
 import com.omvp.app.helper.AnimationHelper
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.helper.NavigationHelper
@@ -68,7 +67,6 @@ abstract class BaseActivity : SquareActivity(),
 
     override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
         mContentView = view
-        initializeButterKnife()
     }
 
     // =============== HasFragmentInjector =========================================================
@@ -80,9 +78,5 @@ abstract class BaseActivity : SquareActivity(),
     override fun setupInterceptors(interceptorList: MutableList<Interceptor>) {
         interceptorList.add(mAutoInflateLayoutInterceptor)
         interceptorList.add(mOperationBroadcastInterceptor)
-    }
-
-    private fun initializeButterKnife() {
-        ButterKnife.bind(this)
     }
 }

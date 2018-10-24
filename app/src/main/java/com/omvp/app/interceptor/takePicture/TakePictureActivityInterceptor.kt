@@ -47,7 +47,7 @@ class TakePictureActivityInterceptor(activity: Activity) : ActivitySimpleInterce
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE) {
-            retrieveImageFromResult(requestCode, resultCode, data)
+            retrieveImageFromResult(resultCode, data)
         } else {
             mListener?.onWorkingPictureProgress(false)
         }
@@ -111,8 +111,8 @@ class TakePictureActivityInterceptor(activity: Activity) : ActivitySimpleInterce
         }
     }
 
-    private fun retrieveImageFromResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        mCompositeDisposable.add(processImageFromResult(requestCode, resultCode, data)
+    private fun retrieveImageFromResult(resultCode: Int, data: Intent?) {
+        mCompositeDisposable.add(processImageFromResult(resultCode, data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : BaseDisposableSingleObserver<Uri>(mActivity) {
@@ -133,7 +133,7 @@ class TakePictureActivityInterceptor(activity: Activity) : ActivitySimpleInterce
         }
     }
 
-    private fun processImageFromResult(requestCode: Int, resultCode: Int, data: Intent?): Single<Uri> {
+    private fun processImageFromResult(resultCode: Int, data: Intent?): Single<Uri> {
         return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {

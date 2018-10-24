@@ -27,6 +27,8 @@ internal constructor(sampleSocialView: SampleSocialView) : BasePresenter<SampleS
         when (mSocialAuth) {
             SocialAuthManager.SocialAuth.FACEBOOK -> signInWithFacebook(socialAuthData.token)
             SocialAuthManager.SocialAuth.GOOGLE -> signInWithGoogle(socialAuthData.token)
+            else -> {
+            }
         }
         drawData(mSocialAuthData!!)
         showHideSocialButtons(false)
