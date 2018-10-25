@@ -1,16 +1,16 @@
 package com.omvp.components
 
 import android.content.Context
-import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 
 class NoticeDialogComponentView : BaseComponentView {
 
-    internal lateinit var mTitleTextView: AppCompatTextView
-    internal lateinit var mDescriptionTextView: AppCompatTextView
-    internal lateinit var mAcceptTextView: AppCompatTextView
-    internal lateinit var mDenyTextView: AppCompatTextView
+    private lateinit var mTitleTextView: AppCompatTextView
+    private lateinit var mDescriptionTextView: AppCompatTextView
+    private lateinit var mAcceptTextView: AppCompatTextView
+    private lateinit var mDenyTextView: AppCompatTextView
 
     override val layoutId: Int
         get() = R.layout.notice_dialog_component_view

@@ -5,8 +5,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.support.v7.widget.Toolbar
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity

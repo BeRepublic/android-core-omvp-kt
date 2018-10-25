@@ -2,8 +2,8 @@ package com.omvp.app.interceptor.permission
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.support.v4.app.FragmentActivity
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.util.PermissionUtil
 import com.raxdenstudios.square.interceptor.ActivityInterceptor

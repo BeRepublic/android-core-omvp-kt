@@ -1,6 +1,6 @@
 package com.omvp.app.util
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.google.android.gms.analytics.HitBuilders
 import com.google.android.gms.analytics.Tracker
 import com.google.firebase.analytics.FirebaseAnalytics

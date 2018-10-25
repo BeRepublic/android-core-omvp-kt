@@ -1,10 +1,10 @@
 package com.omvp.app.base.mvp
 
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v7.widget.AppCompatTextView
 import android.view.View
+import androidx.annotation.IdRes
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.omvp.app.R
 import com.omvp.app.base.BaseActivity
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback

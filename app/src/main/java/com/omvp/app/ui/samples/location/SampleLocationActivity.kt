@@ -1,8 +1,8 @@
 package com.omvp.app.ui.samples.location
 
 import android.os.Bundle
-import android.support.v7.widget.Toolbar
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
 import com.omvp.app.interceptor.location.LocationInterceptor

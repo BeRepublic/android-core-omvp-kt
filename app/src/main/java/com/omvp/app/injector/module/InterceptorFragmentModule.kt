@@ -1,7 +1,7 @@
 package com.omvp.app.injector.module
 
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.Fragment
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import com.omvp.app.injector.scope.PerFragment
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewDialogFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewFragmentInterceptor
@@ -11,7 +11,6 @@ import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgume
 import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptor
 import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptorCallback
-
 import dagger.Module
 import dagger.Provides
 

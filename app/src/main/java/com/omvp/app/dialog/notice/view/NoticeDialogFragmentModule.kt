@@ -1,11 +1,9 @@
 package com.omvp.app.dialog.notice.view
 
-import android.support.v4.app.Fragment
-
+import androidx.fragment.app.Fragment
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.dialog.notice.presenter.NoticeDialogPresenterModule
 import com.omvp.app.injector.scope.PerFragment
-
 import dagger.Binds
 import dagger.Module
 

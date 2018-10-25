@@ -2,12 +2,12 @@ package com.omvp.components
 
 import android.content.Context
 import android.os.Build
-import android.support.annotation.DrawableRes
-import android.support.v7.widget.AppCompatImageButton
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 
 class SampleItemView : BaseComponentView {
 

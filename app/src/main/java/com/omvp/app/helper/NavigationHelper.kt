@@ -4,8 +4,8 @@ import android.app.Activity
 import android.app.ActivityOptions
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.omvp.app.interceptor.operation.OperationBroadcastActivityInterceptor
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
 import com.omvp.app.ui.samples.detail.SampleDetailActivity

@@ -1,8 +1,8 @@
 package com.omvp.app.base
 
 import android.app.Activity
-import android.support.multidex.MultiDexApplication
-import android.support.v7.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDexApplication
 import com.omvp.app.injector.component.DaggerApplicationComponent
 import com.raxdenstudios.commons.util.SDKUtils
 import dagger.android.AndroidInjector

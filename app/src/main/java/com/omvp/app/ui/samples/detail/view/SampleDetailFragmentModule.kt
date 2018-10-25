@@ -1,11 +1,9 @@
 package com.omvp.app.ui.samples.detail.view
 
-import android.support.v4.app.Fragment
-
+import androidx.fragment.app.Fragment
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.detail.presenter.SampleDetailPresenterModule
-
 import dagger.Binds
 import dagger.Module
 

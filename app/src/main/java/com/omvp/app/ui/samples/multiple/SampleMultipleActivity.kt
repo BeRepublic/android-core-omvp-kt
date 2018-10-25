@@ -1,9 +1,9 @@
 package com.omvp.app.ui.samples.multiple
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.Toolbar
 import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity

@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import com.omvp.app.BuildConfig
 import com.raxdenstudios.commons.util.StringUtils
 import com.raxdenstudios.square.interceptor.ActivitySimpleInterceptor

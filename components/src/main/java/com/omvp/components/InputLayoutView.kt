@@ -6,9 +6,6 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
-import android.support.design.widget.TextInputEditText
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.AppCompatTextView
 import android.text.*
 import android.util.AttributeSet
 import android.view.Gravity
@@ -16,6 +13,9 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
+import com.google.android.material.textfield.TextInputEditText
 import timber.log.Timber
 import java.util.*
 

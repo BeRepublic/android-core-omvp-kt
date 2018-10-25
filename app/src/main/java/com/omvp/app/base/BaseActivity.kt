@@ -2,8 +2,8 @@ package com.omvp.app.base
 
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.omvp.app.helper.AnimationHelper
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.helper.NavigationHelper
@@ -48,7 +48,7 @@ abstract class BaseActivity : SquareActivity(),
     @Inject
     internal lateinit var mFragmentInjector: DispatchingAndroidInjector<Fragment>
 
-    protected lateinit var mContentView: View
+    private lateinit var mContentView: View
 
     // =============== LifeCycle ===================================================================
 

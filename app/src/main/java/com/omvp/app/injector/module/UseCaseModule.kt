@@ -1,9 +1,7 @@
 package com.omvp.app.injector.module
 
-import com.omvp.app.injector.scope.PerActivity
 import com.omvp.domain.interactor.*
 import com.omvp.domain.interactor.impl.*
-
 import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton

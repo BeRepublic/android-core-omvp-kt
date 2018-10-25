@@ -25,7 +25,7 @@ import android.os.Environment
 import android.os.Parcelable
 import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.provider.MediaStore
-import android.support.v4.content.FileProvider
+import androidx.core.content.FileProvider
 import com.raxdenstudios.commons.util.BitmapUtils
 import com.raxdenstudios.commons.util.Utils
 import timber.log.Timber

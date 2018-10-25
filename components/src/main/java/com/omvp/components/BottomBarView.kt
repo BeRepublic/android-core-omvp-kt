@@ -2,13 +2,13 @@ package com.omvp.components
 
 import android.content.Context
 import android.os.Build
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.util.SparseArray
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
 
 class BottomBarView : BaseComponentView, BottomBarItemView.OnCheckedChangeListener {
 

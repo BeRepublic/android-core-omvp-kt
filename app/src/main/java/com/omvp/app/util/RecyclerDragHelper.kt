@@ -2,10 +2,9 @@ package com.omvp.app.util
 
 import android.graphics.Canvas
 import android.graphics.Color
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
-
-import android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_DRAG
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by stefano on 26/03/2018.

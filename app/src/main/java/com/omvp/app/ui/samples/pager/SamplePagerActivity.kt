@@ -1,8 +1,8 @@
 package com.omvp.app.ui.samples.pager
 
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.widget.Toolbar
+import androidx.viewpager.widget.ViewPager
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
 import com.omvp.app.ui.samples.pager.view.SamplePagerFirstFragment

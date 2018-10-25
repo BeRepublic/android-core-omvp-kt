@@ -2,12 +2,12 @@ package com.omvp.app.ui.samples.list.adapter
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.omvp.app.model.SampleModel
 import com.omvp.components.SampleItemView
 import com.raxdenstudios.recycler.RecyclerAdapter

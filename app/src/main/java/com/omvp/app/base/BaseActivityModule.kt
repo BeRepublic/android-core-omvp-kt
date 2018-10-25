@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentManager
 import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -13,7 +13,6 @@ import com.omvp.app.helper.AnimationHelper
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.helper.NavigationHelper
 import com.omvp.app.helper.SnackBarHelper
-
 import com.omvp.app.injector.module.InterceptorActivityModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.util.DisposableManager
@@ -21,7 +20,6 @@ import com.omvp.app.util.SocialAuthManager
 import com.omvp.app.util.TrackerManager
 import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.Binds
-
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

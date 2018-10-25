@@ -1,6 +1,7 @@
 package com.omvp.app.base.ui
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
+
 
 abstract class BaseDiffUtilsCallback<T>(protected var newList: List<T>?, protected var oldList: List<T>?) : DiffUtil.Callback() {
 

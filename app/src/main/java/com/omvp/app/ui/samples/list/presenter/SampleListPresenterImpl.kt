@@ -2,8 +2,8 @@ package com.omvp.app.ui.samples.list.presenter
 
 
 import android.net.Uri
-import android.support.v4.widget.SwipeRefreshLayout
 import android.view.View
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.omvp.app.base.mvp.presenter.BasePresenter
 import com.omvp.app.base.reactivex.BaseDisposableCompletableObserver
 import com.omvp.app.base.reactivex.BaseDisposableMaybeObserver
@@ -17,14 +17,11 @@ import com.omvp.domain.interactor.GetSampleListUseCase
 import com.omvp.domain.interactor.RemoveSampleUseCase
 import com.omvp.domain.interactor.SaveSampleUseCase
 import io.reactivex.Maybe
-
-import javax.inject.Inject
-
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import org.threeten.bp.LocalDateTime
 import java.util.*
+import javax.inject.Inject
 
 class SampleListPresenterImpl
 @Inject internal constructor(sampleListView: SampleListView) : BasePresenter<SampleListView>(sampleListView),

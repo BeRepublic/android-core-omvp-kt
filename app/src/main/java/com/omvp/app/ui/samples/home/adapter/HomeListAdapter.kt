@@ -1,9 +1,9 @@
 package com.omvp.app.ui.samples.home.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 
 import com.omvp.app.ui.samples.home.presenter.HomePresenterImpl
 import com.omvp.components.SampleHomeItemView

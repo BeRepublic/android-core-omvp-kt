@@ -1,14 +1,11 @@
 package com.omvp.components
 
 import android.content.Context
-import android.support.design.widget.TextInputLayout
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
-
-import java.lang.reflect.Field
-
+import com.google.android.material.textfield.TextInputLayout
 import timber.log.Timber
 
 /**

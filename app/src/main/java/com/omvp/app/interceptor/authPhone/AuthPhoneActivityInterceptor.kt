@@ -1,8 +1,8 @@
 package com.omvp.app.interceptor.authPhone
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.text.TextUtils
+import androidx.fragment.app.FragmentActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*

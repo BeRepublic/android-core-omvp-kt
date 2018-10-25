@@ -4,17 +4,20 @@ ext {
 
     // Android dependencies
     supportLibraryVersion = '28.0.0'
+    androidxVersion = '1.0.0'
+    androidxMultidexVersion = '2.0.0'
+    androidxMaterialVersion = '1.0.0-rc01'
     servicesVersion = '12.0.0'
     multidexVersion = '1.0.3'
 
     kotlin_version = '1.2.71'
 
-    androidCommonsVersion = '3.0.+'        // https://github.com/raxden/commons
+    androidCommonsVersion = '3.0.+'         // https://github.com/raxden/commons
     androidNavigationVersion = '4.0.+'      // https://github.com/raxden/android-navigation
     androidCronsVersion = '4.0.+'           // https://github.com/raxden/android-crons
     androidPreferencesVersion = '3.0.+'     // https://github.com/raxden/android-preferences
-    androidRecyclerVersion = '3.0.13'       // https://github.com/raxden/android-recycler
-    androidSquareVersion = '3.0.98'         // https://github.com/raxden/square
+    androidRecyclerVersion = '3.0.+'       // https://github.com/raxden/android-recycler
+    androidSquareVersion = '3.0.+'         // https://github.com/raxden/square
 
     // Libraries
     reactiveAndroidVersion = '2.1.0'        // https://github.com/ReactiveX/RxAndroid
@@ -25,7 +28,7 @@ ext {
     glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
     facebookVersion = '4.36.1'              // https://developers.facebook.com/docs/android/
     crashlyticsVersion = '2.8.0'
-    daggerVersion = '2.18'                // https://github.com/google/dagger
+    daggerVersion = '2.16'                  // https://github.com/google/dagger
     rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
     androidThreeTenVersion = '1.1.1'        // https://github.com/JakeWharton/ThreeTenABP
     constraintsLayoutVersion = '1.1.3'
@@ -40,9 +43,12 @@ ext {
 
     // dependencies
 
+//    def androidDesign = [
+//            support : [group: 'com.android.support', name: 'support-v4', version: supportLibraryVersion]
+//    ]
+
     dagger = [
             implementation: [
-//                    "com.google.dagger:dagger:${daggerVersion}",
                     "com.google.dagger:dagger-android-support:${daggerVersion}"
             ],
             kapt          : [
@@ -78,8 +84,7 @@ ext {
             implementation: [
                     "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
                     "com.jakewharton.timber:timber:${timberVersion}"
-            ],
-            kapt          : []
+            ]
     ]
 
     kotlin = [
@@ -148,6 +153,17 @@ ext {
             ]
     ]
 
+    androidx = [
+            implementation: [
+                    "androidx.multidex:multidex:${androidxMultidexVersion}",
+                    "androidx.appcompat:appcompat:${androidxVersion}",
+                    "androidx.recyclerview:recyclerview:${androidxVersion}",
+                    "androidx.cardview:cardview:${androidxVersion}",
+                    "androidx.constraintlayout:constraintlayout:${constraintsLayoutVersion}",
+                    "com.google.android.material:material:${androidxMaterialVersion}"
+            ]
+    ]
+
     urbanairship = [
             implementation: [
                     "com.urbanairship.android:urbanairship-sdk:${urbanAirshipVersion}"
@@ -157,7 +173,8 @@ ext {
     deps = [
             app       : [
                     implementation         : [
-                            support.implementation,
+//                            support.implementation,
+                            androidx.implementation,
                             raxden.implementation,
                             playServices.implementation,
                             firebase.implementation,
@@ -182,7 +199,6 @@ ext {
                     testAnnotationProcessor: [],
                     kapt                   : [
                             dagger.kapt,
-                            jakewharton.kapt,
                             glide.kapt
                     ]
             ],
@@ -221,7 +237,8 @@ ext {
             ],
             components: [
                     implementation     : [
-                            support.implementation,
+//                            support.implementation,
+                            androidx.implementation,
                             jakewharton.implementation,
                             kotlin.implementation
                     ],
@@ -244,7 +261,8 @@ ext {
             ],
             resources : [
                     implementation     : [
-                            support.implementation,
+//                            support.implementation,
+                            androidx.implementation,
                             kotlin.implementation
                     ],
                     api                : [],

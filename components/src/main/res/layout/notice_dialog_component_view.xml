@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
     <LinearLayout
         style="@style/Content.Dialog.Notice"
@@ -11,14 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/CodeFont.Large"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Título del dialo fragment" />
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/CodeFont.Medium.Gray"
             android:id="@+id/description"
             android:layout_width="match_parent"
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/deny"
                 style="@style/CodeFont.Medium.Black.Bold"
                 android:layout_width="wrap_content"
@@ -45,7 +44,7 @@
                 tools:text="No permitir"
                 tools:visibility="visible" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/accept"
                 style="@style/CodeFont.Medium.Black.Bold"
                 android:layout_width="wrap_content"

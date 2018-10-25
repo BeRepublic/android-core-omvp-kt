@@ -1,10 +1,8 @@
 package com.omvp.app.base.reactivex
 
 import android.content.Context
-import android.support.v4.app.Fragment
-
+import androidx.fragment.app.Fragment
 import com.omvp.app.util.ErrorManager
-
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableSingleObserver
 import timber.log.Timber

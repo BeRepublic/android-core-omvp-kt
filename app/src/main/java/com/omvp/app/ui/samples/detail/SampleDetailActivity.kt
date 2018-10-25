@@ -2,10 +2,10 @@ package com.omvp.app.ui.samples.detail
 
 import android.os.Build
 import android.os.Bundle
-import android.support.design.widget.AppBarLayout
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.Toolbar
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.appbar.AppBarLayout
 
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
