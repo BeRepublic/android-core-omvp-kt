@@ -18,12 +18,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(':commons')
+//    api project(':commons')
 
-    implementation deps.domain.implementation
-    api deps.domain.api
-    compileOnly deps.domain.compileOnly
-    kapt deps.commons.kapt
-    testImplementation deps.domain.testImplementation
+//    implementation deps.domain.implementation
+//    api deps.domain.api
+//    compileOnly deps.domain.compileOnly
+//    kapt deps.commons.kapt
+//    testImplementation deps.domain.testImplementation
 
+    rootProject.domainDependencies.each{
+        add(it.configuration, it.dependency, it.options)
+    }
 }

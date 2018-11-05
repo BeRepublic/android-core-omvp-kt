@@ -3,273 +3,259 @@
 ext {
 
     // Android dependencies
-    supportLibraryVersion = '28.0.0'
-    androidxVersion = '1.0.0'
-    androidxMultidexVersion = '2.0.0'
-    androidxMaterialVersion = '1.0.0-rc01'
-    servicesVersion = '12.0.0'
-    multidexVersion = '1.0.3'
+    def androidxVersion = '1.0.0'
+    def androidxMultidexVersion = '2.0.0'
+    def androidxMaterialVersion = '1.0.0-rc01'
+    def servicesVersion = '12.0.0'
 
-    kotlin_version = '1.2.71'
+    def kotlin_version = '1.2.71'
 
-    androidCommonsVersion = '3.0.+'         // https://github.com/raxden/commons
-    androidNavigationVersion = '4.0.+'      // https://github.com/raxden/android-navigation
-    androidCronsVersion = '4.0.+'           // https://github.com/raxden/android-crons
-    androidPreferencesVersion = '3.0.+'     // https://github.com/raxden/android-preferences
-    androidRecyclerVersion = '3.0.+'       // https://github.com/raxden/android-recycler
-    androidSquareVersion = '3.0.+'         // https://github.com/raxden/square
+    def androidCommonsVersion = '3.0.+'         // https://github.com/raxden/commons
+    def androidNavigationVersion = '4.0.+'      // https://github.com/raxden/android-navigation
+    def androidCronsVersion = '4.0.+'           // https://github.com/raxden/android-crons
+    def androidPreferencesVersion = '3.0.+'     // https://github.com/raxden/android-preferences
+    def androidRecyclerVersion = '3.0.+'       // https://github.com/raxden/android-recycler
+    def androidSquareVersion = '3.0.+'         // https://github.com/raxden/square
 
     // Libraries
-    reactiveAndroidVersion = '2.1.0'        // https://github.com/ReactiveX/RxAndroid
-    reactiveJavaVersion = '2.2.3'           // https://github.com/ReactiveX/RxJava
-    retrofitVersion = '2.4.0'               // https://github.com/square/retrofit
-    okHttpVersion = '3.11.0'                // https://github.com/square/okhttp
-    timberVersion = '4.7.1'                 // https://github.com/JakeWharton/timber
-    glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
-    facebookVersion = '4.36.1'              // https://developers.facebook.com/docs/android/
-    crashlyticsVersion = '2.8.0'
-    daggerVersion = '2.16'                  // https://github.com/google/dagger
-    rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
-    androidThreeTenVersion = '1.1.1'        // https://github.com/JakeWharton/ThreeTenABP
-    constraintsLayoutVersion = '1.1.3'
+    def reactiveAndroidVersion = '2.1.0'        // https://github.com/ReactiveX/RxAndroid
+    def reactiveJavaVersion = '2.2.3'           // https://github.com/ReactiveX/RxJava
+    def retrofitVersion = '2.4.0'               // https://github.com/square/retrofit
+    def okHttpVersion = '3.11.0'                // https://github.com/square/okhttp
+    def timberVersion = '4.7.1'                 // https://github.com/JakeWharton/timber
+    def glideVersion = '4.8.0'                  // https://github.com/bumptech/glide
+    def facebookVersion = '4.36.1'              // https://developers.facebook.com/docs/android/
+    def crashlyticsVersion = '2.8.0'
+    def daggerVersion = '2.16'                  // https://github.com/google/dagger
+    def rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
+    def androidThreeTenVersion = '1.1.1'        // https://github.com/JakeWharton/ThreeTenABP
+    def constraintsLayoutVersion = '1.1.3'
     // https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html
-    urbanAirshipVersion = '9.0.4'           // http://docs.urbanairship.com/platform/android.html
+    def urbanAirshipVersion = '9.0.4'
+    // http://docs.urbanairship.com/platform/android.html
 
     // Testing
-    jUnitVersion = '4.12'
-    assertJVersion = '1.7.0'
-    robolectricVersion = '3.6.1'
-    mockitoVersion = '1.10.19'
+    def junitVersion = '4.12'
+    def assertJVersion = '1.7.0'
+    def robolectricVersion = '3.6.1'
+    def mockitoVersion = '1.10.19'
 
     // dependencies
 
-//    def androidDesign = [
-//            support : [group: 'com.android.support', name: 'support-v4', version: supportLibraryVersion]
-//    ]
-
-    dagger = [
-            implementation: [
-                    "com.google.dagger:dagger-android-support:${daggerVersion}"
-            ],
-            kapt          : [
-                    "com.google.dagger:dagger-compiler:${daggerVersion}",
-                    "com.google.dagger:dagger-android-processor:${daggerVersion}"
-            ]
+    def androidXLibs = [
+            cardview        : [group: 'androidx.cardview', name: 'cardview', version: androidxVersion],
+            appcompat       : [group: 'androidx.appcompat', name: 'appcompat', version: androidxVersion],
+            multidex        : [group: 'androidx.multidex', name: 'multidex', version: androidxMultidexVersion],
+            recyclerview    : [group: 'androidx.recyclerview', name: 'recyclerview', version: androidxVersion],
+            material        : [group: 'com.google.android.material', name: 'material', version: androidxMaterialVersion],
+            constraintlayout: [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintsLayoutVersion]
     ]
 
-    facebook = [
-            implementation: [
-                    "com.facebook.android:facebook-android-sdk:${facebookVersion}"
-            ]
+    def playServices = [
+            gcm      : [group: 'com.google.android.gms', name: 'play-services-gcm', version: servicesVersion],
+            base     : [group: 'com.google.android.gms', name: 'play-services-base', version: servicesVersion],
+            auth     : [group: 'com.google.android.gms', name: 'play-services-auth', version: servicesVersion],
+            places   : [group: 'com.google.android.gms', name: 'play-services-places', version: servicesVersion],
+            location : [group: 'com.google.android.gms', name: 'play-services-location', version: servicesVersion],
+            analytics: [group: 'com.google.android.gms', name: 'play-services-analytics', version: servicesVersion]
     ]
 
-    firebase = [
-            implementation: [
-                    "com.google.firebase:firebase-core:${servicesVersion}",
-                    "com.google.firebase:firebase-messaging:${servicesVersion}",
-                    "com.google.firebase:firebase-auth:${servicesVersion}"
-            ]
+    def firebase = [
+            core     : [group: 'com.google.firebase', name: 'firebase-core', version: servicesVersion],
+            auth     : [group: 'com.google.firebase', name: 'firebase-auth', version: servicesVersion],
+            messaging: [group: 'com.google.firebase', name: 'firebase-messaging', version: servicesVersion]
     ]
 
-    glide = [
-            implementation: [
-                    "com.github.bumptech.glide:glide:${glideVersion}"
-            ],
-            kapt          : [
-                    "com.github.bumptech.glide:compiler:${glideVersion}"
-            ]
+    def raxden = [
+            commons      : [group: 'com.github.raxden', name: 'android-commons', version: androidCommonsVersion, ext: 'aar'],
+            navigation   : [group: 'com.github.raxden', name: 'android-navigation', version: androidNavigationVersion, ext: 'aar'],
+            recycler     : [group: 'com.github.raxden', name: 'android-recycler', version: androidRecyclerVersion, ext: 'aar'],
+            preferences  : [group: 'com.github.raxden', name: 'android-preferences', version: androidPreferencesVersion, ext: 'aar'],
+            square       : [group: 'com.github.raxden.square', name: 'square', version: androidSquareVersion, ext: 'aar'],
+            squareCommons: [group: 'com.github.raxden.square', name: 'square-commons', version: androidSquareVersion, ext: 'aar'],
+            crons        : [group: 'com.github.raxden.android-crons', name: 'crons', version: androidCronsVersion, ext: 'aar']
     ]
 
-    jakewharton = [
-            implementation: [
-                    "com.jakewharton.threetenabp:threetenabp:${androidThreeTenVersion}",
-                    "com.jakewharton.timber:timber:${timberVersion}"
-            ]
+    def otherLibs = [
+            daggerCompiler        : [group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion],
+            dagger                : [group: 'com.google.dagger', name: 'dagger-android-support', version: daggerVersion],
+            daggerAndroidProcessor: [group: 'com.google.dagger', name: 'dagger-android-processor', version: daggerVersion],
+            facebook              : [group: 'com.facebook.android', name: 'facebook-android-sdk', version: facebookVersion],
+            glide                 : [group: 'com.github.bumptech.glide', name: 'glide', version: glideVersion],
+            glideCompiler         : [group: 'com.github.bumptech.glide', name: 'compiler', version: glideVersion],
+            timber                : [group: 'com.jakewharton.timber', name: 'timber', version: timberVersion],
+            threetenb             : [group: 'com.jakewharton.threetenabp', name: 'threetenabp', version: androidThreeTenVersion],
+            kotlin                : [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: kotlin_version],
+            rxjava                : [group: 'io.reactivex.rxjava2', name: 'rxjava', version: reactiveJavaVersion],
+            rxandroid             : [group: 'io.reactivex.rxjava2', name: 'rxandroid', version: reactiveAndroidVersion],
+            retrofit              : [group: 'com.squareup.retrofit2', name: 'retrofit', version: retrofitVersion],
+            retrofitAdapter       : [group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: retrofitVersion],
+            converterGson         : [group: 'com.squareup.retrofit2', name: 'converter-gson', version: retrofitVersion],
+            converterScalars      : [group: 'com.squareup.retrofit2', name: 'converter-scalars', version: retrofitVersion],
+            okHttp                : [group: 'com.squareup.okhttp3', name: 'okhttp', version: okHttpVersion],
+            loggingInterceptor    : [group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: okHttpVersion],
+            rxPermissions         : [group: 'com.tbruyelle.rxpermissions2', name: 'rxpermissions', version: rxPermissionsVersion, ext: 'aar'],
+            urbanairship          : [group: 'com.urbanairship.android', name: 'urbanairship-sdk', version: urbanAirshipVersion, ext: 'aar'],
+            crashlytics           : [group: 'com.crashlytics.sdk.android', name: 'crashlytics', version: crashlyticsVersion, ext: 'aar']
     ]
 
-    kotlin = [
-            implementation: [
-                    "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin_version}"
-            ]
+    def testLibs = [
+            junit                     : [group: 'junit', name: 'junit', version: junitVersion],
+            assertj                   : [group: 'org.assertj', name: 'assertj-core', version: assertJVersion],
+            mockito                   : [group: 'org.mockito', name: 'mockito-core', version: mockitoVersion],
+            robolectric               : [group: 'org.robolectric', name: 'robolectric', version: robolectricVersion],
+            robolectricShadowsMultidex: [group: 'org.robolectric', name: 'shadows-multidex', version: robolectricVersion]
     ]
 
-    playServices = [
-            implementation: [
-                    "com.google.android.gms:play-services-base:${servicesVersion}",
-                    "com.google.android.gms:play-services-analytics:${servicesVersion}",
-                    "com.google.android.gms:play-services-location:${servicesVersion}",
-                    "com.google.android.gms:play-services-auth:${servicesVersion}",
-                    "com.google.android.gms:play-services-places:${servicesVersion}",
-                    "com.google.android.gms:play-services-gcm:${servicesVersion}"
-            ]
+    //Modules
+
+    def modules = [
+            app       : ':app',
+            domain    : ':domain',
+            data      : ':data',
+            components: ':components',
+            commons   : ':commons',
+            resources : ':resources'
     ]
 
-    raxden = [
-            implementation: [
-                    "com.github.raxden:android-commons:${androidCommonsVersion}@aar",
-                    "com.github.raxden:android-navigation:${androidNavigationVersion}@aar",
-                    "com.github.raxden:android-recycler:${androidRecyclerVersion}@aar",
-                    "com.github.raxden:android-preferences:${androidPreferencesVersion}@aar",
-                    "com.github.raxden.android-crons:crons:${androidCronsVersion}@aar",
-                    "com.github.raxden.square:square:${androidSquareVersion}@aar",
-                    "com.github.raxden.square:square-commons:${androidSquareVersion}@aar"
-            ]
+    appDependencies = [
+            [configuration: "implementation", dependency: androidXLibs.appcompat],
+            [configuration: "implementation", dependency: androidXLibs.cardview],
+            [configuration: "implementation", dependency: androidXLibs.multidex],
+            [configuration: "implementation", dependency: androidXLibs.recyclerview],
+            [configuration: "implementation", dependency: androidXLibs.material],
+            [configuration: "implementation", dependency: androidXLibs.constraintlayout],
+            [configuration: "implementation", dependency: raxden.commons],
+            [configuration: "implementation", dependency: raxden.navigation],
+            [configuration: "implementation", dependency: raxden.recycler],
+            [configuration: "implementation", dependency: raxden.preferences],
+            [configuration: "implementation", dependency: raxden.square],
+            [configuration: "implementation", dependency: raxden.crons],
+            [configuration: "implementation", dependency: raxden.squareCommons],
+            [configuration: "implementation", dependency: playServices.base],
+            [configuration: "implementation", dependency: playServices.gcm],
+            [configuration: "implementation", dependency: playServices.auth],
+            [configuration: "implementation", dependency: playServices.places],
+            [configuration: "implementation", dependency: playServices.location],
+            [configuration: "implementation", dependency: playServices.analytics],
+            [configuration: "implementation", dependency: firebase.core],
+            [configuration: "implementation", dependency: firebase.auth],
+            [configuration: "implementation", dependency: firebase.messaging],
+            [configuration: "implementation", dependency: otherLibs.dagger],
+            [configuration: "kapt", dependency: otherLibs.daggerCompiler],
+            [configuration: "kapt", dependency: otherLibs.daggerAndroidProcessor],
+            [configuration: "implementation", dependency: otherLibs.retrofit],
+            [configuration: "implementation", dependency: otherLibs.retrofitAdapter],
+            [configuration: "implementation", dependency: otherLibs.converterGson],
+            [configuration: "implementation", dependency: otherLibs.converterScalars],
+            [configuration: "implementation", dependency: otherLibs.okHttp],
+            [configuration: "implementation", dependency: otherLibs.loggingInterceptor],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.threetenb],
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: otherLibs.rxjava],
+            [configuration: "implementation", dependency: otherLibs.rxandroid],
+            [configuration: "implementation", dependency: otherLibs.rxPermissions],
+            [configuration: "implementation", dependency: otherLibs.urbanairship],
+            [configuration: "implementation", dependency: otherLibs.facebook],
+            [configuration: "implementation", dependency: otherLibs.glide],
+            [configuration: "kapt", dependency: otherLibs.glideCompiler],
+            [configuration: "implementation", dependency: otherLibs.crashlytics, options: {
+                transitive = true
+            }],
+
+            [configuration: "testImplementation", dependency: testLibs.junit],
+            [configuration: "testImplementation", dependency: testLibs.assertj],
+            [configuration: "testImplementation", dependency: testLibs.mockito],
+            [configuration: "testImplementation", dependency: testLibs.robolectric],
+            [configuration: "testImplementation", dependency: testLibs.robolectricShadowsMultidex],
+
+            [configuration: "implementation", dependency: project(modules.commons)],
+            [configuration: "implementation", dependency: project(modules.components)],
+            [configuration: "implementation", dependency: project(modules.domain)],
+            [configuration: "implementation", dependency: project(modules.data)]
     ]
 
-    reactive = [
-            implementation: [
-                    "io.reactivex.rxjava2:rxandroid:${reactiveAndroidVersion}",
-                    "io.reactivex.rxjava2:rxjava:${reactiveJavaVersion}"
-            ]
+    domainDependencies = [
+            [configuration: "implementation", dependency: raxden.commons],
+            [configuration: "implementation", dependency: raxden.navigation],
+            [configuration: "implementation", dependency: raxden.recycler],
+            [configuration: "implementation", dependency: raxden.preferences],
+            [configuration: "implementation", dependency: raxden.square],
+            [configuration: "implementation", dependency: raxden.crons],
+            [configuration: "implementation", dependency: raxden.squareCommons],
+            [configuration: "implementation", dependency: otherLibs.dagger],
+            [configuration: "kapt", dependency: otherLibs.daggerCompiler],
+            [configuration: "kapt", dependency: otherLibs.daggerAndroidProcessor],
+            [configuration: "implementation", dependency: otherLibs.rxjava],
+            [configuration: "implementation", dependency: otherLibs.rxandroid],
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.threetenb],
+
+            [configuration: "api", dependency: project(modules.commons)]
     ]
 
-    retrofit = [
-            implementation: [
-                    "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-                    "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
-                    "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-                    "com.squareup.retrofit2:converter-scalars:${retrofitVersion}",
-                    "com.squareup.okhttp3:okhttp:${okHttpVersion}",
-                    "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
-            ]
+    dataDependencies = [
+            [configuration: "implementation", dependency: raxden.commons],
+            [configuration: "implementation", dependency: raxden.navigation],
+            [configuration: "implementation", dependency: raxden.recycler],
+            [configuration: "implementation", dependency: raxden.preferences],
+            [configuration: "implementation", dependency: raxden.square],
+            [configuration: "implementation", dependency: raxden.crons],
+            [configuration: "implementation", dependency: raxden.squareCommons],
+            [configuration: "implementation", dependency: firebase.core],
+            [configuration: "implementation", dependency: firebase.auth],
+            [configuration: "implementation", dependency: firebase.messaging],
+            [configuration: "implementation", dependency: otherLibs.retrofit],
+            [configuration: "implementation", dependency: otherLibs.retrofitAdapter],
+            [configuration: "implementation", dependency: otherLibs.converterGson],
+            [configuration: "implementation", dependency: otherLibs.converterScalars],
+            [configuration: "implementation", dependency: otherLibs.okHttp],
+            [configuration: "implementation", dependency: otherLibs.loggingInterceptor],
+            [configuration: "implementation", dependency: otherLibs.dagger],
+            [configuration: "kapt", dependency: otherLibs.daggerCompiler],
+            [configuration: "kapt", dependency: otherLibs.daggerAndroidProcessor],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.threetenb],
+            [configuration: "implementation", dependency: otherLibs.rxjava],
+            [configuration: "implementation", dependency: otherLibs.rxandroid],
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: otherLibs.urbanairship],
+
+            [configuration: "api", dependency: project(modules.commons)],
+            [configuration: "implementation", dependency: project(modules.domain)]
     ]
 
-    rxPermissions = [
-            implementation: [
-                    "com.tbruyelle.rxpermissions2:rxpermissions:${rxPermissionsVersion}@aar"
-            ]
+    componentsDependencies = [
+            [configuration: "implementation", dependency: androidXLibs.appcompat],
+            [configuration: "implementation", dependency: androidXLibs.cardview],
+            [configuration: "implementation", dependency: androidXLibs.multidex],
+            [configuration: "implementation", dependency: androidXLibs.recyclerview],
+            [configuration: "implementation", dependency: androidXLibs.material],
+            [configuration: "implementation", dependency: androidXLibs.constraintlayout],
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.threetenb],
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+
+            [configuration: "api", dependency: project(modules.commons)]
     ]
 
-    support = [
-            implementation: [
-                    "com.android.support:multidex:${multidexVersion}",
-                    "com.android.support:support-v4:${supportLibraryVersion}",
-                    "com.android.support:support-v13:${supportLibraryVersion}",
-                    "com.android.support:appcompat-v7:${supportLibraryVersion}",
-                    "com.android.support:design:${supportLibraryVersion}",
-                    "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-                    "com.android.support:cardview-v7:${supportLibraryVersion}",
-                    "com.android.support.constraint:constraint-layout:${constraintsLayoutVersion}"
-            ]
+    commonsDependencies = [
+            [configuration: "implementation", dependency: otherLibs.timber],
+            [configuration: "implementation", dependency: otherLibs.threetenb],
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+
+            [configuration: "api", dependency: project(modules.resources)]
     ]
 
-    androidx = [
-            implementation: [
-                    "androidx.multidex:multidex:${androidxMultidexVersion}",
-                    "androidx.appcompat:appcompat:${androidxVersion}",
-                    "androidx.recyclerview:recyclerview:${androidxVersion}",
-                    "androidx.cardview:cardview:${androidxVersion}",
-                    "androidx.constraintlayout:constraintlayout:${constraintsLayoutVersion}",
-                    "com.google.android.material:material:${androidxMaterialVersion}"
-            ]
+    resourcesDependencies = [
+            [configuration: "implementation", dependency: androidXLibs.appcompat],
+            [configuration: "implementation", dependency: androidXLibs.cardview],
+            [configuration: "implementation", dependency: androidXLibs.multidex],
+            [configuration: "implementation", dependency: androidXLibs.recyclerview],
+            [configuration: "implementation", dependency: androidXLibs.material],
+            [configuration: "implementation", dependency: androidXLibs.constraintlayout],
+            [configuration: "implementation", dependency: otherLibs.kotlin]
     ]
-
-    urbanairship = [
-            implementation: [
-                    "com.urbanairship.android:urbanairship-sdk:${urbanAirshipVersion}"
-            ]
-    ]
-
-    deps = [
-            app       : [
-                    implementation         : [
-//                            support.implementation,
-                            androidx.implementation,
-                            raxden.implementation,
-                            playServices.implementation,
-                            firebase.implementation,
-                            dagger.implementation,
-                            retrofit.implementation,
-                            reactive.implementation,
-                            jakewharton.implementation,
-                            glide.implementation,
-                            rxPermissions.implementation,
-                            urbanairship.implementation,
-                            facebook.implementation,
-                            kotlin.implementation
-                    ],
-                    compileOnly            : [],
-                    testImplementation     : [
-                            "junit:junit:${jUnitVersion}",
-                            "org.assertj:assertj-core:${assertJVersion}",
-                            "org.mockito:mockito-core:${mockitoVersion}",
-                            "org.robolectric:robolectric:${robolectricVersion}",
-                            "org.robolectric:shadows-multidex:${robolectricVersion}"
-                    ],
-                    testAnnotationProcessor: [],
-                    kapt                   : [
-                            dagger.kapt,
-                            glide.kapt
-                    ]
-            ],
-            domain    : [
-                    implementation    : [
-                            raxden.implementation,
-                            jakewharton.implementation,
-                            dagger.implementation,
-                            reactive.implementation,
-                            kotlin.implementation
-                    ],
-                    api               : [],
-                    compileOnly       : [],
-                    testImplementation: [],
-                    kapt              : [
-                            dagger.kapt
-                    ]
-            ],
-            data      : [
-                    implementation    : [
-                            raxden.implementation,
-                            firebase.implementation,
-                            jakewharton.implementation,
-                            dagger.implementation,
-                            retrofit.implementation,
-                            reactive.implementation,
-                            urbanairship.implementation,
-                            kotlin.implementation
-                    ],
-                    api               : [],
-                    compileOnly       : [],
-                    testImplementation: [],
-                    kapt              : [
-                            dagger.kapt
-                    ]
-            ],
-            components: [
-                    implementation     : [
-//                            support.implementation,
-                            androidx.implementation,
-                            jakewharton.implementation,
-                            kotlin.implementation
-                    ],
-                    api                : [],
-                    annotationProcessor: [],
-                    compileOnly        : [],
-                    testImplementation : [],
-                    kapt               : []
-            ],
-            commons   : [
-                    implementation     : [
-                            jakewharton.implementation,
-                            kotlin.implementation
-                    ],
-                    api                : [],
-                    annotationProcessor: [],
-                    compileOnly        : [],
-                    testImplementation : [],
-                    kapt               : []
-            ],
-            resources : [
-                    implementation     : [
-//                            support.implementation,
-                            androidx.implementation,
-                            kotlin.implementation
-                    ],
-                    api                : [],
-                    annotationProcessor: [],
-                    compileOnly        : [],
-                    testImplementation : []
-            ]
-    ]
-
 }

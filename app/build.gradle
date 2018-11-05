@@ -168,22 +168,9 @@ repositories {
 
 dependencies {
     implementation fileTree(include: '*.jar', dir: 'libs')
-    implementation project(':commons')
-    implementation project(':components')
-    implementation project(':domain')
-    implementation project(':data')
-
-    implementation deps.app.implementation
-    compileOnly deps.app.compileOnly
-    testImplementation deps.app.testImplementation
-    testAnnotationProcessor deps.app.testAnnotationProcessor
-    androidTestAnnotationProcessor deps.app.testAnnotationProcessor
-    kapt deps.app.kapt
-
-    implementation("com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}@aar") {
-        transitive = true
+    rootProject.appDependencies.each{
+        add(it.configuration, it.dependency, it.options)
     }
-
 }
 
 apply plugin: 'com.google.gms.google-services'

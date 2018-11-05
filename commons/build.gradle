@@ -17,12 +17,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(':resources')
-
-    implementation deps.commons.implementation
-    api deps.commons.api
-    compileOnly deps.commons.compileOnly
-    kapt deps.commons.kapt
-    testImplementation deps.commons.testImplementation
-
+    rootProject.commonsDependencies.each{
+        add(it.configuration, it.dependency, it.options)
+    }
 }

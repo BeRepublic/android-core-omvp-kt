@@ -1,15 +1,15 @@
 package com.omvp.app.ui.samples.home.view
 
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.home.adapter.HomeListAdapter
 import com.omvp.app.ui.samples.home.presenter.HomePresenter
 import com.omvp.app.ui.samples.home.presenter.HomePresenterImpl
+import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallback>(), HomeView {
-
-//    internal lateinit var mRecyclerView: RecyclerView
 
     private lateinit var mAdapter: HomeListAdapter
 
@@ -45,7 +45,6 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-
         setupViews()
     }
 
@@ -74,10 +73,10 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
 
     private fun setupViews() {
         mAdapter = HomeListAdapter(mContext, mPresenter as HomeListAdapter.AdapterCallback)
-//        mRecyclerView.apply {
-//            adapter = mAdapter
-//            addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
-//        }
+        recyclerview.apply {
+            adapter = mAdapter
+            addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
+        }
     }
 
     companion object {
