@@ -22,7 +22,7 @@ class SampleHomeItemView : BaseComponentView {
     }
 
     override fun bindViews() {
-        mSampleTextView = findViewById(R.id.text)
+        mSampleTextView = findViewById(R.id.text_view)
     }
 
     override fun loadData() {

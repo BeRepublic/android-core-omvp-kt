@@ -9,7 +9,7 @@
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text"
+        android:id="@+id/text_view"
         style="@style/CodeFont.Medium.Black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

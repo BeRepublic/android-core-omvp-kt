@@ -5,14 +5,11 @@ import com.omvp.app.base.mvp.presenter.BasePresenter
 import com.omvp.app.base.reactivex.BaseDisposableMaybeObserver
 import com.omvp.app.ui.samples.home.adapter.HomeListAdapter
 import com.omvp.app.ui.samples.home.view.HomeView
-
-import java.util.ArrayList
-
-import javax.inject.Inject
-
 import io.reactivex.Maybe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.util.*
+import javax.inject.Inject
 
 class HomePresenterImpl
 @Inject
@@ -24,7 +21,6 @@ constructor(homeView: HomeView) : BasePresenter<HomeView>(homeView), HomePresent
 
     override fun onViewLoaded() {
         super.onViewLoaded()
-
         loadData()
     }
 
@@ -44,7 +40,7 @@ constructor(homeView: HomeView) : BasePresenter<HomeView>(homeView), HomePresent
 
                     override fun onSuccess(sampleItems: List<SampleItemModel>) {
                         hideProgress()
-                        drawItems(sampleItems)
+                        mView?.drawItems(sampleItems)
                     }
 
                     override fun onComplete() {
@@ -56,10 +52,6 @@ constructor(homeView: HomeView) : BasePresenter<HomeView>(homeView), HomePresent
                         showError(code, title, description)
                     }
                 }))
-    }
-
-    private fun drawItems(itemList: List<SampleItemModel>) {
-        mView?.drawItems(itemList)
     }
 
     private fun itemSelected(item: SampleItemModel) {

@@ -14,7 +14,7 @@ ext {
     def androidNavigationVersion = '4.0.+'      // https://github.com/raxden/android-navigation
     def androidCronsVersion = '4.0.+'           // https://github.com/raxden/android-crons
     def androidPreferencesVersion = '3.0.+'     // https://github.com/raxden/android-preferences
-    def androidRecyclerVersion = '3.0.+'       // https://github.com/raxden/android-recycler
+    def androidRecyclerVersion = '3.0.13'       // https://github.com/raxden/android-recycler
     def androidSquareVersion = '3.0.+'         // https://github.com/raxden/square
 
     // Libraries

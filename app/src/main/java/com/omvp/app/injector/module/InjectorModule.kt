@@ -9,7 +9,6 @@ import com.omvp.app.service.AppFirebaseInstanceIDService
 import com.omvp.app.service.AppFirebaseInstanceIDServiceModule
 import com.omvp.app.service.AppFirebaseMessagingService
 import com.omvp.app.service.AppFirebaseMessagingServiceModule
-import com.omvp.app.ui.ktsamples.ktsample.SampleActivityModule
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivityModule
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
@@ -35,6 +34,7 @@ import com.omvp.app.ui.samples.pager.SamplePagerActivityModule
 import com.omvp.app.ui.samples.requestphone.SampleRequestPhoneActivity
 import com.omvp.app.ui.samples.requestphone.SampleRequestPhoneActivityModule
 import com.omvp.app.ui.samples.simple.SampleActivity
+import com.omvp.app.ui.samples.simple.SampleActivityModule
 import com.omvp.app.ui.samples.social.SampleSocialActivity
 import com.omvp.app.ui.samples.social.SampleSocialActivityModule
 import com.omvp.app.ui.samples.takepicture.SampleTakePictureActivity

@@ -2,6 +2,7 @@ package com.omvp.app.ui.samples.home.view
 
 import android.os.Bundle
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.home.adapter.HomeListAdapter
@@ -15,31 +16,18 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
 
     interface FragmentCallback : BaseViewFragmentCallback {
         fun onSampleViewSelected()
-
         fun onSampleListSelected()
-
         fun onSamplePagerSelected()
-
         fun onSampleMultipleSelected()
-
         fun onSampleLocationSelected()
-
         fun onSampleTakePictureSelected()
-
         fun onSampleLocaleSelected()
-
         fun onSampleHorizontalListClicked()
-
         fun onVibrationSelected()
-
         fun onInputViewSelected()
-
         fun onSocialViewSelected()
-
         fun onNoticeDialogViewSelected()
-
         fun onBottomNavigationViewSelected()
-
         fun onAuthPhoneViewSelected()
     }
 
@@ -75,7 +63,8 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
         mAdapter = HomeListAdapter(mContext, mPresenter as HomeListAdapter.AdapterCallback)
         recyclerview.apply {
             adapter = mAdapter
-            addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
     }
 
