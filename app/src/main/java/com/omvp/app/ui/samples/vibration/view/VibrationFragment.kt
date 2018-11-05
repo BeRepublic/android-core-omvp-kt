@@ -1,15 +1,14 @@
 package com.omvp.app.ui.samples.vibration.view
 
 import android.os.Bundle
+import android.widget.SeekBar
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.vibration.presenter.VibrationPresenterImpl
+import kotlinx.android.synthetic.main.vibration_fragment.*
 
 class VibrationFragment : BaseViewFragment<VibrationPresenterImpl,
         VibrationFragment.FragmentCallback>(), VibrationView {
-
-//    internal lateinit var mSeekBar: SeekBar
-//    internal lateinit var mDurationTextView: AppCompatTextView
 
     private var mDuration: Long = 100
 
@@ -19,14 +18,14 @@ class VibrationFragment : BaseViewFragment<VibrationPresenterImpl,
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-
         setupViews()
     }
 
     private fun setupViews() {
-/*        mSeekBar.progress = 1
+        button1.setOnClickListener { mCallback.onVibrateSelected(mDuration) }
+        seekbar.progress = 1
 
-        mSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 updateDuration(progress)
                 if (progress < 1) {
@@ -41,16 +40,12 @@ class VibrationFragment : BaseViewFragment<VibrationPresenterImpl,
             override fun onStopTrackingTouch(seekBar: SeekBar) {
 
             }
-        })*/
-    }
-
-    fun onVibrateClicked() {
-        mCallback.onVibrateSelected(mDuration)
+        })
     }
 
     private fun updateDuration(progress: Int) {
         mDuration = (progress * 100).toLong()
-//        mDurationTextView.text = mDuration.toString() + " ms"
+        duration.text = "$mDuration ms"
     }
 
     companion object {

@@ -9,7 +9,7 @@
         style="@style/Content.Pager.Second">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text"
+            android:id="@+id/text_view"
             style="@style/CodeFont.Large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

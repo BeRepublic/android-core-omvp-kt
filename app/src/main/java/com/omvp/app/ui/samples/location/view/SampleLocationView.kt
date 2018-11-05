@@ -4,5 +4,5 @@ import com.omvp.app.base.mvp.view.BaseView
 
 interface SampleLocationView : BaseView {
 
-    fun drawLocation(s: String, s1: String)
+    fun drawLocation(latitude: String, longitude: String)
 }

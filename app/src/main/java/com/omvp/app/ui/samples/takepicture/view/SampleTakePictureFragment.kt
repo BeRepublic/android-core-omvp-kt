@@ -5,13 +5,12 @@ import android.os.Bundle
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.takepicture.presenter.SampleTakePicturePresenter
+import com.omvp.app.util.ImageHelper
+import kotlinx.android.synthetic.main.sample_take_picture_fragment.*
 
 class SampleTakePictureFragment : BaseViewFragment<SampleTakePicturePresenter,
         SampleTakePictureFragment.FragmentCallback>(),
         SampleTakePictureView {
-
-
-//    internal lateinit var mTakePictureImg: AppCompatImageView
 
     interface FragmentCallback : BaseViewFragmentCallback
 
@@ -22,15 +21,11 @@ class SampleTakePictureFragment : BaseViewFragment<SampleTakePicturePresenter,
     }
 
     private fun setupViews() {
-
-    }
-
-    fun onTakePictureImagePressed() {
-        mPresenter.takePictureImage()
+        take_picture_image.setOnClickListener { mPresenter.takePictureImage() }
     }
 
     override fun pictureRetrieved(picture: Uri) {
-//        ImageHelper.loadImageUser(activity, picture, mTakePictureImg, null)
+        ImageHelper.loadImageUser(context!!, picture, take_picture_image, null)
     }
 
     companion object {

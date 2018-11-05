@@ -8,14 +8,9 @@ import android.widget.Toast
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.inputs.presenter.SampleInputsPresenterImpl
+import kotlinx.android.synthetic.main.sample_input_fragment.*
 
 class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleInputFragment.FragmentCallback>(), SampleInputView {
-
-//    internal lateinit var mNameInputLayout: InputLayoutView
-//    internal lateinit var mPasswordInputLayout: InputLayoutView
-//    internal lateinit var mFixedInputLayout: InputLayoutView
-//    internal lateinit var mFixedLeftInputLayout: InputLayoutView
-//    internal lateinit var mFixedCenterInputLayout: InputLayoutView
 
     private val onNameTextChanged = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -27,7 +22,7 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         }
 
         override fun afterTextChanged(s: Editable) {
-            mPresenter.nameChanged(s.toString())
+            input_name.clearError()
         }
     }
 
@@ -41,7 +36,7 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         }
 
         override fun afterTextChanged(s: Editable) {
-            mPresenter.passwordChanged(s.toString())
+            input_password.clearError()
         }
     }
 
@@ -55,7 +50,7 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         }
 
         override fun afterTextChanged(s: Editable) {
-            mPresenter.fixedChanged(s.toString())
+            input_fixed.clearError()
         }
     }
 
@@ -69,7 +64,7 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         }
 
         override fun afterTextChanged(s: Editable) {
-            mPresenter.fixedLeftChanged(s.toString())
+            input_fixed_left.clearError()
         }
     }
 
@@ -83,7 +78,7 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         }
 
         override fun afterTextChanged(s: Editable) {
-            mPresenter.fixedCenterChanged(s.toString())
+            input_fixed_center.clearError()
         }
     }
 
@@ -96,21 +91,21 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
     }
 
     fun onValidationClicked(view: View) {
-        /*mPresenter.validateInputs(
-                mNameInputLayout.text,
-                mPasswordInputLayout.text,
-                mFixedInputLayout.text,
-                mFixedLeftInputLayout.text,
-                mFixedCenterInputLayout.text
-        )*/
+        mPresenter.validateInputs(
+                input_name.text,
+                input_password.text,
+                input_fixed.text,
+                input_fixed_left.text,
+                input_fixed_center.text
+        )
     }
 
     override fun showNameInputError(error: String) {
-//        mNameInputLayout.setError(error)
+        input_name.setError(error)
     }
 
     override fun showNameInputSuccess() {
-//        mNameInputLayout.setSuccess()
+        input_name.setSuccess()
     }
 
     override fun showValidationToast() {
@@ -118,67 +113,46 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
     }
 
     override fun showFixedInputError(error: String) {
-//        mFixedInputLayout.setError(error)
+        input_fixed.setError(error)
     }
 
     override fun showFixedInputSuccess() {
-//        mFixedInputLayout.setSuccess()
-    }
-
-    override fun hideFixedInputError() {
-//        mFixedInputLayout.clearError()
+        input_fixed.setSuccess()
     }
 
     override fun showFixedLeftInputError(error: String) {
-//        mFixedLeftInputLayout.setError(error)
+        input_fixed_left.setError(error)
     }
 
     override fun showFixedLeftInputSuccess() {
-//        mFixedLeftInputLayout.setSuccess()
-    }
-
-    override fun hideFixedLeftInputError() {
-//        mFixedLeftInputLayout.clearError()
+        input_fixed_left.setSuccess()
     }
 
     override fun showFixedCenterInputError(error: String) {
-//        mFixedCenterInputLayout.setError(error)
+        input_fixed_center.setError(error)
     }
 
     override fun showFixedCenterInputSuccess() {
-//        mFixedCenterInputLayout.setSuccess()
-    }
-
-    override fun hideFixedCenterInputError() {
-//        mFixedCenterInputLayout.clearError()
-    }
-
-    override fun hideNameInputError() {
-//        mNameInputLayout.clearError()
+        input_fixed_center.setSuccess()
     }
 
     override fun showPasswordInputError(error: String) {
-//        mPasswordInputLayout.setError(error)
+        input_password.setError(error)
     }
 
     override fun showPasswordInputSuccess() {
-//        mPasswordInputLayout.setSuccess()
-    }
-
-    override fun hidePasswordInputError() {
-//        mPasswordInputLayout.clearError()
+        input_password.setSuccess()
     }
 
     private fun setupViews() {
-//        mNameInputLayout.addTextChangedListener(onNameTextChanged)
-//        mPasswordInputLayout.addTextChangedListener(onPasswordTextChanged)
-//        mFixedInputLayout.addTextChangedListener(onFixedTextChanged)
-//        mFixedLeftInputLayout.addTextChangedListener(onFixedLeftTextChanged)
-//        mFixedCenterInputLayout.addTextChangedListener(onFixedCenterTextChanged)
+        input_name.addTextChangedListener(onNameTextChanged)
+        input_password.addTextChangedListener(onPasswordTextChanged)
+        input_fixed.addTextChangedListener(onFixedTextChanged)
+        input_fixed_left.addTextChangedListener(onFixedLeftTextChanged)
+        input_fixed_center.addTextChangedListener(onFixedCenterTextChanged)
     }
 
     companion object {
-
         fun newInstance(bundle: Bundle?) = SampleInputFragment().apply {
             arguments = bundle ?: Bundle()
         }

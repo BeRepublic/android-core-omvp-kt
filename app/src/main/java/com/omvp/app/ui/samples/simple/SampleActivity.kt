@@ -3,16 +3,14 @@ package com.omvp.app.ui.samples.simple
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.Toolbar
-
 import com.omvp.app.R
 import com.omvp.app.base.mvp.BaseFragmentActivity
-import com.omvp.app.ui.ktsamples.ktsample.view.SampleFragment
+import com.omvp.app.ui.samples.simple.view.SampleFragment
 import com.raxdenstudios.square.interceptor.Interceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.injectfragment.InjectFragmentInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
-
 import javax.inject.Inject
 
 class SampleActivity : BaseFragmentActivity(), SampleFragment.FragmentCallback, ToolbarInterceptorCallback, InjectFragmentInterceptorCallback<SampleFragment> {

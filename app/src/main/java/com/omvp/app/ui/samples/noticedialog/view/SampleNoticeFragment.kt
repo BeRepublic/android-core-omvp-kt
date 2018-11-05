@@ -10,16 +10,6 @@ class SampleNoticeFragment : BaseViewFragment<SampleNoticePresenter, SampleNotic
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
-        setupViews()
-    }
-
-    private fun setupViews() {
-
-    }
-
     companion object {
 
         fun newInstance(bundle: Bundle?) = SampleNoticeFragment().apply {

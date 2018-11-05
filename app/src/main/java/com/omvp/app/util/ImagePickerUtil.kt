@@ -195,10 +195,10 @@ object ImagePickerUtil {
         getDefaultSharedPreferences(context).edit().putString(TEMP_IMAGE_NAME, path).apply()
     }
 
-    private fun recoverImagePath(context: Context): String {
+    private fun recoverImagePath(context: Context): String? {
         val sharedPreferences = getDefaultSharedPreferences(context)
         val path = sharedPreferences.getString(TEMP_IMAGE_NAME, "")
-        sharedPreferences.edit().putString(TEMP_IMAGE_NAME, "")
+        sharedPreferences.edit().putString(TEMP_IMAGE_NAME, "").apply()
         return path
     }
 

@@ -1,10 +1,9 @@
-package com.omvp.app.ui.ktsamples.ktsample.view
+package com.omvp.app.ui.samples.simple.view
 
 import android.os.Bundle
-
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
-import com.omvp.app.ui.ktsamples.ktsample.presenter.SamplePresenter
+import com.omvp.app.ui.samples.simple.presenter.SamplePresenter
 
 class SampleFragment : BaseViewFragment<SamplePresenter, SampleFragment.FragmentCallback>(), SampleView {
 

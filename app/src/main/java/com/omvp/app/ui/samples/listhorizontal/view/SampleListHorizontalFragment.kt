@@ -6,7 +6,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
@@ -14,11 +16,10 @@ import com.omvp.app.model.SampleModel
 import com.omvp.app.ui.samples.listhorizontal.adapter.SampleListAdapter
 import com.omvp.app.ui.samples.listhorizontal.presenter.SampleListHorizontalPresenter
 import com.omvp.domain.SampleDomain
+import kotlinx.android.synthetic.main.sample_list_empty_view.*
+import kotlinx.android.synthetic.main.sample_list_horizontal_fragment.*
 
 class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresenter, SampleListHorizontalFragment.FragmentCallback>(), SampleListHorizontalView {
-
-//    internal lateinit var mRecyclerView: RecyclerView
-//    internal lateinit var mEmptyView: View
 
     private lateinit var mAdapter: SampleListAdapter
 
@@ -53,13 +54,13 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
     override fun drawSampleList(sampleModelList: List<Any>) {
         mAdapter.items = sampleModelList
 
-//        mEmptyView.visibility = View.GONE
-//        mRecyclerView.visibility = View.VISIBLE
+        empty_view.visibility = View.GONE
+        recycler_view.visibility = View.VISIBLE
     }
 
     override fun showEmptyView() {
-//        mEmptyView.visibility = View.VISIBLE
-//        mRecyclerView.visibility = View.GONE
+        empty_view.visibility = View.VISIBLE
+        recycler_view.visibility = View.GONE
     }
 
     override fun onSampleItemSelected(sampleDomain: SampleDomain, sharedView: View?) {
@@ -80,12 +81,7 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
         mAdapter = SampleListAdapter(context!!,
                 mPresenter as SampleListAdapter.AdapterCallback)
 
-        val manager = LinearLayoutManager(
-                mContext,
-                LinearLayoutManager.VERTICAL,
-                false
-        )
-
+        val manager = LinearLayoutManager(mContext, RecyclerView.VERTICAL, false)
         /*
             Call LinearLayoutManager.setInitialPrefetchItemCount(N), where N is the number of views visible per inner item.
             For example, if your inner, horizontal lists show a minimum of three and a half item views at a time,
@@ -95,11 +91,12 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
          */
         manager.initialPrefetchItemCount = 3
 
-/*        mRecyclerView.layoutManager = manager
-        mRecyclerView.setHasFixedSize(false)
-        mRecyclerView.adapter = mAdapter
-        mRecyclerView.addItemDecoration(DividerItemDecoration(mContext,
-                DividerItemDecoration.VERTICAL))*/
+        recycler_view.let {
+            it.layoutManager = manager
+            it.setHasFixedSize(false)
+            it.adapter = mAdapter
+            it.addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
+        }
     }
 
     companion object {

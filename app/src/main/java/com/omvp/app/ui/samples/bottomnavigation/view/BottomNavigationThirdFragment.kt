@@ -3,19 +3,18 @@ package com.omvp.app.ui.samples.bottomnavigation.view
 
 import android.os.Bundle
 import com.omvp.app.ui.samples.bottomnavigation.presenter.BottomNavigationThirdPresenterImpl
+import kotlinx.android.synthetic.main.bottom_navigation_third_fragment.*
 
 class BottomNavigationThirdFragment : BottomNavigationFragment<BottomNavigationThirdPresenterImpl,
         BottomNavigationThirdFragment.BottomNavigationThirdFragmentCallback>(),
         BottomNavigationThirdView {
-
-//    internal lateinit var mTextView: AppCompatTextView
 
     interface BottomNavigationThirdFragmentCallback : BottomNavigationFragment.BottomNavigationFragmentCallback {
         fun onIncrementSelected(position: Int)
     }
 
     override fun drawText(text: String) {
-//        mTextView.text = text
+        text_view.text = text
     }
 
     fun onCounterIncrementClicked() {

@@ -3,9 +3,7 @@ package com.omvp.app.ui.samples.simple.view
 import androidx.fragment.app.Fragment
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.injector.scope.PerFragment
-import com.omvp.app.ui.ktsamples.ktsample.presenter.SamplePresenterModule
-import com.omvp.app.ui.ktsamples.ktsample.view.SampleFragment
-import com.omvp.app.ui.ktsamples.ktsample.view.SampleView
+import com.omvp.app.ui.samples.simple.presenter.SamplePresenterModule
 import dagger.Binds
 import dagger.Module
 

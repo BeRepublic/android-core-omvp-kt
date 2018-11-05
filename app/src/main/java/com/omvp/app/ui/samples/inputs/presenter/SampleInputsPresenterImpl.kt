@@ -11,35 +11,10 @@ import javax.inject.Inject
 class SampleInputsPresenterImpl @Inject
 constructor(sampleInputView: SampleInputView) : BasePresenter<SampleInputView>(sampleInputView), SampleInputsPresenter {
 
-    override fun onViewLoaded() {
-        super.onViewLoaded()
-
-    }
-
     override fun validateInputs(name: String, password: String, fixed: String, fixedLeft: String, fixedCenter: String) {
         if (validateForm(name, password, fixed, fixedLeft, fixedCenter)) {
             showValidationToast()
         }
-    }
-
-    override fun nameChanged(name: String) {
-        hideNameInputError()
-    }
-
-    override fun passwordChanged(s: String) {
-        hidePasswordInputError()
-    }
-
-    override fun fixedChanged(s: String) {
-        hideFixedInputError()
-    }
-
-    override fun fixedLeftChanged(s: String) {
-        hideFixedLeftInputError()
-    }
-
-    override fun fixedCenterChanged(s: String) {
-        hideFixedCenterInputError()
     }
 
     private fun validateForm(name: String, password: String, fixed: String, fixedLeft: String, fixedCenter: String): Boolean {
@@ -91,20 +66,12 @@ constructor(sampleInputView: SampleInputView) : BasePresenter<SampleInputView>(s
         mView?.showNameInputSuccess()
     }
 
-    private fun hideNameInputError() {
-        mView?.hideNameInputError()
-    }
-
     private fun showPasswordInputError(error: String) {
         mView?.showPasswordInputError(error)
     }
 
     private fun showPasswordInputSuccess() {
         mView?.showPasswordInputSuccess()
-    }
-
-    private fun hidePasswordInputError() {
-        mView?.hidePasswordInputError()
     }
 
     private fun showFixedInputError(error: String) {
@@ -115,10 +82,6 @@ constructor(sampleInputView: SampleInputView) : BasePresenter<SampleInputView>(s
         mView?.showFixedInputSuccess()
     }
 
-    private fun hideFixedInputError() {
-        mView?.hideFixedInputError()
-    }
-
     private fun showFixedLeftInputError(error: String) {
         mView?.showFixedLeftInputError(error)
     }
@@ -127,20 +90,12 @@ constructor(sampleInputView: SampleInputView) : BasePresenter<SampleInputView>(s
         mView?.showFixedLeftInputSuccess()
     }
 
-    private fun hideFixedLeftInputError() {
-        mView?.hideFixedLeftInputError()
-    }
-
     private fun showFixedCenterInputError(error: String) {
         mView?.showFixedCenterInputError(error)
     }
 
     private fun showFixedCenterInputSuccess() {
         mView?.showFixedCenterInputSuccess()
-    }
-
-    private fun hideFixedCenterInputError() {
-        mView?.hideFixedCenterInputError()
     }
 
     private fun showValidationToast() {

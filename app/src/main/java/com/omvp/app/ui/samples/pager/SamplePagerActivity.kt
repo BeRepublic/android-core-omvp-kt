@@ -13,6 +13,7 @@ import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentS
 import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentStatePagerInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
+import kotlinx.android.synthetic.main.sample_pager_activity.*
 import javax.inject.Inject
 
 class SamplePagerActivity : BaseFragmentActivity(),
@@ -25,9 +26,7 @@ class SamplePagerActivity : BaseFragmentActivity(),
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
     @Inject
     internal lateinit var mFragmentStatePagerInterceptor: FragmentStatePagerInterceptor<*>
-
-//    internal lateinit var mPagerIndicator: PagerIndicator
-
+    
     private lateinit var mToolbar: Toolbar
     private lateinit var mViewPager: ViewPager
     private lateinit var mFirstFragment: SamplePagerFirstFragment
@@ -51,7 +50,7 @@ class SamplePagerActivity : BaseFragmentActivity(),
 
     override fun onViewPagerCreated(viewPager: ViewPager) {
         mViewPager = viewPager
-//        mPagerIndicator.setViewPager(viewPager)
+        pager_indicator.setViewPager(viewPager)
     }
 
     override fun onCreateFragment(position: Int): SamplePagerFragment<*, *>? {

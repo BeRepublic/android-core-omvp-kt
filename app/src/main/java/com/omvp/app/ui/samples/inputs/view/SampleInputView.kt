@@ -11,13 +11,9 @@ interface SampleInputView : BaseView {
 
     fun showNameInputSuccess()
 
-    fun hideNameInputError()
-
     fun showPasswordInputError(error: String)
 
     fun showPasswordInputSuccess()
-
-    fun hidePasswordInputError()
 
     fun showValidationToast()
 
@@ -25,17 +21,11 @@ interface SampleInputView : BaseView {
 
     fun showFixedInputSuccess()
 
-    fun hideFixedInputError()
-
     fun showFixedLeftInputError(error: String)
 
     fun showFixedLeftInputSuccess()
 
-    fun hideFixedLeftInputError()
-
     fun showFixedCenterInputError(error: String)
 
     fun showFixedCenterInputSuccess()
-
-    fun hideFixedCenterInputError()
 }

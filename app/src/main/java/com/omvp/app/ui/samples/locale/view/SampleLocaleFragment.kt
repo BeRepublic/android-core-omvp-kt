@@ -6,12 +6,9 @@ import android.widget.ArrayAdapter
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.locale.presenter.SampleLocalePresenterImpl
+import kotlinx.android.synthetic.main.sample_locale_fragment.*
 
 class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleLocaleFragment.FragmentCallback>(), SampleLocaleView {
-
-//    internal lateinit var mLocaleValue: AppCompatTextView
-//    internal lateinit var mLocaleSelector: AppCompatButton
-
     interface FragmentCallback : BaseViewFragmentCallback
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
@@ -21,11 +18,11 @@ class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleL
     }
 
     private fun setupViews() {
-
+        locale_selector.setOnClickListener { onLocaleChangeButtonSelected() }
     }
 
     override fun drawLocale(locale: String) {
-//        mLocaleValue.text = locale
+        current_locale.text = locale
     }
 
     override fun drawLocaleSelector(localeList: List<String>, selection: Int) {
@@ -42,7 +39,7 @@ class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleL
                 .show()
     }
 
-    fun onLocaleChangeButtonSelected() {
+    private fun onLocaleChangeButtonSelected() {
         mPresenter.changeLocale()
     }
 

@@ -1,20 +1,16 @@
 package com.omvp.app.ui.samples.social.view
 
 import android.os.Bundle
+import android.view.View
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.social.presenter.SampleSocialPresenterImpl
+import com.omvp.app.util.ImageHelper
 import com.omvp.app.util.SocialAuthManager
+import kotlinx.android.synthetic.main.sample_social_fragment.*
 import javax.inject.Inject
 
-class SampleSocialFragment : BaseViewFragment<SampleSocialPresenterImpl, SampleSocialFragment.FragmentCallback>(), SampleSocialView
-{
-
-//    internal lateinit var mUserImageView: AppCompatImageView
-//    internal lateinit var mUserNameView: AppCompatTextView
-//    internal lateinit var mUserEmailView: AppCompatTextView
-//    internal lateinit var mSocialButtonsContainerView: View
-//    internal lateinit var mLogoutButton: Button
+class SampleSocialFragment : BaseViewFragment<SampleSocialPresenterImpl, SampleSocialFragment.FragmentCallback>(), SampleSocialView {
 
     @Inject
     internal lateinit var mSocialAuthManager: SocialAuthManager
@@ -38,33 +34,28 @@ class SampleSocialFragment : BaseViewFragment<SampleSocialPresenterImpl, SampleS
         super.onDestroy()
     }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
 
-    fun onFacebookLoginClicked() {
-        mPresenter.continueWithFacebook()
-    }
-
-    fun onGoogleLoginClicked() {
-        mPresenter.continueWithGoogle()
-    }
-
-    fun onLogoutClicked() {
-        mPresenter.logout()
+        facebook.setOnClickListener { mPresenter.continueWithFacebook() }
+        google.setOnClickListener { mPresenter.continueWithGoogle() }
+        logout.setOnClickListener { mPresenter.logout() }
     }
 
     override fun drawImage(imageUrl: String) {
-//        ImageHelper.loadImageUser(mContext, imageUrl, mUserImageView as ImageView, null)
+        ImageHelper.loadImageUser(mContext, imageUrl, user_image, null)
     }
 
     override fun drawName(name: String) {
-//        mUserNameView!!.text = name
+        user_name.text = name
     }
 
     override fun drawEmail(email: String) {
-//        mUserEmailView!!.text = email
+        user_email.text = email
     }
 
     override fun showHideSocialButtons(show: Boolean) {
-//        mSocialButtonsContainerView!!.visibility = if (show) View.VISIBLE else View.INVISIBLE
-//        mLogoutButton!!.visibility = if (show) View.INVISIBLE else View.VISIBLE
+        social_container.visibility = if (show) View.VISIBLE else View.INVISIBLE
+        logout.visibility = if (show) View.INVISIBLE else View.VISIBLE
     }
 }

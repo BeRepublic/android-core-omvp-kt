@@ -1,18 +1,9 @@
-package com.omvp.app.ui.ktsamples.ktsample.presenter
+package com.omvp.app.ui.samples.simple.presenter
 
 
 import com.omvp.app.base.mvp.presenter.BasePresenter
-import com.omvp.app.model.mapper.SampleModelDataMapper
-import com.omvp.app.ui.ktsamples.ktsample.view.SampleView
-import com.omvp.domain.SampleDomain
-import com.omvp.domain.interactor.GetSampleListUseCase
-import com.omvp.domain.interactor.GetSampleUseCase
-
+import com.omvp.app.ui.samples.simple.view.SampleView
 import javax.inject.Inject
-
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableMaybeObserver
-import io.reactivex.schedulers.Schedulers
 
 class SamplePresenterImpl                               // name of the class
 @Inject internal constructor(sampleView: SampleView) :  // constructor inlined with 'super(sampleView)'
@@ -21,7 +12,7 @@ class SamplePresenterImpl                               // name of the class
 
     override fun onViewLoaded() {
         super.onViewLoaded()
-        
+
     }
 
 }

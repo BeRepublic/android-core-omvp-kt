@@ -1,4 +1,4 @@
-package com.omvp.app.ui.ktsamples.ktsample
+package com.omvp.app.ui.samples.simple
 
 import android.app.Activity
 import com.omvp.app.base.BaseActivity
@@ -6,8 +6,7 @@ import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.base.mvp.BaseFragmentActivityModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.injector.scope.PerFragment
-import com.omvp.app.ui.ktsamples.ktsample.view.SampleFragment
-import com.omvp.app.ui.samples.simple.SampleActivity
+import com.omvp.app.ui.samples.simple.view.SampleFragment
 import com.omvp.app.ui.samples.simple.view.SampleFragmentModule
 import com.omvp.app.ui.splash.view.SplashFragment
 import dagger.Binds

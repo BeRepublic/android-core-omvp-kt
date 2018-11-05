@@ -12,13 +12,13 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/title"
+            android:id="@+id/title_view"
             style="@style/CodeFont.Large.Black.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:padding="@dimen/sample_margin"
-            app:layout_constraintBottom_toTopOf="@+id/text"
+            app:layout_constraintBottom_toTopOf="@+id/text_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
             tools:text="Sample Text"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text"
+            android:id="@+id/text_view"
             style="@style/CodeFont.Medium.Black.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,6 +36,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"/>
+            app:layout_constraintTop_toBottomOf="@+id/title_view"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

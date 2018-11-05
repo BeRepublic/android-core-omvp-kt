@@ -12,18 +12,7 @@ class SampleTopFragment :
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
-        setupViews()
-    }
-
-    private fun setupViews() {
-
-    }
-
     companion object {
-
         fun newInstance(bundle: Bundle?) = SampleTopFragment().apply {
             arguments = bundle ?: Bundle()
         }

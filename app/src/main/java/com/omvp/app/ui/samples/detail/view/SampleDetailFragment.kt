@@ -4,12 +4,10 @@ import android.os.Bundle
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.detail.presenter.SampleDetailPresenterImpl
+import kotlinx.android.synthetic.main.sample_detail_fragment.*
 
 class SampleDetailFragment : BaseViewFragment<SampleDetailPresenterImpl, SampleDetailFragment.FragmentCallback>(), SampleDetailView {
-
-//    internal lateinit var mTextView: AppCompatTextView
-//    internal lateinit var mTitleView: AppCompatTextView
-
+    
     interface FragmentCallback : BaseViewFragmentCallback {
         fun drawImage(imageRes: Int)
     }
@@ -24,11 +22,11 @@ class SampleDetailFragment : BaseViewFragment<SampleDetailPresenterImpl, SampleD
     }
 
     override fun drawText(text: String) {
-//        mTextView.text = text
+        text_view.text = text
     }
 
     override fun drawTitle(title: String) {
-//        mTitleView.text = title
+        title_view.text = title
     }
 
     private fun setupViews() {

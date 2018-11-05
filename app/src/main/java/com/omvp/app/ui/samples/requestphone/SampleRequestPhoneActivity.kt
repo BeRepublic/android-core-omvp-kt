@@ -72,9 +72,9 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
 
     override fun authPhoneCodeRetrieved(code: String) {
         Toast.makeText(this, getString(R.string.code_retrieved) + code, Toast.LENGTH_LONG).show()
-        mFragment!!.codeReceivedLayoutVisibility(View.VISIBLE)
-        mFragment!!.changeButtonText("SENT")
-        mFragment!!.drawInputCode(code)
+        mFragment?.codeReceivedLayoutVisibility(View.VISIBLE)
+        mFragment?.changeButtonText("SENT")
+        mFragment?.drawInputCode(code)
     }
 
     override fun authPhoneStateChanged(authPhoneState: AuthPhoneInterceptor.AuthPhoneState) {
@@ -95,14 +95,14 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
     }
 
     private fun showInitFragmentLayout() {
-        mFragment!!.codeReceivedLayoutVisibility(View.GONE)
-        mFragment!!.changeButtonText("GET")
-        mFragment!!.singOutButtonVisibility(View.GONE)
+        mFragment?.codeReceivedLayoutVisibility(View.GONE)
+        mFragment?.changeButtonText("GET")
+        mFragment?.singOutButtonVisibility(View.GONE)
         Toast.makeText(this, getString(R.string.sign_out_success), Toast.LENGTH_LONG).show()
     }
 
     private fun authPhoneSignInSuccess() {
-        mFragment!!.singOutButtonVisibility(View.VISIBLE)
+        mFragment?.singOutButtonVisibility(View.VISIBLE)
         Toast.makeText(this, getString(R.string.sign_in_success), Toast.LENGTH_LONG).show()
     }
 
@@ -119,7 +119,7 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
 
     override fun signOut() {
         showProgress(0f, "Loading")
-        mAuthPhoneInterceptor!!.signOut()
+        mAuthPhoneInterceptor.signOut()
     }
 }
 

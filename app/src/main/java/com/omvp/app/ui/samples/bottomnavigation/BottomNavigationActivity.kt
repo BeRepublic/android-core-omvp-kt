@@ -15,6 +15,7 @@ import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentS
 import com.raxdenstudios.square.interceptor.commons.fragmentstatepager.FragmentStatePagerInterceptorCallback
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptor
 import com.raxdenstudios.square.interceptor.commons.toolbar.ToolbarInterceptorCallback
+import kotlinx.android.synthetic.main.bottom_navigation_activity.*
 import javax.inject.Inject
 
 class BottomNavigationActivity : BaseFragmentActivity(),
@@ -30,9 +31,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
     @Inject
     internal lateinit var mFragmentStatePagerInterceptor: FragmentStatePagerInterceptor<*>
 
-    internal var mPagerIndicator: PagerIndicator? = null
-
-//    internal lateinit var mBottomBarView: BottomBarView
+    private var mPagerIndicator: PagerIndicator? = null
 
     private lateinit var mToolbar: Toolbar
     private lateinit var mViewPager: ViewPager
@@ -68,7 +67,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
             mPagerIndicator!!.setViewPager(viewPager)
         }
 
-//        mBottomBarView.setViewPager(mViewPager, mIconResArray)
+        bottom_view.setViewPager(mViewPager, mIconResArray)
     }
 
     override fun onCreateFragment(position: Int): BottomNavigationFragment<*, *>? {
@@ -105,7 +104,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
     }
 
     override fun onIncrementSelected(position: Int) {
-//        mBottomBarView.incrementCounterAt(position)
+        bottom_view.incrementCounterAt(position)
     }
 
     companion object {
