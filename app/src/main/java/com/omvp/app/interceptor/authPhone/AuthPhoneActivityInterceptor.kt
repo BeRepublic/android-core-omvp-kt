@@ -127,7 +127,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Timber.d("signInWithCredential:success")
-                        handleFirebaseUser(task.result.user)
+                        handleFirebaseUser(task.result?.user)
                     } else {
                         // Sign in failed, display a message and update the UI
                         Timber.e(task.exception)

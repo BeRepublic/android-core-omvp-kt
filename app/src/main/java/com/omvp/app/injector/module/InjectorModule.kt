@@ -7,8 +7,6 @@ import com.omvp.app.receiver.AppUrbanAirshipReceiverService
 import com.omvp.app.receiver.AppUrbanAirshipReceiverServiceModule
 import com.omvp.app.service.AppFirebaseInstanceIDService
 import com.omvp.app.service.AppFirebaseInstanceIDServiceModule
-import com.omvp.app.service.AppFirebaseMessagingService
-import com.omvp.app.service.AppFirebaseMessagingServiceModule
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivityModule
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
@@ -61,14 +59,6 @@ abstract class InjectorModule {
     @PerService
     @ContributesAndroidInjector(modules = arrayOf(AppFirebaseInstanceIDServiceModule::class))
     internal abstract fun appInstanceIDService(): AppFirebaseInstanceIDService
-
-    /**
-     * Provides the injector for the [AppFirebaseInstanceIDService], which has access to the dependencies
-     * provided by this application instance (singleton scoped objects).
-     */
-    @PerService
-    @ContributesAndroidInjector(modules = arrayOf(AppFirebaseMessagingServiceModule::class))
-    internal abstract fun appFirebaseMessagingService(): AppFirebaseMessagingService
 
     // ============= BroadcastReceivers ============================================================
 
