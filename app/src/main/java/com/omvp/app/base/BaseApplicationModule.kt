@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
 import com.omvp.app.injector.module.*
-import com.raxdenstudios.commons.util.Utils
-import com.raxdenstudios.preferences.AdvancedPreferences
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,6 +18,7 @@ import javax.inject.Singleton
         AnalyticsModule::class,
         CacheModule::class,
         RepositoryModule::class,
+        PreferencesModule::class,
         LocationModule::class,
         GoogleModule::class,
         NetworkModule::class,
@@ -51,16 +50,7 @@ abstract class BaseApplicationModule {
         @JvmStatic
         @Provides
         @Singleton
-        internal fun contentResolver(application: Application): ContentResolver {
-            return application.contentResolver
-        }
-
-        @JvmStatic
-        @Provides
-        @Singleton
-        internal fun advancedPreferences(application: Application): AdvancedPreferences {
-            return AdvancedPreferences(application, Utils.getPackageName(application), Context.MODE_PRIVATE)
-        }
+        internal fun contentResolver(application: Application): ContentResolver = application.contentResolver
     }
 
 }

@@ -2,17 +2,17 @@ package com.omvp.app.base.mvp.presenter
 
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-
+import androidx.core.content.ContextCompat
+import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.base.BaseFragmentModule
 import com.omvp.app.base.mvp.view.BaseView
 import com.omvp.app.base.mvp.view.IView
 import com.omvp.app.util.DisposableManager
-
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 import javax.inject.Named
-
-import io.reactivex.disposables.Disposable
 
 
 /**
@@ -28,18 +28,17 @@ import io.reactivex.disposables.Disposable
 abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Presenter {
 
     @Inject
+    @field:Named(BaseActivityModule.ACTIVITY_CONTEXT)
     lateinit var mContext: Context
     @Inject
     lateinit var mResources: Resources
     @Inject
-    @Named(BaseFragmentModule.DISPOSABLE_FRAGMENT_MANAGER)
+    @field:Named(BaseFragmentModule.FRAGMENT_ARGUMENTS)
+    lateinit var mArguments: Bundle
+    @Inject
     lateinit var mDisposableManager: DisposableManager
 
     // =============== LifeCycle ===================================================================
-
-    override fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?) {
-
-    }
 
     override fun onViewRestored(savedState: Bundle?) {
 
@@ -66,6 +65,16 @@ abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Pr
     }
 
     // =============== Support methods =============================================================
+
+    protected fun getString(resourceId: Int): String = mResources.getString(resourceId)
+
+    protected fun getString(resourceId: Int, vararg args: Any): String = mResources.getString(resourceId, *args)
+
+    protected fun getDrawable(resourceId: Int): Drawable? = ContextCompat.getDrawable(mContext, resourceId)
+
+    protected fun getColor(color: Int): Int = ContextCompat.getColor(mContext, color)
+
+    protected fun addDisposable(disposable: Disposable) = mDisposableManager.add(disposable)
 
     protected fun showError(title: Int, description: Int) {
         showError(0, title, description)
@@ -95,7 +104,6 @@ abstract class BasePresenter<TView : BaseView>(protected var mView: TView?) : Pr
         showProgress(progress, mResources.getString(message))
     }
 
-    @JvmOverloads
     protected fun showProgress(progress: Float = 0f, message: String = "") {
         mView?.showProgress(progress, message)
     }

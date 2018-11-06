@@ -1,6 +1,7 @@
 package com.omvp.app.ui.samples.vibration.view
 
 import android.os.Bundle
+import android.view.View
 import android.widget.SeekBar
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
@@ -16,8 +17,8 @@ class VibrationFragment : BaseViewFragment<VibrationPresenterImpl,
         fun onVibrateSelected(duration: Long)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

@@ -1,12 +1,11 @@
 package com.omvp.app.ui.splash.view
 
 import android.os.Bundle
-
-import com.omvp.app.base.mvp.view.BaseViewFragment
+import com.omvp.app.AppFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.splash.presenter.SplashPresenter
 
-class SplashFragment : BaseViewFragment<SplashPresenter, SplashFragment.FragmentCallback>(), SplashView {
+class SplashFragment : AppFragment<SplashPresenter, SplashFragment.FragmentCallback>(), SplashView {
 
     interface FragmentCallback : BaseViewFragmentCallback {
         fun onLaunchApplication()
@@ -17,7 +16,6 @@ class SplashFragment : BaseViewFragment<SplashPresenter, SplashFragment.Fragment
     }
 
     companion object {
-
         fun newInstance(bundle: Bundle?) = SplashFragment().apply {
             arguments = bundle ?: Bundle()
         }

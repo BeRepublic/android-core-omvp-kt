@@ -34,9 +34,8 @@ class SampleSocialFragment : BaseViewFragment<SampleSocialPresenterImpl, SampleS
         super.onDestroy()
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         facebook.setOnClickListener { mPresenter.continueWithFacebook() }
         google.setOnClickListener { mPresenter.continueWithGoogle() }
         logout.setOnClickListener { mPresenter.logout() }

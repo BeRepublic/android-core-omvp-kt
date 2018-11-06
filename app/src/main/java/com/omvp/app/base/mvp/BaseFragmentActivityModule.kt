@@ -1,13 +1,12 @@
 package com.omvp.app.base.mvp
 
 import android.app.Activity
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.omvp.app.base.BaseActivityModule
 import com.omvp.app.dialog.notice.view.NoticeDialogFragment
 import com.omvp.app.dialog.notice.view.NoticeDialogFragmentModule
 import com.omvp.app.injector.scope.PerActivity
 import com.omvp.app.injector.scope.PerFragment
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
@@ -27,34 +26,22 @@ abstract class BaseFragmentActivityModule {
     @ContributesAndroidInjector(modules = arrayOf(NoticeDialogFragmentModule::class))
     internal abstract fun fragmentInjector(): NoticeDialogFragment
 
+    /**
+     * The main activity listens to the events in the [NoticeDialogFragment].
+     *
+     * @param activity the activity
+     * @return the main fragment mCallback
+     */
+    @Binds
+    @PerActivity
+    internal abstract fun noticeDialogFragmentCallback(activity: BaseFragmentActivity): NoticeDialogFragment.FragmentCallback
+
     @Module
     companion object {
 
-        /**
-         * The main activity listens to the events in the [NoticeDialogFragment].
-         *
-         * @param activity the activity
-         * @return the main fragment callback
-         */
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun fragmentCallback(activity: BaseFragmentActivity): NoticeDialogFragment.FragmentCallback {
-            return activity
-        }
-
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun baseFragmentActivity(activity: Activity): BaseFragmentActivity {
-            return activity as BaseFragmentActivity
-        }
-
-        @JvmStatic
-        @Provides
-        @PerActivity
-        internal fun activityFragmentManager(activity: Activity): FragmentManager {
-            return (activity as FragmentActivity).supportFragmentManager
-        }
+        internal fun baseFragmentActivity(activity: Activity): BaseFragmentActivity = activity as BaseFragmentActivity
     }
 }

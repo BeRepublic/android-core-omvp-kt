@@ -6,6 +6,7 @@ import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.social.presenter.SampleSocialPresenterModule
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 
 @Module(includes = arrayOf(BaseFragmentModule::class, SampleSocialPresenterModule::class))
@@ -18,6 +19,7 @@ abstract class SampleSocialFragmentModule {
      * @return the fragment
      */
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun fragment(fragment: SampleSocialFragment): Fragment
 

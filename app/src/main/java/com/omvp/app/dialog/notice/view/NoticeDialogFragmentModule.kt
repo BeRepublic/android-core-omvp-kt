@@ -6,6 +6,7 @@ import com.omvp.app.dialog.notice.presenter.NoticeDialogPresenterModule
 import com.omvp.app.injector.scope.PerFragment
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 /**
  * Provides SampleMapFragment fragment dependencies.
@@ -21,6 +22,7 @@ abstract class NoticeDialogFragmentModule {
      * @return the fragment
      */
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun dialogFragment(fragment: NoticeDialogFragment): Fragment
 

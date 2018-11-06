@@ -6,6 +6,7 @@ import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.inputs.presenter.SampleInputPresenterModule
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 /**
  * Provides SampleMapFragment fragment dependencies.
@@ -21,6 +22,7 @@ abstract class SampleInputFragmentModule {
      * @return the fragment
      */
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun fragment(fragment: SampleInputFragment): Fragment
 

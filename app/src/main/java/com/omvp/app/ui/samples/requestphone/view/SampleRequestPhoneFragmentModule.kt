@@ -6,6 +6,7 @@ import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.requestphone.presenter.SampleRequestPhonePresenterModule
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 
 /**
@@ -22,6 +23,7 @@ abstract class SampleRequestPhoneFragmentModule {
      * @return the fragment
      */
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun fragment(fragment: SampleRequestPhoneFragment): Fragment
 

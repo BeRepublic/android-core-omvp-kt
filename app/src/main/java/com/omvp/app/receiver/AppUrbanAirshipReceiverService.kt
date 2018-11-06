@@ -2,23 +2,19 @@ package com.omvp.app.receiver
 
 import android.content.Context
 import android.content.Intent
-
+import com.omvp.app.base.BaseBroadcastReceiverModule.Companion.DISPOSABLE_BROADCAST_RECEIVER_MANAGER
 import com.omvp.app.util.DisposableManager
 import com.urbanairship.AirshipReceiver
 import com.urbanairship.push.PushMessage
-
-import javax.inject.Inject
-import javax.inject.Named
-
 import dagger.android.AndroidInjection
 import timber.log.Timber
-
-import com.omvp.app.base.BaseBroadcastReceiverModule.DISPOSABLE_BROADCAST_RECEIVER_MANAGER
+import javax.inject.Inject
+import javax.inject.Named
 
 class AppUrbanAirshipReceiverService : AirshipReceiver() {
 
     @Inject
-    @Named(DISPOSABLE_BROADCAST_RECEIVER_MANAGER)
+    @field:Named(DISPOSABLE_BROADCAST_RECEIVER_MANAGER)
     lateinit var mDisposableManager: DisposableManager
 
     override fun onReceive(context: Context, intent: Intent?) {

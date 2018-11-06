@@ -9,16 +9,6 @@ class SampleFragment : BaseViewFragment<SamplePresenter, SampleFragment.Fragment
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
-        setupViews()
-    }
-
-    private fun setupViews() {
-
-    }
-
     companion object {
 
         fun newInstance(bundle: Bundle?) = SampleFragment().apply {

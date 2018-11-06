@@ -2,7 +2,7 @@ package com.omvp.app.service
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.omvp.app.base.BaseServiceModule.DISPOSABLE_SERVICE_MANAGER
+import com.omvp.app.base.BaseServiceModule.Companion.DISPOSABLE_SERVICE_MANAGER
 import com.omvp.app.util.DisposableManager
 import dagger.android.AndroidInjection
 import timber.log.Timber
@@ -12,7 +12,7 @@ import javax.inject.Named
 class AppFirebaseMessagingService : FirebaseMessagingService() {
 
     @Inject
-    @Named(DISPOSABLE_SERVICE_MANAGER)
+    @field:Named(DISPOSABLE_SERVICE_MANAGER)
     lateinit var mDisposableManager: DisposableManager
 
     override fun onCreate() {

@@ -2,15 +2,12 @@ package com.omvp.app.service
 
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
+import com.omvp.app.base.BaseServiceModule.Companion.DISPOSABLE_SERVICE_MANAGER
 import com.omvp.app.util.DisposableManager
-
-import javax.inject.Inject
-import javax.inject.Named
-
 import dagger.android.AndroidInjection
 import timber.log.Timber
-
-import com.omvp.app.base.BaseServiceModule.DISPOSABLE_SERVICE_MANAGER
+import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * A service that extends FirebaseInstanceIdService to handle the creation, rotation, and updating
@@ -19,7 +16,7 @@ import com.omvp.app.base.BaseServiceModule.DISPOSABLE_SERVICE_MANAGER
 class AppFirebaseInstanceIDService : FirebaseInstanceIdService() {
 
     @Inject
-    @Named(DISPOSABLE_SERVICE_MANAGER)
+    @field:Named(DISPOSABLE_SERVICE_MANAGER)
     internal lateinit var mDisposableManager: DisposableManager
 
     override fun onCreate() {

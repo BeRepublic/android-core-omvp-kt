@@ -1,6 +1,7 @@
 package com.omvp.app.ui.samples.home.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.omvp.app.base.mvp.view.BaseViewFragment
@@ -31,8 +32,8 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
         fun onAuthPhoneViewSelected()
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

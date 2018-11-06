@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
@@ -48,8 +49,8 @@ class SampleListFragment : BaseViewFragment<SampleListPresenter, SampleListFragm
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 
@@ -100,6 +101,7 @@ class SampleListFragment : BaseViewFragment<SampleListPresenter, SampleListFragm
         recycler_view.apply {
             setHasFixedSize(true)
             adapter = mAdapter
+            layoutManager = LinearLayoutManager(context)
             addItemDecoration(DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL))
 
             val dragHelper = RecyclerDragHelper(mPresenter as RecyclerDragHelper.ActionCompletionContract)

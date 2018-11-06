@@ -45,9 +45,8 @@ class SampleListHorizontalFragment : BaseViewFragment<SampleListHorizontalPresen
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

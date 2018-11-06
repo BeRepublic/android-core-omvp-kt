@@ -1,9 +1,13 @@
 package com.omvp.app.base
 
+import android.app.Activity
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.omvp.app.helper.AnimationHelper
 import com.omvp.app.helper.DialogHelper
 import com.omvp.app.helper.NavigationHelper
@@ -41,6 +45,8 @@ abstract class BaseActivity : SquareActivity(),
     @Inject
     lateinit var mDisposableManager: DisposableManager
     @Inject
+    lateinit var mFragmentManager: FragmentManager
+    @Inject
     lateinit var mOperationBroadcastInterceptor: OperationBroadcastInterceptor
     @Inject
     internal lateinit var mAutoInflateLayoutInterceptor: AutoInflateLayoutInterceptor
@@ -59,7 +65,6 @@ abstract class BaseActivity : SquareActivity(),
 
     public override fun onDestroy() {
         super.onDestroy()
-
         mDisposableManager.dispose()
     }
 
@@ -79,4 +84,19 @@ abstract class BaseActivity : SquareActivity(),
         interceptorList.add(mAutoInflateLayoutInterceptor)
         interceptorList.add(mOperationBroadcastInterceptor)
     }
+
+    fun finishWithResultOK() {
+        setResult(Activity.RESULT_OK)
+        finish()
+    }
+
+    fun finishWithResultOK(data: Intent) {
+        setResult(Activity.RESULT_OK, data)
+        finish()
+    }
+
+    protected fun addFragment(@IdRes containerViewId: Int, fragment: Fragment) = mFragmentManager
+            .beginTransaction()
+            .add(containerViewId, fragment)
+            .commit()
 }

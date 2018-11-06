@@ -1,14 +1,12 @@
 package com.omvp.app.base.mvp.view
 
 import android.os.Bundle
+import android.view.View
 import com.omvp.app.base.BaseFragment
 import com.omvp.app.base.mvp.presenter.Presenter
-import com.omvp.app.util.TrackerManager
 import com.raxdenstudios.square.interceptor.Interceptor
-import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptor
+import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewDialogFragmentInterceptor
 import com.raxdenstudios.square.interceptor.commons.autoinflateview.AutoInflateViewInterceptorCallback
-import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptor
-import com.raxdenstudios.square.interceptor.commons.handlearguments.HandleArgumentsInterceptorCallback
 import javax.inject.Inject
 
 /**
@@ -25,20 +23,12 @@ import javax.inject.Inject
  */
 abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFragmentCallback> : BaseFragment(),
         AutoInflateViewInterceptorCallback,
-        HandleArgumentsInterceptorCallback,
         BaseView {
 
     @Inject
     lateinit var mPresenter: TPresenter
     @Inject
     lateinit var mCallback: TCallback
-    @Inject
-    lateinit var mTrackerManager: TrackerManager
-
-    @Inject
-    internal lateinit var mAutoInflateViewInterceptor: AutoInflateViewInterceptor
-    @Inject
-    internal lateinit var mHandleArgumentsInterceptor: HandleArgumentsInterceptor
 
     // =============== LifeCycle ===================================================================
 
@@ -47,44 +37,8 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
         mPresenter.onSaveView(outState)
     }
 
-    override fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?) {
-        mPresenter.onHandleArguments(savedInstanceState, arguments)
-    }
-
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        /*
-         * Bind the views here instead of in onViewCreated so that view state changed listeners
-         * are not invoked automatically without user interaction.
-         *
-         * If we bind before this method (e.g. onViewCreated), then any checked changed
-         * listeners bound by ButterKnife will be invoked during fragment recreation (since
-         * Android itself saves and restores the views' states. Take a look at this gist for a
-         * concrete example: https://gist.github.com/vestrel00/982d585144423f728342787341fa001d
-         *
-         * The lifecycle order is as follows (same if added via xml or java or if retain
-         * instance is true):
-         *
-         * onAttach
-         * onCreateView
-         * onViewCreated
-         * onActivityCreated
-         * onViewRestored
-         * onStart
-         * onResume
-         *
-         * Note that the onCreate (and other lifecycle events) are omitted on purpose. The
-         * caveat to this approach is that views, listeners, and resources bound by
-         * Butterknife will be null until onViewStatedRestored. Just be careful not to use any
-         * objects bound using Butterknife before onViewRestored.
-         *
-         * Fragments that do not return a non-null View in onCreateView results in onViewCreated
-         * and onViewRestored not being called. This means that Butterknife.bind will not get
-         * called, which is completely fine because there is no View to bind. Furthermore, there is
-         * no need to check if getView() returns null here because this lifecycle method only gets
-         * called with a non-null View.
-         */
-
         /*
          * The Presenter.onStart method is called in onViewRestored so that the Fragment’s
          * views are bound before the presentation begins. This ensures that no NullPointerException
@@ -98,8 +52,11 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
          * in a no-UI Fragment. Do feel free to disagree and refactor.
          */
         mPresenter.onViewRestored(savedInstanceState)
+        view?.let { onViewLoaded(savedInstanceState, it) }
         mPresenter.onViewLoaded()
     }
+
+    open fun onViewLoaded(savedInstanceState: Bundle?, view: View) {}
 
     override fun onDestroyView() {
         // This lifecycle method still gets called even if onCreateView returns a null view.
@@ -110,7 +67,7 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
     override fun onResume() {
         super.onResume()
         mPresenter.onResume()
-//        mTrackerManager.trackScreen(this)
+        mTrackerManager.trackScreen(this)
     }
 
     override fun onPause() {
@@ -139,8 +96,10 @@ abstract class BaseViewFragment<TPresenter : Presenter, TCallback : BaseViewFrag
     // =============== Support methods =============================================================
 
     override fun setupInterceptors(interceptorList: MutableList<Interceptor>) {
-        interceptorList.add(mAutoInflateViewInterceptor)
-        interceptorList.add(mHandleArgumentsInterceptor)
+        interceptorList.add(AutoInflateViewDialogFragmentInterceptor(this, this))
     }
 
+    fun onRestartView() {
+        mPresenter.onViewLoaded()
+    }
 }

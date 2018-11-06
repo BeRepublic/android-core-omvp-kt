@@ -2,6 +2,7 @@ package com.omvp.app.ui.samples.takepicture.view
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.takepicture.presenter.SampleTakePicturePresenter
@@ -14,9 +15,8 @@ class SampleTakePictureFragment : BaseViewFragment<SampleTakePicturePresenter,
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

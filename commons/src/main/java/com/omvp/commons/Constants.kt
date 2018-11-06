@@ -14,4 +14,7 @@ object Constants {
 
     // Patterns
     const val PASSWORD_PATTERN = "^[0-9A-Za-z!@#$.%_]{6,}$"
+
+    // Request Codes
+    const val REQUEST_CODE_REFRESH = 1001
 }

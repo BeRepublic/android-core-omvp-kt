@@ -7,6 +7,7 @@ import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.home.presenter.HomePresenterModule
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 /**
  * Provides SampleMapFragment fragment dependencies.
@@ -22,6 +23,7 @@ abstract class HomeFragmentModule {
      * @return the fragment
      */
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun fragment(fragment: HomeFragment): Fragment
 

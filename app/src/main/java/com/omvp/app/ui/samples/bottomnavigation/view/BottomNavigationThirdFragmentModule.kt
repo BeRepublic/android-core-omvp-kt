@@ -6,6 +6,7 @@ import com.omvp.app.injector.scope.PerFragment
 import com.omvp.app.ui.samples.bottomnavigation.presenter.BottomNavigationPresenterModule
 import dagger.Binds
 import dagger.Module
+import javax.inject.Named
 
 /**
  * Provides SamplePagerFragment fragment dependencies.
@@ -22,6 +23,7 @@ abstract class BottomNavigationThirdFragmentModule {
      */
 
     @Binds
+    @Named(BaseFragmentModule.FRAGMENT)
     @PerFragment
     internal abstract fun thirdFragment(fragment: BottomNavigationThirdFragment): Fragment
 

@@ -84,20 +84,9 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
-    }
-
-    fun onValidationClicked(view: View) {
-        mPresenter.validateInputs(
-                input_name.text,
-                input_password.text,
-                input_fixed.text,
-                input_fixed_left.text,
-                input_fixed_center.text
-        )
     }
 
     override fun showNameInputError(error: String) {
@@ -150,6 +139,16 @@ class SampleInputFragment : BaseViewFragment<SampleInputsPresenterImpl, SampleIn
         input_fixed.addTextChangedListener(onFixedTextChanged)
         input_fixed_left.addTextChangedListener(onFixedLeftTextChanged)
         input_fixed_center.addTextChangedListener(onFixedCenterTextChanged)
+    }
+
+    private fun onValidationClicked() {
+        mPresenter.validateInputs(
+                input_name.text,
+                input_password.text,
+                input_fixed.text,
+                input_fixed_left.text,
+                input_fixed_center.text
+        )
     }
 
     companion object {

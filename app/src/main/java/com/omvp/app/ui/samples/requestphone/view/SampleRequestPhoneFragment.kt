@@ -1,6 +1,7 @@
 package com.omvp.app.ui.samples.requestphone.view
 
 import android.os.Bundle
+import android.view.View
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.requestphone.presenter.SampleRequestPhonePresenterImpl
@@ -18,8 +19,8 @@ class SampleRequestPhoneFragment : BaseViewFragment<SampleRequestPhonePresenterI
         }
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         sign_out.setOnClickListener { onSignOutClick() }
     }
 

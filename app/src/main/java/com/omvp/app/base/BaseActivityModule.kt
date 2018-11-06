@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -51,17 +53,30 @@ abstract class BaseActivityModule {
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun activityExtras(activity: Activity): Bundle {
-            return activity.intent?.extras ?: Bundle()
-        }
+        internal fun activityExtras(activity: Activity): Bundle = activity.intent?.extras
+                ?: Bundle()
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun rxPermission(activity: Activity): RxPermissions =
-                RxPermissions(activity).apply {
-                    setLogging(BuildConfig.DEBUG)
-                }
+        internal fun fragmentActivity(activity: Activity): FragmentActivity = activity as FragmentActivity
+
+        @JvmStatic
+        @Provides
+        @PerActivity
+        internal fun appCompatActivity(activity: Activity): AppCompatActivity = activity as AppCompatActivity
+
+        @JvmStatic
+        @Provides
+        @PerActivity
+        internal fun activityFragmentManager(activity: FragmentActivity): FragmentManager = activity.supportFragmentManager
+
+        @JvmStatic
+        @Provides
+        @PerActivity
+        internal fun rxPermission(activity: Activity): RxPermissions = RxPermissions(activity).apply {
+            setLogging(BuildConfig.DEBUG)
+        }
 
         @JvmStatic
         @Provides
@@ -71,43 +86,31 @@ abstract class BaseActivityModule {
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun trackerManager(tracker: Tracker, firebaseAnalytics: FirebaseAnalytics): TrackerManager {
-            return TrackerManager(tracker, firebaseAnalytics)
-        }
+        internal fun trackerManager(tracker: Tracker, firebaseAnalytics: FirebaseAnalytics): TrackerManager = TrackerManager(tracker, firebaseAnalytics)
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun navigationHelper(activity: Activity): NavigationHelper {
-            return NavigationHelper(activity)
-        }
+        internal fun navigationHelper(activity: Activity): NavigationHelper = NavigationHelper(activity)
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun dialogHelper(activity: Activity, fragmentManager: FragmentManager): DialogHelper {
-            return DialogHelper(activity, fragmentManager)
-        }
+        internal fun dialogHelper(activity: Activity, fragmentManager: FragmentManager): DialogHelper = DialogHelper(activity, fragmentManager)
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun snackBarHelper(activity: Activity): SnackBarHelper {
-            return SnackBarHelper(activity)
-        }
+        internal fun snackBarHelper(activity: Activity): SnackBarHelper = SnackBarHelper(activity)
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun animationHelper(activity: Activity): AnimationHelper {
-            return AnimationHelper(activity)
-        }
+        internal fun animationHelper(activity: Activity): AnimationHelper = AnimationHelper(activity)
 
         @JvmStatic
         @Provides
         @PerActivity
-        internal fun activitySocialAuthManager(activity: Activity, googleSignInClient: GoogleSignInClient): SocialAuthManager {
-            return SocialAuthManager(activity, googleSignInClient)
-        }
+        internal fun activitySocialAuthManager(activity: Activity, googleSignInClient: GoogleSignInClient): SocialAuthManager = SocialAuthManager(activity, googleSignInClient)
     }
 }

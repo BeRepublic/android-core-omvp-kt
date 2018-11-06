@@ -2,6 +2,7 @@ package com.omvp.app.ui.samples.locale.view
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
@@ -11,9 +12,8 @@ import kotlinx.android.synthetic.main.sample_locale_fragment.*
 class SampleLocaleFragment : BaseViewFragment<SampleLocalePresenterImpl, SampleLocaleFragment.FragmentCallback>(), SampleLocaleView {
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

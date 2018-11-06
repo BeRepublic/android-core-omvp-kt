@@ -1,15 +1,11 @@
 package com.omvp.app.base.mvp
 
 import android.view.View
-import androidx.annotation.IdRes
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.omvp.app.R
 import com.omvp.app.base.BaseActivity
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.dialog.notice.view.NoticeDialogFragment
-import javax.inject.Inject
 
 /**
  * Abstract Activity for all Activities to extend.
@@ -17,13 +13,6 @@ import javax.inject.Inject
 abstract class BaseFragmentActivity : BaseActivity(),
         NoticeDialogFragment.FragmentCallback,
         BaseViewFragmentCallback {
-
-    /**
-     * A reference to the FragmentManager is injected and used instead of the getter method. This
-     * enables ease of mocking and verification in tests (in case Activity needs testing).
-     */
-    @Inject
-    lateinit var mFragmentManager: FragmentManager
 
     private var mProgressContainer: View? = null
     private var mProgressTextView: AppCompatTextView? = null
@@ -38,24 +27,18 @@ abstract class BaseFragmentActivity : BaseActivity(),
     // =============== BaseViewFragmentCallback ====================================================
 
     override fun showProgress(progress: Float, message: String?) {
-        if (mProgressContainer != null) {
-            mAnimationHelper.fadeIn(mProgressContainer!!)
-
-            if (mProgressTextView != null) {
-                mAnimationHelper.fadeIn(mProgressTextView!!)
-                mProgressTextView!!.text = message
-            }
+        mProgressContainer?.let { mAnimationHelper.fadeIn(it) }
+        mProgressTextView?.let {
+            mAnimationHelper.fadeIn(it)
+            it.text = message
         }
     }
 
     override fun hideProgress() {
-        if (mProgressContainer != null) {
-            mAnimationHelper.fadeOut(mProgressContainer!!)
-
-            if (mProgressTextView != null) {
-                mAnimationHelper.fadeOut(mProgressTextView!!)
-                mProgressTextView!!.text = ""
-            }
+        mProgressContainer?.let { mAnimationHelper.fadeOut(it) }
+        mProgressTextView?.let {
+            mAnimationHelper.fadeOut(it)
+            it.text = ""
         }
     }
 
@@ -65,14 +48,6 @@ abstract class BaseFragmentActivity : BaseActivity(),
 
     override fun showMessage(code: Int?, title: String?, message: String?) {
         mDialogHelper.showMessage(title, message)
-    }
-
-    // =============== Support methods =============================================================
-
-    protected fun addFragment(@IdRes containerViewId: Int, fragment: Fragment) {
-        mFragmentManager.beginTransaction()
-                .add(containerViewId, fragment)
-                .commit()
     }
 
 }

@@ -18,8 +18,7 @@
     </style>
 
     <style name="BaseThemeDialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowIsFloating">true</item>
+
     </style>
 
     <!-- ========================================================================= -->
@@ -29,6 +28,11 @@
     <style name="AppTheme.Transparent" parent="BaseTheme.Transparent" />
 
     <style name="Dialog" parent="BaseThemeDialog" />
+
+    <style name="AppDialogTheme" parent="BaseThemeDialog">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
     <!-- ========================================================================= -->
 

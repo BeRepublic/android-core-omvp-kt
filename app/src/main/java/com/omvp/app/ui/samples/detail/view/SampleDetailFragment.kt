@@ -1,6 +1,7 @@
 package com.omvp.app.ui.samples.detail.view
 
 import android.os.Bundle
+import android.view.View
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.ui.samples.detail.presenter.SampleDetailPresenterImpl
@@ -12,8 +13,13 @@ class SampleDetailFragment : BaseViewFragment<SampleDetailPresenterImpl, SampleD
         fun drawImage(imageRes: Int)
     }
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mPresenter.setSampleId(arguments?.getString(String::class.java.simpleName))
+    }
+
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 

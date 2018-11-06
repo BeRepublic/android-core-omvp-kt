@@ -2,14 +2,12 @@ package com.omvp.app.dialog.notice.view
 
 import android.os.Bundle
 import android.view.View
-import com.omvp.app.R
 import com.omvp.app.base.mvp.view.BaseViewFragment
 import com.omvp.app.base.mvp.view.BaseViewFragmentCallback
 import com.omvp.app.dialog.notice.presenter.NoticeDialogPresenter
+import kotlinx.android.synthetic.main.notice_dialog_fragment.*
 
 class NoticeDialogFragment : BaseViewFragment<NoticeDialogPresenter, NoticeDialogFragment.FragmentCallback>(), NoticeDialogView {
-
-//    internal lateinit var mNoticeDialogComponentView: NoticeDialogComponentView
 
     private var titleText: String? = null
     private var descriptionText: String? = null
@@ -20,16 +18,16 @@ class NoticeDialogFragment : BaseViewFragment<NoticeDialogPresenter, NoticeDialo
 
     interface FragmentCallback : BaseViewFragmentCallback
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
+        super.onViewLoaded(savedInstanceState, view)
         setupViews()
     }
 
     private fun setupViews() {
-//        mNoticeDialogComponentView.takeIf { !titleText.isNullOrEmpty() }.also { it?.setTitleText(titleText!!) }
-//        mNoticeDialogComponentView.takeIf { !descriptionText.isNullOrEmpty() }.also { it?.setDescriptionText(descriptionText!!) }
-//        mNoticeDialogComponentView.takeIf { !acceptText.isNullOrEmpty() }.also { it?.setAcceptTextButton(acceptText!!, onAcceptClickListener!!) }
-//        mNoticeDialogComponentView.takeIf { !denyText.isNullOrEmpty() }.also { it?.setDenyTextButton(denyText!!, onDenyClickListener!!) }
+        notice_dialog_view.takeIf { !titleText.isNullOrEmpty() }.also { it?.setTitleText(titleText!!) }
+        notice_dialog_view.takeIf { !descriptionText.isNullOrEmpty() }.also { it?.setDescriptionText(descriptionText!!) }
+        notice_dialog_view.takeIf { !acceptText.isNullOrEmpty() }.also { it?.setAcceptTextButton(acceptText!!, onAcceptClickListener!!) }
+        notice_dialog_view.takeIf { !denyText.isNullOrEmpty() }.also { it?.setDenyTextButton(denyText!!, onDenyClickListener!!) }
     }
 
     fun setTitle(titleText: String) {
@@ -51,9 +49,6 @@ class NoticeDialogFragment : BaseViewFragment<NoticeDialogPresenter, NoticeDialo
     }
 
     companion object {
-
-        val LAYOUT_ID = R.layout.notice_dialog_fragment
-
         fun newInstance(bundle: Bundle?) = NoticeDialogFragment().apply {
             arguments = bundle ?: Bundle()
         }

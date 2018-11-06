@@ -1,17 +1,13 @@
 package com.omvp.app.ui.samples.detail.presenter
 
-import android.os.Bundle
-
 import com.omvp.app.base.mvp.presenter.BasePresenter
 import com.omvp.app.base.reactivex.BaseDisposableSingleObserver
 import com.omvp.app.ui.samples.detail.view.SampleDetailView
 import com.omvp.domain.SampleDomain
 import com.omvp.domain.interactor.GetSampleUseCase
-
-import javax.inject.Inject
-
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class SampleDetailPresenterImpl @Inject
 constructor(sampleDetailView: SampleDetailView) : BasePresenter<SampleDetailView>(sampleDetailView), SampleDetailPresenter {
@@ -21,14 +17,13 @@ constructor(sampleDetailView: SampleDetailView) : BasePresenter<SampleDetailView
 
     private var mSampleId: String = ""
 
-    override fun onHandleArguments(savedInstanceState: Bundle?, arguments: Bundle?) {
-        super.onHandleArguments(savedInstanceState, arguments)
-        mSampleId = arguments?.getString(String::class.java.simpleName) ?: ""
-    }
-
     override fun onViewLoaded() {
         super.onViewLoaded()
         loadSample()
+    }
+
+    override fun setSampleId(string: String?) {
+        mSampleId = string ?: ""
     }
 
     private fun loadSample() {

@@ -5,15 +5,21 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.omvp.app.base.BaseFragmentModule.Companion.CHILD_FRAGMENT_MANAGER
+import com.omvp.app.base.BaseFragmentModule.Companion.FRAGMENT_DIALOG_HELPER
+import com.omvp.app.helper.AnimationHelper
+import com.omvp.app.helper.DialogHelper
 import com.omvp.app.util.DisposableManager
+import com.omvp.app.util.TrackerManager
 import com.raxdenstudios.commons.util.SDKUtils
 import com.raxdenstudios.square.SquareDialogFragment
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -57,26 +63,28 @@ abstract class BaseFragment : SquareDialogFragment(), HasSupportFragmentInjector
      *
      */
     @Inject
+    @field:Named(BaseActivityModule.ACTIVITY_CONTEXT)
     lateinit var mContext: Context
     @Inject
     lateinit var mResources: Resources
-
-    /**
-     * A reference to the FragmentManager is injected and used instead of the getter method. This
-     * enables ease of mocking and verification in tests (in case Fragment needs testing).
-     *
-     *
-     */
-    // Note that this should not be used within a child fragment.
     @Inject
-    @Named(BaseFragmentModule.CHILD_FRAGMENT_MANAGER)
+    @field:Named(BaseFragmentModule.FRAGMENT_ARGUMENTS)
+    lateinit var mArguments: Bundle
+    @Inject
+    lateinit var mAnimationHelper: AnimationHelper
+    @Inject
+    lateinit var mTrackerManager: TrackerManager
+    @Inject
+    lateinit var mDisposableManager: DisposableManager
+    @Inject
+    @field:Named(CHILD_FRAGMENT_MANAGER)
     lateinit var mChildFragmentManager: FragmentManager
     @Inject
-    @Named(BaseFragmentModule.DISPOSABLE_FRAGMENT_MANAGER)
-    lateinit var mDisposableManager: DisposableManager
+    @field:Named(FRAGMENT_DIALOG_HELPER)
+    lateinit var mDialogHelper: DialogHelper
 
     @Inject
-    internal lateinit var mChildFragmentInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var mChildFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     // =============== LifeCycle ===================================================================
 
@@ -109,11 +117,17 @@ abstract class BaseFragment : SquareDialogFragment(), HasSupportFragmentInjector
 
     // =============== HasFragmentInjector =========================================================
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
-        return mChildFragmentInjector
-    }
+    override fun supportFragmentInjector() = mChildFragmentInjector
 
     // =============== Support methods =============================================================
+
+    protected fun getDrawable(resourceId: Int) = ContextCompat.getDrawable(mContext, resourceId)
+
+    protected fun getColor(color: Int) = ContextCompat.getColor(mContext, color)
+
+    protected fun addDisposable(disposable: Disposable) = mDisposableManager.add(disposable)
+
+    protected fun removeDisposable(disposable: Disposable) = mDisposableManager.remove(disposable)
 
     protected fun addChildFragment(@IdRes containerViewId: Int, fragment: Fragment) {
         mChildFragmentManager.beginTransaction()
