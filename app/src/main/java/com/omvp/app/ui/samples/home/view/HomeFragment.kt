@@ -30,6 +30,7 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
         fun onNoticeDialogViewSelected()
         fun onBottomNavigationViewSelected()
         fun onAuthPhoneViewSelected()
+        fun onCoroutineSampleViewSelected()
     }
 
     override fun onViewLoaded(savedInstanceState: Bundle?, view: View) {
@@ -53,6 +54,7 @@ class HomeFragment : BaseViewFragment<HomePresenter, HomeFragment.FragmentCallba
             HomePresenterImpl.NOTICE_DIALOG -> mCallback.onNoticeDialogViewSelected()
             HomePresenterImpl.BOTTOM_NAV -> mCallback.onBottomNavigationViewSelected()
             HomePresenterImpl.AUTH_PHONE -> mCallback.onAuthPhoneViewSelected()
+            HomePresenterImpl.COROUTINE -> mCallback.onCoroutineSampleViewSelected()
         }
     }
 

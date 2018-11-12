@@ -77,6 +77,7 @@ constructor(homeView: HomeView) : BasePresenter<HomeView>(homeView), HomePresent
         internal const val NOTICE_DIALOG = "NOTICE_DIALOG"
         internal const val BOTTOM_NAV = "BOTTOM_NAV"
         internal const val AUTH_PHONE = "AUTH_PHONE"
+        internal const val COROUTINE = "COROUTINE"
 
         private const val NUM_ITEMS = 14
 
@@ -98,6 +99,7 @@ constructor(homeView: HomeView) : BasePresenter<HomeView>(homeView), HomePresent
                 sampleItemList.add(initSampleItem(NOTICE_DIALOG, "A view with Notice Dialog"))
                 sampleItemList.add(initSampleItem(BOTTOM_NAV, "A view with a bottom bar navigation"))
                 sampleItemList.add(initSampleItem(AUTH_PHONE, "A view with check phone number validation"))
+                sampleItemList.add(initSampleItem(COROUTINE, "A view with coroutine samples"))
             }
         }
 

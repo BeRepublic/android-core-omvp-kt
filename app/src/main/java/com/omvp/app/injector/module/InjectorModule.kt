@@ -9,6 +9,8 @@ import com.omvp.app.service.AppFirebaseInstanceIDService
 import com.omvp.app.service.AppFirebaseInstanceIDServiceModule
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivityModule
+import com.omvp.app.ui.samples.coroutine.CoroutineActivity
+import com.omvp.app.ui.samples.coroutine.CoroutineActivityModule
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.detail.SampleDetailActivityModule
 import com.omvp.app.ui.samples.home.HomeActivity
@@ -207,4 +209,12 @@ abstract class InjectorModule {
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(SampleRequestPhoneActivityModule::class))
     internal abstract fun sampleRequestPhoneActivity(): SampleRequestPhoneActivity
+
+    /**
+     * Provides the injector for the [CoroutineActivity], which has access to the dependencies
+     * provided by this application instance (singleton scoped objects).
+     */
+    @PerActivity
+    @ContributesAndroidInjector(modules = arrayOf(CoroutineActivityModule::class))
+    internal abstract fun coroutineActivity(): CoroutineActivity
 }

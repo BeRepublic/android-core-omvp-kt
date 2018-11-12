@@ -80,6 +80,7 @@ android {
                             'src/main/res/layouts/samples/notice_dialog',
                             'src/main/res/layouts/samples/bottom_navigation',
                             'src/main/res/layouts/samples/request_phone_flow',
+                            'src/main/res/layouts/samples/coroutine',
                             'src/main/res/layouts/splash',
                             'src/main/res/layouts',
                             'src/main/res'

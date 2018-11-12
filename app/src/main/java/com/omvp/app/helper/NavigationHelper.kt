@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.omvp.app.interceptor.operation.OperationBroadcastActivityInterceptor
 import com.omvp.app.ui.samples.bottomnavigation.BottomNavigationActivity
+import com.omvp.app.ui.samples.coroutine.CoroutineActivity
 import com.omvp.app.ui.samples.detail.SampleDetailActivity
 import com.omvp.app.ui.samples.home.HomeActivity
 import com.omvp.app.ui.samples.inputs.SampleInputActivity
@@ -176,6 +177,13 @@ class NavigationHelper(private val mActivity: Activity) {
         NavigationManager.Builder(mActivity)
                 .putData(extras)
                 .navigateToKClass(SampleRequestPhoneActivity::class)
+                .launch()
+    }
+
+    fun launchCoroutineSampleView() {
+        NavigationManager.Builder(mActivity)
+                .putData(extras)
+                .navigateToKClass(CoroutineActivity::class)
                 .launch()
     }
 }

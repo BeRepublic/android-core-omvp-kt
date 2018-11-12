@@ -115,4 +115,7 @@ class HomeActivity : BaseFragmentActivity(), ToolbarInterceptorCallback,
         mNavigationHelper.launchAuthPhoneView()
     }
 
+    override fun onCoroutineSampleViewSelected() {
+        mNavigationHelper.launchCoroutineSampleView()
+    }
 }

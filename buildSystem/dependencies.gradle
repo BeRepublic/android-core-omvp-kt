@@ -33,7 +33,9 @@ ext {
     def retrofitVersion = '2.4.0'               // https://github.com/square/retrofit
     def rxPermissionsVersion = '0.9.5'          // https://github.com/tbruyelle/RxPermissions
     def timberVersion = '4.7.1'                 // https://github.com/JakeWharton/timber
-    def urbanAirshipVersion = '9.0.4'           // http://docs.urbanairship.com/platform/android.html
+    def urbanAirshipVersion = '9.0.4'
+    // http://docs.urbanairship.com/platform/android.html
+    def coroutineVersion = '1.0.1'              // https://github.com/Kotlin/kotlinx.coroutines
 
     // Testing
     def junitVersion = '4.12'
@@ -50,6 +52,11 @@ ext {
             recyclerview    : [group: 'androidx.recyclerview', name: 'recyclerview', version: androidxVersion],
             material        : [group: 'com.google.android.material', name: 'material', version: androidxMaterialVersion],
             constraintlayout: [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintsLayoutVersion]
+    ]
+
+    def coroutine = [
+            core   : [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: coroutineVersion],
+            android: [group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: coroutineVersion]
     ]
 
     def playServices = [
@@ -162,6 +169,8 @@ ext {
             [configuration: "implementation", dependency: otherLibs.crashlytics, options: {
                 transitive = true
             }],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android],
 
             [configuration: "testImplementation", dependency: testLibs.junit],
             [configuration: "testImplementation", dependency: testLibs.assertj],
@@ -191,6 +200,8 @@ ext {
             [configuration: "implementation", dependency: otherLibs.kotlin],
             [configuration: "implementation", dependency: otherLibs.timber],
             [configuration: "implementation", dependency: otherLibs.threetenb],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android],
 
             [configuration: "api", dependency: project(modules.commons)]
     ]
@@ -220,6 +231,8 @@ ext {
             [configuration: "implementation", dependency: otherLibs.rxandroid],
             [configuration: "implementation", dependency: otherLibs.kotlin],
             [configuration: "implementation", dependency: otherLibs.urbanairship],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android],
 
             [configuration: "api", dependency: project(modules.commons)],
             [configuration: "implementation", dependency: project(modules.domain)]
@@ -235,6 +248,8 @@ ext {
             [configuration: "implementation", dependency: otherLibs.timber],
             [configuration: "implementation", dependency: otherLibs.threetenb],
             [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android],
 
             [configuration: "api", dependency: project(modules.commons)]
     ]
@@ -243,6 +258,8 @@ ext {
             [configuration: "implementation", dependency: otherLibs.timber],
             [configuration: "implementation", dependency: otherLibs.threetenb],
             [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android],
 
             [configuration: "api", dependency: project(modules.resources)]
     ]
@@ -254,6 +271,8 @@ ext {
             [configuration: "implementation", dependency: androidXLibs.recyclerview],
             [configuration: "implementation", dependency: androidXLibs.material],
             [configuration: "implementation", dependency: androidXLibs.constraintlayout],
-            [configuration: "implementation", dependency: otherLibs.kotlin]
+            [configuration: "implementation", dependency: otherLibs.kotlin],
+            [configuration: "implementation", dependency: coroutine.core],
+            [configuration: "implementation", dependency: coroutine.android]
     ]
 }
