@@ -103,7 +103,7 @@ class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpl
                         }
                     }))
         } else if (permission.shouldShowRequestPermissionRationale) {
-            AlertDialog.Builder(mActivity)
+            AlertDialog.Builder(activity)
                     .setTitle(R.string.camera_permission_title)
                     .setMessage(R.string.camera_permission_description)
                     .setPositiveButton(R.string.camera_permission_positive_button, null)
@@ -116,7 +116,7 @@ class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpl
         mCompositeDisposable.add(processImageFromResult(resultCode, data)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : BaseDisposableSingleObserver<Uri>(mActivity) {
+                .subscribeWith(object : BaseDisposableSingleObserver<Uri>(activity) {
                     override fun onError(code: Int, title: String?, description: String?) {
                         mListener?.onWorkingPictureProgress(false)
                     }
@@ -129,8 +129,8 @@ class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpl
     }
 
     private fun launchActivityForResult(intent: Intent) {
-        if (intent.resolveActivity(mContext.packageManager) != null) {
-            (mContext as Activity).startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+        if (intent.resolveActivity(context.packageManager) != null) {
+            (context as Activity).startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
         }
     }
 
@@ -138,7 +138,7 @@ class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpl
         return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    val uri = ImagePickerUtil.getUriFromResult(mContext, resultCode, data)
+                    val uri = ImagePickerUtil.getUriFromResult(context, resultCode, data)
                     if (uri != null) {
                         emitter.onSuccess(uri)
                     }
@@ -153,7 +153,7 @@ class TakePictureActivityInterceptor(activity: FragmentActivity) : ActivitySimpl
         return Single.create { emitter ->
             try {
                 if (!emitter.isDisposed) {
-                    val intent = ImagePickerUtil.getPickImageIntent(mContext, chooserTitle)
+                    val intent = ImagePickerUtil.getPickImageIntent(context, chooserTitle)
                     if (intent != null) {
                         emitter.onSuccess(intent)
                     }

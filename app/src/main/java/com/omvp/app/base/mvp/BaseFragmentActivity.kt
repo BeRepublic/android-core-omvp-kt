@@ -1,5 +1,6 @@
 package com.omvp.app.base.mvp
 
+import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import com.omvp.app.R
@@ -17,8 +18,8 @@ abstract class BaseFragmentActivity : BaseActivity(),
     private var mProgressContainer: View? = null
     private var mProgressTextView: AppCompatTextView? = null
 
-    override fun setContentView(layoutResID: Int) {
-        super.setContentView(layoutResID)
+    override fun onContentViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onContentViewCreated(view, savedInstanceState)
 
         mProgressContainer = findViewById(R.id.progress)
         mProgressTextView = findViewById(R.id.progress_label)

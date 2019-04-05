@@ -105,8 +105,8 @@ class LocationActivityInterceptor(
 
         restoreDataFromBundle(savedInstanceState)
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mActivity)
-        mSettingsClient = LocationServices.getSettingsClient(mActivity)
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(activity)
+        mSettingsClient = LocationServices.getSettingsClient(activity)
 
         createLocationCallback()
         buildLocationSettingsRequest()
@@ -218,14 +218,14 @@ class LocationActivityInterceptor(
         mRequestingLocationUpdates = true
         // Begin by checking if the device has the necessary location settings.
         mSettingsClient.checkLocationSettings(mLocationSettingsRequest)
-                .addOnSuccessListener(mActivity) {
+                .addOnSuccessListener(activity) {
                     Timber.d("All location settings are satisfied.")
                     mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper())
                     if (mCurrentLocation != null) {
                         onLocationChanged(mCurrentLocation)
                     }
                 }
-                .addOnFailureListener(mActivity) { e ->
+                .addOnFailureListener(activity) { e ->
                     val statusCode = (e as ApiException).statusCode
                     when (statusCode) {
                         LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> {
@@ -233,13 +233,13 @@ class LocationActivityInterceptor(
                             try {
                                 // Show the dialog by calling startResolutionForResult(), and check the result in onActivityResult().
                                 val rae = e as ResolvableApiException
-                                rae.startResolutionForResult(mActivity, REQUEST_CHECK_SETTINGS)
+                                rae.startResolutionForResult(activity, REQUEST_CHECK_SETTINGS)
                             } catch (sie: IntentSender.SendIntentException) {
                                 Timber.i("PendingIntent unable to execute request.")
                             }
 
                         }
-                        LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> showDialog(AlertDialog.Builder(mActivity)
+                        LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> showDialog(AlertDialog.Builder(activity)
                                 .setTitle(R.string.location_permission_settings_title)
                                 .setMessage(R.string.location_permission_settings_description)
                                 .setPositiveButton(R.string.location_permission_settings_positive_button) { _, _ ->
@@ -281,7 +281,7 @@ class LocationActivityInterceptor(
         // stopped state. Doing so helps battery performance and is especially
         // recommended in applications that request frequent location updates.
         mFusedLocationClient.removeLocationUpdates(mLocationCallback)
-                .addOnCompleteListener(mActivity) { mRequestingLocationUpdates = false }
+                .addOnCompleteListener(activity) { mRequestingLocationUpdates = false }
     }
 
     private fun checkPermissions(): Boolean {
@@ -291,10 +291,10 @@ class LocationActivityInterceptor(
     private fun requestPermissions() {
         if (!mRequestingLocationPermissions) {
             mRequestingLocationPermissions = true
-            mCompositeDisposable.add(mRxPermissions.shouldShowRequestPermissionRationale(mActivity, Manifest.permission.ACCESS_FINE_LOCATION)
+            mCompositeDisposable.add(mRxPermissions.shouldShowRequestPermissionRationale(activity, Manifest.permission.ACCESS_FINE_LOCATION)
                     .subscribe { shouldShowRequestPermissionRationale ->
                         if (shouldShowRequestPermissionRationale!!) {
-                            showDialog(AlertDialog.Builder(mActivity)
+                            showDialog(AlertDialog.Builder(activity)
                                     .setTitle(R.string.location_permission_title)
                                     .setMessage(R.string.location_permission_description)
                                     .setPositiveButton(R.string.location_permission_positive_button) { _, _ -> requestLocationPermissions() }
@@ -328,7 +328,7 @@ class LocationActivityInterceptor(
                         if (permission.granted) {
                             requestLocationUpdates()
                         } else if (permission.shouldShowRequestPermissionRationale) {
-                            showDialog(AlertDialog.Builder(mActivity)
+                            showDialog(AlertDialog.Builder(activity)
                                     .setTitle(R.string.location_permission_title)
                                     .setMessage(R.string.location_permission_description)
                                     .setPositiveButton(R.string.location_permission_positive_button) { _, _ -> requestLocationPermissions() }
@@ -336,7 +336,7 @@ class LocationActivityInterceptor(
                                     .setCancelable(false)
                                     .create())
                         } else {
-                            showDialog(AlertDialog.Builder(mActivity)
+                            showDialog(AlertDialog.Builder(activity)
                                     .setTitle(R.string.location_permission_force_title)
                                     .setMessage(R.string.location_permission_force_description)
                                     .setPositiveButton(R.string.location_permission_force_positive_button) { _, _ -> launchSettings() }
@@ -357,13 +357,13 @@ class LocationActivityInterceptor(
     }
 
     private fun launchSettings() {
-        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", Utils.getPackageName(mActivity), null))
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", Utils.getPackageName(activity), null))
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        mActivity.startActivity(intent)
+        activity.startActivity(intent)
     }
 
     private fun finishActivity() {
-        mActivity.finish()
+        activity.finish()
     }
 
 }
