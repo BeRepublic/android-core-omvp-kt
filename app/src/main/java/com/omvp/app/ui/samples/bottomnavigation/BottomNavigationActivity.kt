@@ -25,6 +25,8 @@ class BottomNavigationActivity : BaseFragmentActivity(),
         ToolbarInterceptorCallback,
         FragmentStatePagerInterceptorCallback<BottomNavigationFragment<*, *>> {
 
+    override val viewPagerElements: Int
+        get() = 3
 
     @Inject
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
@@ -63,9 +65,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
 
     override fun onViewPagerCreated(viewPager: ViewPager) {
         mViewPager = viewPager
-        if (mPagerIndicator != null) {
-            mPagerIndicator!!.setViewPager(viewPager)
-        }
+        mPagerIndicator?.setViewPager(viewPager)
 
         bottom_view.setViewPager(mViewPager, mIconResArray)
     }
@@ -79,7 +79,7 @@ class BottomNavigationActivity : BaseFragmentActivity(),
         }
     }
 
-    override fun onFragmentLoaded(fragment: BottomNavigationFragment<*, *>, position: Int) {
+    override fun onFragmentLoaded(fragment: BottomNavigationFragment<*, *>?, position: Int) {
         when (position) {
             0 -> mFirstFragment = fragment as BottomNavigationFirstFragment
             1 -> mSecondFragment = fragment as BottomNavigationSecondFragment
@@ -87,12 +87,8 @@ class BottomNavigationActivity : BaseFragmentActivity(),
         }
     }
 
-    override fun onFragmentSelected(fragment: BottomNavigationFragment<*, *>, position: Int) {
+    override fun onFragmentSelected(fragment: BottomNavigationFragment<*, *>?, position: Int) {
 
-    }
-
-    override fun getViewPagerElements(): Int {
-        return 3
     }
 
     // =============== Support methods =============================================================
