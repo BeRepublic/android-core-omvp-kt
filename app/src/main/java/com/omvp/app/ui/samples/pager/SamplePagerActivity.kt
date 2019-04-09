@@ -26,7 +26,7 @@ class SamplePagerActivity : BaseFragmentActivity(),
     internal lateinit var mToolbarInterceptor: ToolbarInterceptor
     @Inject
     internal lateinit var mFragmentStatePagerInterceptor: FragmentStatePagerInterceptor<*>
-    
+
     private lateinit var mToolbar: Toolbar
     private lateinit var mViewPager: ViewPager
     private lateinit var mFirstFragment: SamplePagerFirstFragment
@@ -61,19 +61,18 @@ class SamplePagerActivity : BaseFragmentActivity(),
         }
     }
 
-    override fun onFragmentLoaded(fragment: SamplePagerFragment<*, *>, position: Int) {
+    override val viewPagerElements: Int
+        get() = 2
+
+    override fun onFragmentLoaded(fragment: SamplePagerFragment<*, *>?, position: Int) {
         when (position) {
             0 -> mFirstFragment = fragment as SamplePagerFirstFragment
             1 -> mSecondFragment = fragment as SamplePagerSecondFragment
         }
     }
 
-    override fun onFragmentSelected(fragment: SamplePagerFragment<*, *>, position: Int) {
+    override fun onFragmentSelected(fragment: SamplePagerFragment<*, *>?, position: Int) {
 
-    }
-
-    override fun getViewPagerElements(): Int {
-        return 2
     }
 
     // =============== Support methods =============================================================

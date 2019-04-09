@@ -37,13 +37,13 @@ class SampleSocialActivity : BaseFragmentActivity(),  SampleSocialFragment.Fragm
         return findViewById(R.id.toolbar)
     }
 
-    override fun onToolbarViewCreated(toolbar: Toolbar?) {
+    override fun onToolbarViewCreated(toolbar: Toolbar) {
         mToolbar = toolbar
     }
 
     // =============== InjectFragmentInterceptorCallback ===========================================
 
-    override fun onFragmentLoaded(fragment: SampleSocialFragment?) {
+    override fun onFragmentLoaded(fragment: SampleSocialFragment) {
         mFragment = fragment
     }
 

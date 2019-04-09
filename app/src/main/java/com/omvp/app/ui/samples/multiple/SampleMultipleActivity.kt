@@ -48,9 +48,8 @@ class SampleMultipleActivity : BaseFragmentActivity(),
 
     // =============== InjectFragmentsInterceptorCallback ===========================================
 
-    override fun getFragmentCount(): Int {
-        return 2
-    }
+    override val fragmentCount: Int
+        get() = 2
 
     override fun onLoadFragmentContainer(savedInstanceState: Bundle?, position: Int): View? {
         return when (position) {

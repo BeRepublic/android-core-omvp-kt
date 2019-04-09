@@ -18,14 +18,10 @@ class GoogleApiClientActivityInterceptor(activity: FragmentActivity, private val
 
     private lateinit var mGoogleApiClient: GoogleApiClient
 
-    init {
-        mActivity = activity
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mGoogleApiClient = GoogleApiClient.Builder(mActivity)
+        mGoogleApiClient = GoogleApiClient.Builder(activity)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, mGoogleSignInOptions)
                 .addApi(LocationServices.API)
                 .addApi(Places.GEO_DATA_API)
@@ -50,15 +46,15 @@ class GoogleApiClientActivityInterceptor(activity: FragmentActivity, private val
     }
 
     override fun onConnected(bundle: Bundle?) {
-        mCallback.onGoogleApiClientConnected(bundle, mGoogleApiClient)
+        callback?.onGoogleApiClientConnected(bundle, mGoogleApiClient)
     }
 
     override fun onConnectionSuspended(i: Int) {
-        mCallback.onGoogleApiClientConnectionSuspended(i)
+        callback?.onGoogleApiClientConnectionSuspended(i)
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
-        mCallback.onGoogleApiClientConnectionFailed(connectionResult)
+        callback?.onGoogleApiClientConnectionFailed(connectionResult)
     }
 
 }

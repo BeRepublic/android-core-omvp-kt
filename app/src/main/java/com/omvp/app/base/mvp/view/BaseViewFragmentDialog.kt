@@ -28,13 +28,6 @@ open class BaseViewFragmentDialog<TPresenter : Presenter, TCallback : BaseViewFr
         mOnDismissListener = mutableListOf()
     }
 
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        for (listener in mOnDismissListener) {
-            listener.onDismiss(dialog)
-        }
-    }
-
     fun addOnDismissListener(onDismissListener: DialogInterface.OnDismissListener) {
         mOnDismissListener.add(onDismissListener)
     }

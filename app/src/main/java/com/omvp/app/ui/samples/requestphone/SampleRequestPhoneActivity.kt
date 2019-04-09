@@ -40,7 +40,7 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
         return SampleRequestPhoneFragment.newInstance(mExtras)
     }
 
-    override fun onFragmentLoaded(fragment: SampleRequestPhoneFragment?) {
+    override fun onFragmentLoaded(fragment: SampleRequestPhoneFragment) {
         mFragment = fragment
     }
 
@@ -50,7 +50,7 @@ class SampleRequestPhoneActivity : BaseFragmentActivity(), SampleRequestPhoneFra
         return findViewById(R.id.toolbar)
     }
 
-    override fun onToolbarViewCreated(toolbar: Toolbar?) {
+    override fun onToolbarViewCreated(toolbar: Toolbar) {
         mToolbar = toolbar
     }
 

@@ -30,12 +30,12 @@ class OperationBroadcastActivityInterceptor(activity: FragmentActivity) : Activi
                         activitiesToFinish.add(activityName)
                     }
                     for (activityToFinish in activitiesToFinish) {
-                        if (activityToFinish == mActivity.javaClass.name) {
-                            mActivity.finish()
+                        if (activityToFinish == activity.javaClass.name) {
+                            activity.finish()
                         }
                     }
                 }
-                OPERATION_ACTIVITY_FINISH_ALL -> mActivity.finish()
+                OPERATION_ACTIVITY_FINISH_ALL -> activity.finish()
             }
         }
     }
@@ -52,11 +52,11 @@ class OperationBroadcastActivityInterceptor(activity: FragmentActivity) : Activi
 
     private fun registerOperationReceiver() {
         val intentFilter = IntentFilter(OPERATION_ACTION)
-        mActivity.registerReceiver(mOperationReceiver, intentFilter)
+        activity.registerReceiver(mOperationReceiver, intentFilter)
     }
 
     private fun unregisterOperationReceiver() {
-        mActivity.unregisterReceiver(mOperationReceiver)
+        activity.unregisterReceiver(mOperationReceiver)
     }
 
     companion object {

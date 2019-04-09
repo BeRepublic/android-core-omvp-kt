@@ -66,9 +66,9 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
     private fun authPhoneCredentialRetrieved(credential: PhoneAuthCredential) {
             mPhoneAuthCredential = credential
             if (credential.smsCode?.isNotEmpty() == true) {
-                mCallback.authPhoneCodeRetrieved(credential.smsCode!!)
+                callback?.authPhoneCodeRetrieved(credential.smsCode!!)
             } else {
-                mCallback.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INSTANT_VALIDATION)
+                callback?.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INSTANT_VALIDATION)
             }
     }
 
@@ -97,10 +97,10 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
                 mVerificationInProgress = false
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
-                    mCallback.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_PHONE_NUMBER)
+                    callback?.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_PHONE_NUMBER)
                 } else if (e is FirebaseTooManyRequestsException) {
                     // The SMS quota for the project has been exceeded
-                    mCallback.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.QUOTA_EXCEEDED)
+                    callback?.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.QUOTA_EXCEEDED)
                 }
                 // Show a message and update the UI
                 authPhoneStateChanged(AuthPhoneInterceptor.AuthPhoneState.STATE_VERIFY_FAILED)
@@ -123,7 +123,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(mActivity) { task ->
+                .addOnCompleteListener(activity) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Timber.d("signInWithCredential:success")
@@ -133,7 +133,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
                         Timber.e(task.exception)
                         if (task.exception is FirebaseAuthInvalidCredentialsException) {
                             // The verification code entered was invalid
-                            mCallback.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_CODE)
+                            callback?.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_CODE)
                         }
                         authPhoneStateChanged(AuthPhoneInterceptor.AuthPhoneState.STATE_SIGNIN_FAILED)
                     }
@@ -145,7 +145,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
                 phoneNumber, // Phone number to verify
                 60, // Timeout duration
                 TimeUnit.SECONDS, // Unit of timeout
-                mActivity, // Activity (for callback binding)
+                activity, // Activity (for callback binding)
                 mCallbacks)        // OnVerificationStateChangedCallbacks
         mVerificationInProgress = true
     }
@@ -160,7 +160,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
                 phoneNumber, // Phone number to verify
                 60, // Timeout duration
                 TimeUnit.SECONDS, // Unit of timeout
-                mActivity, // Activity (for callback binding)
+                activity, // Activity (for callback binding)
                 mCallbacks, // OnVerificationStateChangedCallbacks
                 token)             // ForceResendingToken from callbacks
     }
@@ -172,7 +172,7 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
     private fun handleFirebaseUser(firebaseUser: FirebaseUser?) {
         if (firebaseUser != null) {
             authPhoneStateChanged(AuthPhoneInterceptor.AuthPhoneState.STATE_SIGNIN_SUCCESS)
-            mCallback.authPhoneUserRetrieved(firebaseUser)
+            callback?.authPhoneUserRetrieved(firebaseUser)
         } else {
             authPhoneStateChanged(AuthPhoneInterceptor.AuthPhoneState.STATE_INITIALIZED)
         }
@@ -180,12 +180,12 @@ class AuthPhoneActivityInterceptor(activity: FragmentActivity, callback: AuthPho
 
     private fun authPhoneStateChanged(authPhoneState: AuthPhoneInterceptor.AuthPhoneState) {
         mAuthPhoneState = authPhoneState
-        mCallback.authPhoneStateChanged(authPhoneState)
+        callback?.authPhoneStateChanged(authPhoneState)
     }
 
     private fun validatePhoneNumber(): Boolean {
         if (TextUtils.isEmpty(phoneNumber)) {
-            mCallback.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_PHONE_NUMBER)
+            callback?.authPhoneError(AuthPhoneInterceptor.AuthPhoneError.INVALID_PHONE_NUMBER)
             return false
         }
         return true

@@ -77,7 +77,7 @@ object InterceptorActivityModule {
     @Provides
     @PerActivity
     fun fragmentStatePagerInterceptor(activity: Activity): FragmentStatePagerInterceptor<*> {
-        return FragmentStatePagerActivityInterceptor<Fragment>(activity as FragmentActivity, activity as FragmentStatePagerInterceptorCallback<*>)
+        return FragmentStatePagerActivityInterceptor(activity as FragmentActivity, activity as FragmentStatePagerInterceptorCallback<Fragment>)
     }
 
     @JvmStatic
