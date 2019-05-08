@@ -22,10 +22,8 @@ internal constructor(sampleView: SampleLocationView) : BasePresenter<SampleLocat
     }
 
     private fun drawLocation(location: Location?) {
-        if (mView != null) {
-            mView!!.drawLocation(
-                    location?.latitude?.toString() ?: "",
-                    location?.longitude?.toString() ?: "")
-        }
+        mView?.drawLocation(
+                location?.latitude?.toString() ?: "",
+                location?.longitude?.toString() ?: "")
     }
 }

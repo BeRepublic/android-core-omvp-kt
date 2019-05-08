@@ -28,7 +28,7 @@ internal constructor(sampleView: SampleTakePictureView) : BasePresenter<SampleTa
             }
 
             override fun onPictureRetrieved(picture: Uri) {
-                mView!!.pictureRetrieved(picture)
+                mView?.pictureRetrieved(picture)
             }
         })
     }

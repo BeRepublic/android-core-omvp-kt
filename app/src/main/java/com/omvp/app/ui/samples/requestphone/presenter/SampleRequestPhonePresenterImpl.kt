@@ -35,26 +35,18 @@ constructor(sampleRequestPhoneView: SampleRequestPhoneView) : BasePresenter<Samp
     }
 
     private fun showPrefixInputError(error: String) {
-        if (mView != null) {
-            mView!!.showPrefixInputError(error)
-        }
+        mView?.showPrefixInputError(error)
     }
 
     private fun showPhoneInputError(error: String) {
-        if (mView != null) {
-            mView!!.showPhoneInputError(error)
-        }
+        mView?.showPhoneInputError(error)
     }
 
     private fun showPrefixInputSuccess() {
-        if (mView != null) {
-            mView!!.showPrefixInputSuccess()
-        }
+        mView?.showPrefixInputSuccess()
     }
 
     private fun showPhoneInputSuccess() {
-        if (mView != null) {
-            mView!!.showPhoneInputSuccess()
-        }
+        mView?.showPhoneInputSuccess()
     }
 }

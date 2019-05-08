@@ -43,7 +43,6 @@ class SampleListPresenterImpl
 
     override fun onViewLoaded() {
         super.onViewLoaded()
-
         loadSampleList()
     }
 
@@ -75,8 +74,8 @@ class SampleListPresenterImpl
          *   efficiency of the Adapter update by DiffUtils.
         */
         mDisposableManager.add(Maybe.just(mSampleDomainList)
-                .map { sampleDomains -> mSampleModelDataMapper.transform(sampleDomains) }
-                .map({ sampleModels -> editRandomItem(sampleModels) })
+                .map { mSampleModelDataMapper.transform(it) }
+                .map { editRandomItem(it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(object : BaseDisposableMaybeObserver<List<SampleModel>>(mContext) {
@@ -171,11 +170,7 @@ class SampleListPresenterImpl
                 LocalDateTime.now(),
                 com.omvp.data.R.mipmap.ic_launcher_round
         )
-
-        if (mSampleDomainList == null) {
-            mSampleDomainList = ArrayList()
-        }
-
+        mSampleDomainList = ArrayList()
         mDisposableManager.add(mSaveSampleUseCase.execute(sampleDomain)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

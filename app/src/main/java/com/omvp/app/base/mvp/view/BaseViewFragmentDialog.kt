@@ -5,7 +5,6 @@ import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.DialogFragment
 import com.omvp.app.R
 import com.omvp.app.base.mvp.presenter.Presenter
 
@@ -15,7 +14,7 @@ open class BaseViewFragmentDialog<TPresenter : Presenter, TCallback : BaseViewFr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.AppDialogTheme)
+        setStyle(STYLE_NORMAL, R.style.AppDialogTheme)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog = super.onCreateDialog(savedInstanceState).apply {
